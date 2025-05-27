@@ -145,67 +145,15 @@ public static partial class FsmDocumenter
                 gt => new string[] { gt.EventName, gt.ToFsmState.Name })
             .BuildTable();
 
-    public static string TypeSwitch(VariableType type, FsmVariables vars, string name)
-    {
-        switch (type)
-        {
-            case VariableType.Int:
-                return vars.GetFsmInt(name).Value.ToString();
-            case VariableType.Float:
-                return vars.GetFsmFloat(name).Value.ToString();
-            case VariableType.Bool:
-                return vars.GetFsmBool(name).ToString();
-            case VariableType.Color:
-                var fsmColor = vars.GetFsmColor(name).Value;
-                return $"r: {fsmColor.r}, g: {fsmColor.g}, b: {fsmColor.b}, a: {fsmColor.a}";
-            case VariableType.Quaternion:
-                var fsmQuaternion = vars.GetFsmQuaternion(name).Value;
-                return $"x: {fsmQuaternion.x}, y: {fsmQuaternion.y}, z: {fsmQuaternion.z}, w: {fsmQuaternion.w}";
-            case VariableType.Rect:
-                var fsmRect = vars.GetFsmRect(name).Value;
-                return $"x: {fsmRect.x}, y: {fsmRect.y}, width: {fsmRect.width}, height: {fsmRect.height}";
-            case VariableType.Vector2:
-                var fsmVector2 = vars.GetFsmVector2(name).Value;
-                return $"x: {fsmVector2.x}, y: {fsmVector2.y}";
-            case VariableType.Vector3:
-                var fsmVector3 = vars.GetFsmVector3(name).Value;
-                return $"x: {fsmVector3.x}, y: {fsmVector3.y}, z: {fsmVector3.z}";
-            case VariableType.Texture:
-                var fsmTexture = vars.GetFsmTexture(name).Value;
-                return $"name: {fsmTexture.name}";
-            case VariableType.Material:
-                var fsmMaterial = vars.GetFsmMaterial(name).Value;
-                return $"name: {fsmMaterial.name}";
-            case VariableType.String:
-                return vars.GetFsmString(name).Value;
-            case VariableType.GameObject:
-                var fsmGameObject = vars.GetFsmGameObject(name);
-                return fsmGameObject.Value == null ? "null" : fsmGameObject.Value.GetFullPath();
-            case VariableType.Object:
-                var fsmObject = vars.GetFsmObject(name);
-                return $"type: {fsmObject.Value.GetActualType()}, value: {fsmObject.Value.ToString()}"; ;
-            case VariableType.Unknown:
-                return "*Unknown*";
-            case VariableType.Array:
-                var fsmArray = vars.GetFsmArray(name);
-                return $"ElementType: {fsmArray.ElementType}, count: {fsmArray.Values.Count}";
-            case VariableType.Enum:
-                var fsmEnum = vars.GetFsmEnum(name);
-                return $"type: {fsmEnum.EnumType}, value: {fsmEnum.Value}";
-            default:
-                return "*Unknown*";
-        }
-    }
-
     public static string GetValueFromFsmVar(this FsmVar fsmVar, PlayMakerFSM fsm) =>
         fsm == null || fsmVar == null
         ? "null"
-        : TypeSwitch(fsmVar.Type, fsm.FsmVariables, fsmVar.variableName);
+        : fsmVar.Type.TypeSwitch(fsm.FsmVariables, fsmVar.variableName);
 
     public static string GetValueFromNamedVariable(this NamedVariable fsmVar, PlayMakerFSM fsm) =>
         fsm == null || fsmVar == null
         ? "null"
-        : TypeSwitch(fsmVar.VariableType, fsm.FsmVariables, fsmVar.name);
+        : fsmVar.VariableType.TypeSwitch(fsm.FsmVariables, fsmVar.name);
 
     public static string GetFsmOwnerDefaultPath(this FsmOwnerDefault fsmOwner, PlayMakerFSM fsm) =>
         fsmOwner.OwnerOption == OwnerDefaultOption.UseOwner

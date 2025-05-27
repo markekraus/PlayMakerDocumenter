@@ -1,4 +1,5 @@
 using System.Linq;
+using Il2Cpp;
 using UnityEngine;
 
 namespace PlayMakerDocumenter
@@ -8,6 +9,10 @@ namespace PlayMakerDocumenter
         public static string GetFullPath(this GameObject go)
         {
             return go.transform.GetFullPath();
+        }
+        public static string GetFullPath(this PlayMakerFSM fsm)
+        {
+            return fsm.transform.GetFullPath();
         }
         public static string GetFullPath(this Transform current)
         {

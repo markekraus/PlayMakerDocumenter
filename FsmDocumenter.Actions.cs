@@ -89,10 +89,7 @@ public static partial class FsmDocumenter
         : sb.AppendHeader($"{nameof(ArrayListShuffle)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "GameObject Path", $"{GetFsmOwnerDefaultPath(gameObject, action.fsmComponent)}" })
+            .AddGameObjectRows(action, action.gameObject)
             .AddRowIfNotNull(action.reference, reference =>
                 new string[] { "reference", $"{reference.Value}" })
             .AddRowIfNotNull(action.shufflingRange, shufflingRange =>
@@ -110,14 +107,11 @@ public static partial class FsmDocumenter
                 new string[] { "atIndex", $"{atIndex.Value}" })
             .AddRow("everyFrame", $"{action.everyFrame}")
             .AddRow("forceResizeIdNeeded", $"{action.forceResizeIdNeeded}")
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "GameObject Path", $"{GetFsmOwnerDefaultPath(gameObject, action.fsmComponent)}" })
+            .AddGameObjectRows(action, action.gameObject)
             .AddRowIfNotNull(action.reference, reference =>
                 new string[] { "reference", $"{reference.Value}" })
             .AddRowIfNotNull(action.variable, variable =>
-                new string[] { "variable", GetValueFromFsmVar(variable, action.fsmComponent) })
+                new string[] { "variable", variable.GetValueFromFsmVar(action.fsmComponent) })
             .BuildTable();
     private static StringBuilder DocActionArrayListGet(this StringBuilder sb, ArrayListGet action, Dictionary<string, string> eventToState) =>
         action is null
@@ -131,10 +125,7 @@ public static partial class FsmDocumenter
                 new string[] { "failureEvent", $"{failureEvent.Name}" })
             .AddRowIfNotNull(action.failureEvent, failureEvent =>
                 new string[] { "failureEvent state", $"{eventToState.GetValueOrDefault(failureEvent.Name)}" })
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "GameObject Path", $"{GetFsmOwnerDefaultPath(gameObject, action.fsmComponent)}" })
+            .AddGameObjectRows(action, action.gameObject)
             .AddRowIfNotNull(action.reference, reference =>
                 new string[] { "reference", $"{reference.Value}" })
             .AddRowIfNotNull(action.result, result =>
@@ -142,7 +133,7 @@ public static partial class FsmDocumenter
             .AddRowIfNotNull(action.result, result =>
                 new string[] { "result.Type", $"{result.Type}" })
             .AddRowIfNotNull(action.result, result =>
-                new string[] { "result.Value", $"{GetValueFromFsmVar(result, action.fsmComponent)}" })
+                new string[] { "result.Value", result.GetValueFromFsmVar(action.fsmComponent) })
             .BuildTable();
     private static StringBuilder DocStateActionGeneralDetails(this StringBuilder sb, FsmStateAction action, int actionIndex) =>
         action is null

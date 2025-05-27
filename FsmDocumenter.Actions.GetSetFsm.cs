@@ -15,10 +15,6 @@ public static partial class FsmDocumenter
             .AddRowIfNotNull(action.fsmName, fsmName =>
                 new string[] { "fsmName", $"{fsmName.Value}" })
             .AddGameObjectRows(action, action.gameObject)
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
-            .AddRowIfNotNull(action.gameObject, gameObject =>
-                new string[] { "GameObject Path", $"{GetFsmOwnerDefaultPath(gameObject, action.fsmComponent)}" })
             .AddRowIfNotNull(action.storeValue, storeValue =>
                 new string[] { "storeValue.Name", $"{storeValue.Name}" })
             .AddRowIfNotNull(action.storeValue, storeValue =>
@@ -32,6 +28,18 @@ public static partial class FsmDocumenter
         : sb.AppendHeader($"{nameof(GetFsmArrayItem)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRow("everyFrame", $"{action.everyFrame}")
+            .AddRowIfNotNull(action.fsmName, fsmName =>
+                new string[] { "fsmName", $"{fsmName.Value}" })
+            .AddGameObjectRows(action, action.gameObject)
+            .AddRowIfNotNull(action.index, index =>
+                new string[] { "index", $"{index.Value}" })
+            .AddRowIfNotNull(action.storeValue, storeValue =>
+                new string[] { "storeValue.Type", $"{storeValue.Type}" })
+            .AddRowIfNotNull(action.storeValue, storeValue =>
+                new string[] { "storeValue.Value", storeValue.GetValueFromFsmVar(action.fsmComponent) })
+            .AddRowIfNotNull(action.variableName, variableName =>
+                new string[] { "variableName", $"{variableName.Value}" })
             .BuildTable();
     private static StringBuilder DocActionGetFsmBool(this StringBuilder sb, GetFsmBool action) =>
         action is null
@@ -39,6 +47,20 @@ public static partial class FsmDocumenter
         : sb.AppendHeader($"{nameof(GetFsmBool)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRow("everyFrame", $"{action.everyFrame}")
+            .AddRowIfNotNull(action.fsm, fsm =>
+                new string[] { "fsm", $"{fsm.GetFullPath()}" })
+            .AddRowIfNotNull(action.fsmName, fsmName =>
+                new string[] { "fsmName", $"{fsmName.Value}" })
+            .AddRowIfNotNull(action.fsmNameLastFrame, fsmNameLastFrame =>
+                new string[] { "fsmNameLastFrame", $"{fsmNameLastFrame}" })
+            .AddGameObjectRows(action, action.gameObject)
+            .AddRowIfNotNull(action.goLastFrame, goLastFrame => 
+                new string[] { "goLastFrame", goLastFrame.GetFullPath() })
+            .AddRowIfNotNull(action.storeValue, storeValue =>
+                new string[] { "storeValue.Value", $"{storeValue.Value}" })
+            .AddRowIfNotNull(action.variableName, variableName =>
+                new string[] { "variableName", $"{variableName.Value}" })
             .BuildTable();
     private static StringBuilder DocActionGetFsmFloat(this StringBuilder sb, GetFsmFloat action) =>
         action is null
@@ -46,6 +68,20 @@ public static partial class FsmDocumenter
         : sb.AppendHeader($"{nameof(GetFsmFloat)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRow("everyFrame", $"{action.everyFrame}")
+            .AddRowIfNotNull(action.fsm, fsm =>
+                new string[] { "fsm", $"{fsm.GetFullPath()}" })
+            .AddRowIfNotNull(action.fsmName, fsmName =>
+                new string[] { "fsmName", $"{fsmName.Value}" })
+            .AddRowIfNotNull(action.fsmNameLastFrame, fsmNameLastFrame =>
+                new string[] { "fsmNameLastFrame", $"{fsmNameLastFrame}" })
+            .AddGameObjectRows(action, action.gameObject)
+            .AddRowIfNotNull(action.goLastFrame, goLastFrame => 
+                new string[] { "goLastFrame", goLastFrame.GetFullPath() })
+            .AddRowIfNotNull(action.storeValue, storeValue =>
+                new string[] { "storeValue.Value", $"{storeValue.Value}" })
+            .AddRowIfNotNull(action.variableName, variableName =>
+                new string[] { "variableName", $"{variableName.Value}" })
             .BuildTable();
     private static StringBuilder DocActionGetFsmGameObject(this StringBuilder sb, GetFsmGameObject action) =>
         action is null
@@ -53,6 +89,20 @@ public static partial class FsmDocumenter
         : sb.AppendHeader($"{nameof(GetFsmGameObject)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRow("everyFrame", $"{action.everyFrame}")
+            .AddRowIfNotNull(action.fsm, fsm =>
+                new string[] { "fsm", $"{fsm.GetFullPath()}" })
+            .AddRowIfNotNull(action.fsmName, fsmName =>
+                new string[] { "fsmName", $"{fsmName.Value}" })
+            .AddRowIfNotNull(action.fsmNameLastFrame, fsmNameLastFrame =>
+                new string[] { "fsmNameLastFrame", $"{fsmNameLastFrame}" })
+            .AddGameObjectRows(action, action.gameObject)
+            .AddRowIfNotNull(action.goLastFrame, goLastFrame => 
+                new string[] { "goLastFrame", goLastFrame.GetFullPath() })
+            .AddRowIfNotNull(action.storeValue, storeValue =>
+                new string[] { "storeValue.Value", storeValue.Value.GetFullPath() })
+            .AddRowIfNotNull(action.variableName, variableName =>
+                new string[] { "variableName", $"{variableName.Value}" })
             .BuildTable();
     private static StringBuilder DocActionGetFsmInt(this StringBuilder sb, GetFsmInt action) =>
         action is null
@@ -60,6 +110,20 @@ public static partial class FsmDocumenter
         : sb.AppendHeader($"{nameof(GetFsmInt)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRow("everyFrame", $"{action.everyFrame}")
+            .AddRowIfNotNull(action.fsm, fsm =>
+                new string[] { "fsm", $"{fsm.GetFullPath()}" })
+            .AddRowIfNotNull(action.fsmName, fsmName =>
+                new string[] { "fsmName", $"{fsmName.Value}" })
+            .AddRowIfNotNull(action.fsmNameLastFrame, fsmNameLastFrame =>
+                new string[] { "fsmNameLastFrame", $"{fsmNameLastFrame}" })
+            .AddGameObjectRows(action, action.gameObject)
+            .AddRowIfNotNull(action.goLastFrame, goLastFrame => 
+                new string[] { "goLastFrame", goLastFrame.GetFullPath() })
+            .AddRowIfNotNull(action.storeValue, storeValue =>
+                new string[] { "storeValue.Value", $"{storeValue.Value}" })
+            .AddRowIfNotNull(action.variableName, variableName =>
+                new string[] { "variableName", $"{variableName.Value}" })
             .BuildTable();
     private static StringBuilder DocActionGetFsmMaterial(this StringBuilder sb, GetFsmMaterial action) =>
         action is null
