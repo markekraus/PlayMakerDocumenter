@@ -1,24 +1,31 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
+using Il2CppHutongGames.PlayMaker.TweenEnums;
+using UnityEngine;
 
 namespace PlayMakerDocumenter;
 
-public class MDTableBuilder
+public class TableBuilder
 {
     private string[] headers;
-    private List<string[]> rows = new();
-    private List<int> maxWidths = new();
+    private readonly List<string[]> rows = new();
+    private readonly List<int> maxWidths = new();
+    private readonly StringBuilder sb;
 
-    public MDTableBuilder() { }
+    public TableBuilder() => sb = new();
+    public TableBuilder(StringBuilder sb) => this.sb = sb;
 
-    public MDTableBuilder WithHeaders(params string[] headers)
+    public TableBuilder WithHeaders(params string[] headers)
     {
         this.headers = headers;
         return this;
     }
 
-    public MDTableBuilder AddRow(params string[] row)
+    public TableBuilder AddRow(params string[] row)
     {
         rows.Add(row);
         UpdateMaxWidth(row);
@@ -35,16 +42,21 @@ public class MDTableBuilder
         }
     }
 
-    public string Build() => ToString();
-
-    public override string ToString()
+    public StringBuilder BuildTable()
     {
-        var sb = new StringBuilder();
-
         AppendHeaderRow(sb);
         AppendSeparatorRow(sb);
         AppendRows(sb);
+        sb.AppendLine();
+        return sb;
+    }
 
+    public override string ToString()
+    {
+        AppendHeaderRow(sb);
+        AppendSeparatorRow(sb);
+        AppendRows(sb);
+        sb.AppendLine();
         return sb.ToString();
     }
 
@@ -107,5 +119,34 @@ public class MDTableBuilder
         }
         return sb;
     }
-    
+}
+
+public static class TableBuilderExtensions
+{
+    public static TableBuilder NewTable(this StringBuilder sb) => new(sb);
+    public static TableBuilder ForEachAddRow<T>(this TableBuilder tb, IEnumerable<T> enumerator, Func<T, IEnumerable<string>> forEach)
+    {
+        foreach (var item in enumerator)
+        {
+            tb.AddRow(forEach(item).ToArray());
+        }
+        return tb;
+    }
+    public static TableBuilder ForEachAddRow<TKey, TValue>(
+        this TableBuilder tb,
+        Il2CppSystem.Collections.Generic.Dictionary<TKey, TValue> dict,
+        Func<Il2CppSystem.Collections.Generic.KeyValuePair<TKey, TValue>, IEnumerable<string>> forEach)
+    {
+        foreach (var item in dict)
+        {
+            tb.AddRow(forEach(item).ToArray());
+        }
+        return tb;
+    }
+
+    public static TableBuilder WithPropertyValueHeaders(this TableBuilder tb) => tb.WithHeaders("Property", "Value");
+    public static TableBuilder AddRowIfNotNull<T>(this TableBuilder tb, T nullCheckObject, Func<T, IEnumerable<string>> notNullAction) =>
+        nullCheckObject is null
+        ? tb
+        : tb.AddRow(notNullAction(nullCheckObject).ToArray());
 }

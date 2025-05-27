@@ -1,2 +1,1 @@
-global using Il2Cpp;
-global using UnityEngine;
+global using static PlayMakerDocumenter.Logger;

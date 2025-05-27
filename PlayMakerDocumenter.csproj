@@ -46,4 +46,7 @@
             <Private>False</Private>
         </Reference>
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="UniverseLib.IL2CPP.Interop" Version="1.5.1" />
+    </ItemGroup>
 </Project>
