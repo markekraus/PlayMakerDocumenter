@@ -15,7 +15,7 @@ public class Entry : MelonMod
             LogMsg("UnityExplorer will initialize UniverseLib for us. Skipping.");
             return;
         }
-        Universe.Init(100f, null, LogUniverseLib, new()
+        Universe.Init(1f, null, LogUniverseLib, new()
         {
             Unhollowed_Modules_Folder = MelonEnvironment.Il2CppAssembliesDirectory
         });
