@@ -4,45 +4,49 @@
         <OutputType>Library</OutputType>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
+         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <DebugSymbols>False</DebugSymbols>
-        <DebugType>None</DebugType>
-    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp'">
+    <TargetFramework>net6</TargetFramework>
+    <OutputPath>..\Release\PlayMakerDocumenter.ML.IL2CPP\</OutputPath>
+    <AssemblyName>PlayMakerDocumenter.ML.IL2CPP</AssemblyName>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+  </PropertyGroup>
     <ItemGroup>
         <AppDesigner Include="Properties\" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="Assembly-CSharp">
-            <HintPath>..\..\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="Il2CppInterop.Runtime">
-            <HintPath>..\..\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="Il2Cppmscorlib">
-            <HintPath>..\..\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="Il2CppSystem.Core">
-            <HintPath>..\..\MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="Il2CppPlayMaker">
-            <HintPath>..\..\MelonLoader\Il2CppAssemblies\Il2CppPlayMaker.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\Il2CppPlayMaker.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.UI">
-            <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="MelonLoader">
-            <HintPath>..\..\MelonLoader\net6\MelonLoader.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\net6\MelonLoader.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
-            <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
     </ItemGroup>

@@ -139,17 +139,6 @@ public static class TableBuilderExtensions
         }
         return tb;
     }
-    public static TableBuilder ForEachAddRow<TKey, TValue>(
-        this TableBuilder tb,
-        Il2CppSystem.Collections.Generic.Dictionary<TKey, TValue> dict,
-        Func<Il2CppSystem.Collections.Generic.KeyValuePair<TKey, TValue>, IEnumerable<string>> forEach)
-    {
-        foreach (var item in dict)
-        {
-            tb.AddRow(forEach(item).ToArray());
-        }
-        return tb;
-    }
 
     public static TableBuilder WithPropertyValueHeaders(this TableBuilder tb) => tb.WithHeaders("Property", "Value");
     public static TableBuilder AddRowIfNotNull<T>(this TableBuilder tb, T nullCheckObject, Func<T, IEnumerable<string>> notNullAction) =>

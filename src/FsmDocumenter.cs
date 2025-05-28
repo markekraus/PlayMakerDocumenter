@@ -1,11 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using Il2Cpp;
 using Il2CppHutongGames.PlayMaker;
 using UnityEngine;
 using UniverseLib;
+
+using static PlayMakerDocumenter.Actions.Documenter;
 
 namespace PlayMakerDocumenter;
 
@@ -26,9 +26,7 @@ public static partial class FsmDocumenter
         if (fsm is null) { LogError("Fsm was null"); return; }
         if (filePath.IsNullOrWhiteSpace()) { LogError("Fsm was null"); return; }
 
-        File.WriteAllText(filePath, "# PlayMaker FSM Documentation");
-        using var writer = File.AppendText(filePath);
-        NewStringBuilder()
+        new StringBuilder()
             .AppendLine("")
             .DocEnvironmentDetails()
             .DocFsmDetails(fsm)
@@ -36,7 +34,7 @@ public static partial class FsmDocumenter
             .DocFsmVariables(fsm)
             .DocFsmEvents(fsm)
             .DocFsmStates(fsm)
-            .WriteToFile(writer);
+            .WriteToFile(filePath);
         LogMsg($"FSM Doc: {filePath}");
     }
     private static StringBuilder DocFsmStates(this StringBuilder sb, PlayMakerFSM fsm) =>
@@ -160,24 +158,4 @@ public static partial class FsmDocumenter
         : fsmOwner.GameObject == null || fsmOwner.GameObject.Value == null
             ? "null"
             : fsmOwner.GameObject.Value.GetFullPath();
-    public static StringBuilder AppendHeader(this StringBuilder sb, string header) =>
-        sb.AppendLine(header).AppendLine("");
-
-    public static StringBuilder NewStringBuilder() => new();
-    public static TOut Devoid<TOut>(TOut output, Func<TOut, TOut> devoid) => devoid(output);
-    public static StringBuilder WriteToFile(this StringBuilder sb, StreamWriter writer)
-    { writer.Write(sb); return sb; }
-
-    public static StringBuilder WriteToLog(this StringBuilder sb)
-    { LogMsg(sb.ToString()); return sb; }
-
-    public static bool IsNullOrWhiteSpace(this string @string) => string.IsNullOrWhiteSpace(@string);
-    public static TableBuilder AddGameObjectRows(this TableBuilder tb, FsmStateAction action, FsmOwnerDefault fsmOwner) =>
-        fsmOwner is null
-        ? tb
-        : tb
-            .AddRowIfNotNull(fsmOwner, gameObject =>
-                new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
-            .AddRowIfNotNull(fsmOwner, gameObject =>
-                new string[] { "GameObject Path", gameObject.GetFsmOwnerDefaultPath(action.fsmComponent) });
 }

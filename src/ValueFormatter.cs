@@ -66,7 +66,7 @@ public static class ValueFormatter
         ? "null"
         : fsmString.Value;
     
-    public static string ValueFormatTypeSwitch(this VariableType type, FsmVariables vars, string name) =>
+    internal static string ValueFormatTypeSwitch(this VariableType type, FsmVariables vars, string name) =>
         type switch
         {
             VariableType.Int => vars.GetFsmInt(name).FormatValue(),

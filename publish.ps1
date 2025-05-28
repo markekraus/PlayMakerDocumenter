@@ -1,3 +1,3 @@
 . .\build.ps1
-Copy-Item -Force -Path .\bin\Release\net6\publish\PlayMakerDocumenter.ML.IL2CPP.CoreCLR.dll -Destination ..\..\Mods\ -Verbose
+Copy-Item -Force -Path .\Release\PlayMakerDocumenter.ML.IL2CPP\PlayMakerDocumenter.ML.IL2CPP.dll -Destination ..\..\Mods\ -Verbose
 Get-Date
