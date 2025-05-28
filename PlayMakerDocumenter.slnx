@@ -1,5 +1,10 @@
 <Solution>
+  <Configurations>
+    <BuildType Name="ML_Cpp_CoreCLR" />
+  </Configurations>
   <Folder Name="/src/">
-    <Project Path="src/PlayMakerDocumenter.csproj" />
+    <Project Path="src/PlayMakerDocumenter.csproj">
+      <BuildType Solution="ML_Cpp_CoreCLR|*" Project="ML_Cpp_CoreCLR" />
+    </Project>
   </Folder>
 </Solution>

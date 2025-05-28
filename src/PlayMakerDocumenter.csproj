@@ -4,19 +4,37 @@
         <OutputType>Library</OutputType>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
-         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <configurations>ML_Cpp_CoreCLR</configurations>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp'">
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <ItemGroup
+            Condition="'$(Configuration)'=='ML_Cpp_net6' or '$(Configuration)'=='ML_Cpp_net472' or '$(Configuration)'=='STANDALONE_Cpp' or '$(Configuration)'=='BIE_Cpp'">
+            <Exec
+                Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_IL2CPP_Unhollower" />
+        </ItemGroup>
+        <ItemGroup
+            Condition="'$(Configuration)'=='BIE_Cpp_CoreCLR' or '$(Configuration)'=='BIE_Unity_Cpp_CoreCLR' or '$(Configuration)'=='STANDALONE_Cpp_CoreCLR'">
+            <Exec
+                Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_IL2CPP_Interop_BIE" />
+        </ItemGroup>
+        <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
+            <Exec
+                Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_IL2CPP_Interop_ML" />
+        </ItemGroup>
+        <ItemGroup
+            Condition="'$(Configuration)'=='BIE6_Mono' or '$(Configuration)'=='BIE6_Unity_Mono' or '$(Configuration)'=='BIE5_Mono' or '$(Configuration)'=='ML_Mono' or '$(Configuration)'=='STANDALONE_Mono'">
+            <Exec Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_Mono" />
+        </ItemGroup>
+    </Target>
+    <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
     <TargetFramework>net6</TargetFramework>
     <OutputPath>..\Release\PlayMakerDocumenter.ML.IL2CPP\</OutputPath>
     <AssemblyName>PlayMakerDocumenter.ML.IL2CPP</AssemblyName>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
   </PropertyGroup>
-    <ItemGroup>
-        <AppDesigner Include="Properties\" />
-    </ItemGroup>
-    <ItemGroup>
+    <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
         <Reference Include="Assembly-CSharp">
             <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
             <Private>False</Private>
@@ -50,7 +68,10 @@
             <Private>False</Private>
         </Reference>
     </ItemGroup>
-    <ItemGroup>
-      <PackageReference Include="UniverseLib.IL2CPP.Interop" Version="1.5.1" />
+    <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
+        <Reference Include="UniverseLib">
+            <HintPath>..\UniverseLib\Release\UniverseLib.Il2Cpp.Interop\UniverseLib.ML.IL2CPP.Interop.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
     </ItemGroup>
 </Project>

@@ -1,12 +1,24 @@
-﻿using MelonLoader;
+﻿using System;
+using System.Linq;
+using MelonLoader;
+using MelonLoader.Utils;
+using UniverseLib;
 
-namespace PlayMakerDocumenter
+namespace PlayMakerDocumenter;
+
+public class Entry : MelonMod
 {
-    public class Entry : MelonMod
-    { 
-        public Entry()
+    public override void OnLateInitializeMelon()
+    {
+        if (AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(ass => ass.FullName.Contains("UnityExplorer"), null) is not null)
         {
-            UniverseLib.Universe.Init();
+            LogMsg("UnityExplorer will initialize UniverseLib for us. Skipping.");
+            return;
         }
+        Universe.Init(100f, null, LogUniverseLib, new()
+        {
+            Unhollowed_Modules_Folder = MelonEnvironment.Il2CppAssembliesDirectory
+        });
+        LogMsg("Initialized");
     }
 }
