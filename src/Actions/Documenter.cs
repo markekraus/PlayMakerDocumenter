@@ -11,7 +11,8 @@ public static partial class Documenter
     internal static StringBuilder DocStateActions(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState) =>
         fsmState is null || fsmState.Actions is null || fsmState.Actions.Count < 1
         ? sb
-        : sb.DocEachStateAction(fsmState, stateIndex, eventToState);
+        : sb
+            .AppendHeader("### Actions").DocEachStateAction(fsmState, stateIndex, eventToState);
 
     private static StringBuilder DocEachStateAction(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState)
     {
@@ -22,7 +23,7 @@ public static partial class Documenter
             var action = fsmState.Actions[0];
             var type = fsmState.Actions[0].GetActualType();
             sb
-                .AppendHeader($"### {stateIndex} {fsmState.Name} - Action {actionIndex}: {type.Name}")
+                .AppendHeader($"#### Action: [{stateIndex}][{actionIndex}] {type.Name}")
                 .DocStateActionGeneralDetails(action, actionIndex)
                 .DocStateActionTypeDetails(action, eventToState);
         }
