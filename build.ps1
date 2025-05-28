@@ -1,5 +1,5 @@
 pushd UniverseLib
-.\build.ps1
+dotnet build .\src\UniverseLib.sln -c Release_IL2CPP_Interop_ML
 popd
 
 # pushd .\src
