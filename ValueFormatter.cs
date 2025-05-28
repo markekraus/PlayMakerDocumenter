@@ -60,47 +60,31 @@ public static class ValueFormatter
     public static string FormatValue(this FsmEnum fsmEnum) =>
         fsmEnum is null
         ? "null"
-        : $"type: {fsmEnum.EnumType.GetActualType()}, value: {fsmEnum.Value}";
+        : $"type: {fsmEnum.EnumType.GetActualType()}, intValue: {fsmEnum.intValue}";
+    public static string FormatValue(this FsmString fsmString) =>
+        fsmString is null || fsmString.Value is null
+        ? "null"
+        : fsmString.Value;
     
-    public static string TypeSwitch(this VariableType type, FsmVariables vars, string name)
-    {
-        switch (type)
+    public static string ValueFormatTypeSwitch(this VariableType type, FsmVariables vars, string name) =>
+        type switch
         {
-            case VariableType.Int:
-                return vars.GetFsmInt(name).FormatValue();
-            case VariableType.Float:
-                return vars.GetFsmFloat(name).FormatValue();
-            case VariableType.Bool:
-                return vars.GetFsmBool(name).FormatValue();
-            case VariableType.Color:
-                return vars.GetFsmColor(name).FormatValue();
-            case VariableType.Quaternion:
-                return vars.GetFsmQuaternion(name).FormatValue();
-            case VariableType.Rect:
-                return vars.GetFsmRect(name).FormatValue();
-            case VariableType.Vector2:
-                return vars.GetFsmVector2(name).FormatValue();
-            case VariableType.Vector3:
-                return vars.GetFsmVector3(name).FormatValue();
-            case VariableType.Texture:
-                return vars.GetFsmTexture(name).FormatValue();
-            case VariableType.Material:
-                return vars.GetFsmMaterial(name).FormatValue();
-            case VariableType.String:
-                return vars.GetFsmString(name).Value;
-            case VariableType.GameObject:
-                return vars.GetFsmGameObject(name).FormatValue();
-            case VariableType.Object:
-                return vars.GetFsmObject(name).FormatValue();
-            case VariableType.Unknown:
-                return "*Unknown*";
-            case VariableType.Array:
-                return vars.GetFsmArray(name).FormatValue();
-            case VariableType.Enum:
-                var fsmEnum = vars.GetFsmEnum(name);
-                return $"type: {fsmEnum.EnumType}, value: {fsmEnum.Value}";
-            default:
-                return "*Unknown*";
-        }
-    }    
+            VariableType.Int => vars.GetFsmInt(name).FormatValue(),
+            VariableType.Float => vars.GetFsmFloat(name).FormatValue(),
+            VariableType.Bool => vars.GetFsmBool(name).FormatValue(),
+            VariableType.Color => vars.GetFsmColor(name).FormatValue(),
+            VariableType.Quaternion => vars.GetFsmQuaternion(name).FormatValue(),
+            VariableType.Rect => vars.GetFsmRect(name).FormatValue(),
+            VariableType.Vector2 => vars.GetFsmVector2(name).FormatValue(),
+            VariableType.Vector3 => vars.GetFsmVector3(name).FormatValue(),
+            VariableType.Texture => vars.GetFsmTexture(name).FormatValue(),
+            VariableType.Material => vars.GetFsmMaterial(name).FormatValue(),
+            VariableType.String => vars.GetFsmString(name).FormatValue(),
+            VariableType.GameObject => vars.GetFsmGameObject(name).FormatValue(),
+            VariableType.Object => vars.GetFsmObject(name).FormatValue(),
+            VariableType.Unknown => "*Unknown*",
+            VariableType.Array => vars.GetFsmArray(name).FormatValue(),
+            VariableType.Enum => vars.GetFsmEnum(name).FormatValue(),
+            _ => "*Unknown*"
+        };  
 }

@@ -1,11 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using System.Text;
-using Il2CppHutongGames.PlayMaker.TweenEnums;
-using UnityEngine;
 
 namespace PlayMakerDocumenter;
 
@@ -34,10 +30,12 @@ public class TableBuilder
 
     private void UpdateMaxWidth(string[] items)
     {
+        while (maxWidths.Count < items.Length)
+        {
+            maxWidths.Add(1);
+        }
         for (int i = 0; i < items.Length; i++)
         {
-            if (!(maxWidths.Count >= i + 1))
-                maxWidths.Add(1);
             maxWidths[i] = Math.Max(EscapeMarkdown(items[i]).Length, maxWidths[i]);
         }
     }
@@ -119,6 +117,15 @@ public class TableBuilder
         }
         return sb;
     }
+    
+    public static string Testy(int choice) =>
+        choice switch
+        {
+            _ => new StringBuilder().NewTable()
+            .WithHeaders("EventName", "ToFsmState")
+            .ForEachAddRow(new string[] {"a","b","c"},
+                gt => new string[] { gt, gt }).BuildTable().ToString()
+        };
 }
 
 public static class TableBuilderExtensions

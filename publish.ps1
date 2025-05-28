@@ -1,3 +1,3 @@
-dotnet publish -c Release
-Copy-Item -Force -Path .\bin\Release\net6\*.dll -Destination ..\..\Mods\ -Verbose
+. .\build.ps1
+Copy-Item -Force -Path .\bin\Release\net6\publish\PlayMakerDocumenter.ML.IL2CPP.CoreCLR.dll -Destination ..\..\Mods\ -Verbose
 Get-Date

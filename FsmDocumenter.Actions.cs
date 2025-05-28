@@ -57,31 +57,65 @@ public static partial class FsmDocumenter
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmString" => sb.DocActionSetFsmString(action.TryCast<SetFsmString>()),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmTexture" => sb.DocActionSetFsmTexture(action.TryCast<SetFsmTexture>()),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmVariable" => sb.DocActionSetFsmVariable(action.TryCast<SetFsmVariable>()),
-            "Il2CppHutongGames.PlayMaker.Actions.IntCompare" => sb.DocActionIntCompare(action.TryCast<IntCompare>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent" => sb.DocActionSendRandomEvent(action.TryCast<SendRandomEvent>()),
-            "Il2CppHutongGames.PlayMaker.Actions.Wait" => sb.DocActionWait(action.TryCast<Wait>()),
+            "Il2CppHutongGames.PlayMaker.Actions.IntCompare" => sb.DocActionIntCompare(action.TryCast<IntCompare>(), eventToState),
+            "Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent" => sb.DocActionSendRandomEvent(action.TryCast<SendRandomEvent>(), eventToState),
+            "Il2CppHutongGames.PlayMaker.Actions.Wait" => sb.DocActionWait(action.TryCast<Wait>(), eventToState),
             _ => sb
         };
-    private static StringBuilder DocActionWait(this StringBuilder sb, Wait action) =>
+    private static StringBuilder DocActionWait(this StringBuilder sb, Wait action, Dictionary<string, string> eventToState) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(Wait)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRowIfNotNull(action.time, time =>
+                new string[] { nameof(time), time.FormatValue() })
+            .AddRowIfNotNull(action.finishEvent, finishEvent =>
+                new string[] { nameof(finishEvent), finishEvent.Name })
+            .AddRow("realTime", $"{action.realTime}")
+            .AddRow("startTime", $"{action.startTime}")
+            .AddRow("timer", $"{action.timer}")
+            .AddRowIfNotNull(action.finishEvent, finishEvent =>
+                new string[] { "targetState", eventToState.GetValueOrDefault(finishEvent.Name) })
             .BuildTable();
-    private static StringBuilder DocActionSendRandomEvent(this StringBuilder sb, SendRandomEvent action) =>
-        action is null
-        ? sb
-        : sb.AppendHeader($"{nameof(SendRandomEvent)} Details:")
-            .NewTable()
-            .WithPropertyValueHeaders()
-            .BuildTable();
-    private static StringBuilder DocActionIntCompare(this StringBuilder sb, IntCompare action) =>
+    private static StringBuilder DocActionSendRandomEvent(this StringBuilder sb, SendRandomEvent action, Dictionary<string, string> eventToState)
+    {
+        if (action is null || action.events is null || action.events.Count < 1)
+            return sb;
+        var tb = sb.AppendHeader($"{nameof(SendRandomEvent)} Details:")
+            .NewTable().WithHeaders("Weight", "Event", "Target State");
+        for (int i = 0; i < action.events.Count; i++)
+        {
+            var fsmEvent = action.events[i];
+            var weight = action.weights[i];
+            tb.AddRow(weight.FormatValue(), fsmEvent.Name, eventToState.GetValueOrDefault(fsmEvent.Name));
+        }
+        return tb.BuildTable();
+    }
+
+    private static StringBuilder DocActionIntCompare(this StringBuilder sb, IntCompare action, Dictionary<string, string> eventToState) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(IntCompare)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRowIfNotNull(action.integer1, integer1 =>
+                new string[] { nameof(integer1), integer1.FormatValue() })
+            .AddRowIfNotNull(action.integer2, integer2 =>
+                new string[] { nameof(integer2), integer2.FormatValue() })
+            .AddRowIfNotNull(action.equal, equal =>
+                new string[] { nameof(equal), equal.Name })
+            .AddRowIfNotNull(action.equal, equal =>
+                new string[] { "equalState", eventToState.GetValueOrDefault(equal.Name)})
+            .AddRowIfNotNull(action.greaterThan, greaterThan =>
+                new string[] { nameof(greaterThan), greaterThan.Name })
+            .AddRow("everyFrame", $"{action.everyFrame}")
+            .AddRowIfNotNull(action.greaterThan, greaterThan =>
+                new string[] { "greaterThanState", eventToState.GetValueOrDefault(greaterThan.Name)})
+            .AddRowIfNotNull(action.lessThan, lessThan =>
+                new string[] { nameof(lessThan), lessThan.Name })
+            .AddRowIfNotNull(action.lessThan, lessThan =>
+                new string[] { "lessThanState", eventToState.GetValueOrDefault(lessThan.Name)})
             .BuildTable();
     private static StringBuilder DocActionArrayListShuffle(this StringBuilder sb, ArrayListShuffle action) =>
         action is null
@@ -111,7 +145,7 @@ public static partial class FsmDocumenter
             .AddRowIfNotNull(action.reference, reference =>
                 new string[] { "reference", $"{reference.Value}" })
             .AddRowIfNotNull(action.variable, variable =>
-                new string[] { "variable", variable.GetValueFromFsmVar(action.fsmComponent) })
+                new string[] { "variable", variable.GetValue(action.fsmComponent) })
             .BuildTable();
     private static StringBuilder DocActionArrayListGet(this StringBuilder sb, ArrayListGet action, Dictionary<string, string> eventToState) =>
         action is null
@@ -133,7 +167,7 @@ public static partial class FsmDocumenter
             .AddRowIfNotNull(action.result, result =>
                 new string[] { "result.Type", $"{result.Type}" })
             .AddRowIfNotNull(action.result, result =>
-                new string[] { "result.Value", result.GetValueFromFsmVar(action.fsmComponent) })
+                new string[] { "result.Value", result.GetValue(action.fsmComponent) })
             .BuildTable();
     private static StringBuilder DocStateActionGeneralDetails(this StringBuilder sb, FsmStateAction action, int actionIndex) =>
         action is null

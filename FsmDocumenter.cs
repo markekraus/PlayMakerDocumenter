@@ -36,8 +36,7 @@ public static partial class FsmDocumenter
             .DocFsmVariables(fsm)
             .DocFsmEvents(fsm)
             .DocFsmStates(fsm)
-            .WriteToFile(writer)
-            .WriteToLog();
+            .WriteToFile(writer);
         LogMsg($"FSM Doc: {filePath}");
     }
     private static StringBuilder DocFsmStates(this StringBuilder sb, PlayMakerFSM fsm) =>
@@ -104,7 +103,7 @@ public static partial class FsmDocumenter
                 ? new string[] { variable.Key, "null", "null" }
                 : new string[] {
                     variable.Key,
-                    variable.Value.GetValueFromNamedVariable(fsm),
+                    variable.Value.GetValue(fsm),
                     variable.Value.GetActualType().Name })
             .BuildTable();
 
@@ -145,15 +144,15 @@ public static partial class FsmDocumenter
                 gt => new string[] { gt.EventName, gt.ToFsmState.Name })
             .BuildTable();
 
-    public static string GetValueFromFsmVar(this FsmVar fsmVar, PlayMakerFSM fsm) =>
+    public static string GetValue(this FsmVar fsmVar, PlayMakerFSM fsm) =>
         fsm == null || fsmVar == null
         ? "null"
-        : fsmVar.Type.TypeSwitch(fsm.FsmVariables, fsmVar.variableName);
+        : fsmVar.Type.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.variableName);
 
-    public static string GetValueFromNamedVariable(this NamedVariable fsmVar, PlayMakerFSM fsm) =>
+    public static string GetValue(this NamedVariable fsmVar, PlayMakerFSM fsm) =>
         fsm == null || fsmVar == null
         ? "null"
-        : fsmVar.VariableType.TypeSwitch(fsm.FsmVariables, fsmVar.name);
+        : fsmVar.VariableType.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.name);
 
     public static string GetFsmOwnerDefaultPath(this FsmOwnerDefault fsmOwner, PlayMakerFSM fsm) =>
         fsmOwner.OwnerOption == OwnerDefaultOption.UseOwner
