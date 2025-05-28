@@ -1,3 +1,6 @@
 [submodule "UniverseLib"]
 	path = UniverseLib
 	url = https://github.com/yukieiji/UniverseLib.git
+[submodule "MarkdownUtilities"]
+	path = MarkdownUtilities
+	url = https://github.com/markekraus/MarkdownUtilities.git
