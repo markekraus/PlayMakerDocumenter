@@ -13,10 +13,10 @@ public static partial class Documenter
             .WithPropertyValueHeaders()
             .AddGameObjectRows(action, action.gameObject)
             .AddRowIfNotNull(action.reference, reference =>
-                new string[] { "reference", $"{reference.Value}" })
+                new string[] { nameof(reference), reference.FormatValue() })
             .AddRowIfNotNull(action.shufflingRange, shufflingRange =>
-                new string[] { "shufflingRange", $"{shufflingRange.Value}" })
+                new string[] { nameof(shufflingRange), shufflingRange.FormatValue() })
             .AddRowIfNotNull(action.startIndex, startIndex =>
-                new string[] { "shufflingRange", $"{startIndex.Value}" })
+                new string[] { nameof(startIndex), startIndex.FormatValue() })
             .BuildTable();
 }
