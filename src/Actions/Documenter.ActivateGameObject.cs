@@ -14,7 +14,7 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(ActivateGameObject)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddGameObjectRows(action, action.gameObject)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
             .AddRow(nameof(action.activate), action.activate)
             .AddRow(nameof(action.activatedGameObject), action.activatedGameObject)
             .AddRow(nameof(action.everyFrame), action.everyFrame)

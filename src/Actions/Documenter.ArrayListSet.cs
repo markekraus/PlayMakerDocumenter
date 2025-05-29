@@ -14,7 +14,7 @@ internal static partial class Documenter
             .AddRow(nameof(action.atIndex), action.atIndex)
             .AddRow(nameof(action.everyFrame), action.everyFrame)
             .AddRow(nameof(action.forceResizeIdNeeded), action.forceResizeIdNeeded)
-            .AddGameObjectRows(action, action.gameObject)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
             .AddRow(nameof(action.reference), action.reference)
             .AddRow(nameof(action.variable), action.variable, action)
             .BuildTable();

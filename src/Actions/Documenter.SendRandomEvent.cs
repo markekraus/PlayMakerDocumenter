@@ -10,8 +10,15 @@ internal static partial class Documenter
     {
         if (action is null || action.events is null || action.events.Count < 1)
             return sb;
-        var tb = sb.AppendHeader($"{nameof(SendRandomEvent)} Details:")
-            .NewTable().WithHeaders("Weight", "Event", "Target State");
+        var tb = sb
+            .AppendHeader($"{nameof(SendRandomEvent)} Details:")
+            .NewTable()
+            .WithNameValueHeaders()
+            .AddRow(nameof(action.delay), action.delay)
+            .AddRow(nameof(action.delayedEvent), action.delayedEvent, eventToState)
+            .BuildTable()
+            .NewTable()
+            .WithHeaders("Weight", "Event", "Target State");
         for (int i = 0; i < action.events.Count; i++)
         {
             var fsmEvent = action.events[i];

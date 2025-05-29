@@ -14,7 +14,8 @@ internal static partial class Documenter
             .WithPropertyValueHeaders()
             .AddRow(nameof(action.atIndex), action.atIndex)
             .AddRow(nameof(action.failureEvent), action.failureEvent, eventToState)
-            .AddGameObjectRows(action, action.gameObject)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
             .AddRow(nameof(action.reference), action.reference)
             .AddRow(nameof(action.result), action.result, action)
             .BuildTable();

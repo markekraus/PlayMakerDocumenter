@@ -13,7 +13,7 @@ internal static partial class Documenter
             .WithPropertyValueHeaders()
             .AddRow(nameof(action.everyFrame), action.everyFrame)
             .AddRow(nameof(action.fsmName), action.fsmName)
-            .AddGameObjectRows(action, action.gameObject)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
             .AddRow(nameof(action.setValue), action.setValue, action)
             .AddRow(nameof(action.variableName), action.variableName)
             .BuildTable();

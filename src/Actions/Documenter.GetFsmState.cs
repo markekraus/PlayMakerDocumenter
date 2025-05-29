@@ -15,6 +15,6 @@ internal static partial class Documenter
             .AddRow(nameof(action.fsm), action.fsm)
             .AddRow(nameof(action.fsmComponent), action.fsmComponent)
             .AddRow(nameof(action.fsmName), action.fsmName)
-            .AddGameObjectRows(action, action.gameObject)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
             .BuildTable();
 }

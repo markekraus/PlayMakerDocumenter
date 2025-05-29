@@ -20,14 +20,6 @@ internal static class FsmDocumenterExtensions
         }
         return tb;
     }
-    internal static TableBuilder AddGameObjectRows(this TableBuilder tb, FsmStateAction action, FsmOwnerDefault fsmOwner) =>
-        fsmOwner is null
-        ? tb
-        : tb
-            .AddRowIfNotNull(fsmOwner, gameObject =>
-                new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
-            .AddRowIfNotNull(fsmOwner, gameObject =>
-                new string[] { "GameObject.FullPath", gameObject.GetFsmOwnerDefaultPath(action.fsmComponent) });
     internal static bool IsNullOrWhiteSpace(this string @string) => string.IsNullOrWhiteSpace(@string);
     internal static StringBuilder AppendHeader(this StringBuilder sb, string header) =>
         sb.AppendLine(header).AppendLine("");

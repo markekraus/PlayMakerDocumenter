@@ -11,7 +11,7 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(ArrayListShuffle)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddGameObjectRows(action, action.gameObject)
+            .AddRow(nameof(action.gameObject), action.gameObject, action)
             .AddRow(nameof(action.reference), action.reference)
             .AddRow(nameof(action.shufflingRange), action.shufflingRange)
             .AddRow(nameof(action.startIndex), action.startIndex)
