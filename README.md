@@ -1,40 +1,98 @@
-# Get Lucky
+# PlayMaker Documenter
 
-A Blue Prince mod that starts each run with luck set to 100. This affects the number of random items, dig piles, and Metal Detector items that spawn in each room.
+A MelonLoader mod for documenting PlayMaker Finite-State Machines (FSMs) in Unity video games.
+
+This mod is currently tested only on Blue Prince.
 
 ## Installation
 
 1. Install [Melon Loader](https://melonwiki.xyz/#/?id=automated-installation) for Blue Prince
-1. Download the [latest release](https://github.com/markekraus/PlayMakerDocumenter/releases)
-1. Copy `PlayMakerDocumenter.dll` to the `Mods` folder in your Slime Rancher 2 install folder (i.e. `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\Mods`)
+2. Download an install [UnityExplorer](https://github.com/yukieiji/UnityExplorer)
+3. Download the [latest release](https://github.com/markekraus/PlayMakerDocumenter/releases)
+4. Copy `PlayMakerDocumenter.ML.IL2CPP.dll` to the `Mods` folder in your Blue Prince install folder (i.e. `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\Mods`)
 
-## !!!SPOILERS AHEAD!!!
+## Usage
 
-> [!Warn]
-> There are heavy spoilers ahead and in-depth game mechanics are discussed. This is intended for mod authors, speed runners, or anyone interested in the deep mechanics of Luck in Blue Prince. It is recommended you play the game, reach room 46, play it some more, and then come here to learn more about how the game works.
->
-> The most spoiler free explanation is that using this mod will improve chances of max items being spawned in rooms. To some extent, this can trivialize some RNG aspects of the game while not completely spoiling the puzzle solving.
+This mod is primarily used by other mods or in conjunction with [UnityExplorer](https://github.com/yukieiji/UnityExplorer) (yukieji's fork) for reverse engineering [PlayMaker](https://hutonggames.com/) FSMs.
+Currently, this mod cannot be used on it's own.
+Maybe one day I'll make a UI for it.
 
-## How Luck Works
+### MelonLoader Mod Project
 
-The game's base luck stat is 10. This mod increases luck to 100. This will greatly improve the odds of a room spawning max items, dirt piles, and improves chances of metal detection items spawning. This does not affect room rarity when drafting or anything thing else. In some limited testing luck over 23 is used for the "very lucky" options when rooms are spawning items. Most rooms have a max of 4 spawned items. Trunks are considered an item for selection along with coins, keys, gems, and special items.
+You can reference the DLL in your csproj file:
 
-The Lucky Rabbit's Foot gives a +3 to luck in my limited testing for all rooms. Verandas give +12 or +18 luck for green rooms.
+```xml
+    <ItemGroup>
+        <Reference Include="PlayMakerDocumenter">
+            <HintPath>..\path\to\PlayMakerDocumenter.ML.IL2CPP.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+```
 
-The max luck I have achieved with this mod is 121 with 2 Verandas, a Lucky Rabbit's foot, and crafting the courtyard. I also crafted the courtyard with just the 100 luck from this mod. For both, max items and max dig piles spawned, as well as a metal detector item.
+You can then use `FsmDocumenter` in your project:
 
-## Maid's Chambers
+```csharp
+using PlayMakerDocumenter;
 
-Maid's Chambers subtract 7 luck for each one drafted. With the Chamber of Mirrors and the Secret Passage, it is possible to have 3 Maid's Chambers drafted for a total of -21. With this mod your luck would still be 79 and still high enough for max rewards.
+namespace MyMod;
 
-## Verandas
+public class MyMod : MelonMod
+{
+    public override void OnSceneWasLoaded(int buildIndex, string sceneName)
+    {
+        if (sceneName != "Mount Holly Estate") return;
 
-Verandas add 12 total with one and 18 total with two. This gets added on top of the 100 luck for green rooms. So if you have 2 Verandas your luck will be 118 when crafting The Patio. I have not yet tested how Spare Verandas impact green room luck. With Chamber of Mirrors and the Secret Passage it is possible to have 2/3 or 3/2 Verandas/Spare Verandas for a total of 5 green room luck enhancements.
+        string fsmPath = "/__SYSTEM/LOCKED DOORS ENGINE";
+        string filePath = @"D:\GameDev\modding\BluePrince\FsmDocs\LOCKED DOORS ENGINE.md";
 
-## Cloister of Rynna
+        GameObject fsmObj = GameObject.Find(fsmPath);
+        if (fsmObj is null)
+        {
+            LoggerInstance.Msg($"Could not find '{fsmPath}'");
+            return;
+        }
+        PlayMakerFSM fsm = fsmObj.GetComponent<PlayMakerFSM>();
+        if (fsm is null)
+        {
+            LoggerInstance.Msg($"Could not find PLayMakerFSM on '{fsmPath}'");
+            return;
+        }
+        fsm.DocumentFsm(filePath);
+    }
+}
+```
 
-The Cloister of Rynna raise your Luck with each Green Room you draft from this Cloister, per it's description. However, I have not tested what the exact impacts are. I first discovered how overpowered luck was when maxing out dual Cloister of Rynnas with the help of Chamber of Mirrors.
+### UnityExplorer User Script
 
-## Curses
+UnityExplorer's C# console was the original use case for this mod.
+[2 user scripts](Examples\UnityExplorerUserScripts\) have been included in the examples.
+Download those an place them in your game's `Mods\sinai-dev-UnityExplorer\Scripts`.
+With Blue Prince from Steam, the full path looks like `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\Mods\sinai-dev-UnityExplorer\Scripts`
 
-I have not tested hwo curses impact luck or if they do at all. I have also not tested how luck is in Cursed Mode
+Then you can use them in the UnityExplorer C# console.
+
+1. Select the MyUsings.cs from the drop down.
+2. Click Compile at least twice.
+3. Select the DocFsm.cs from the drop down.
+4. Modify the FSM path and file path
+5. Click Compile twice
+
+Yes, you must click compile at least twice for each step.
+
+![MyUsings.cs](img\MyUsings.cs.png) ![DocFsm.cs](img\DocFsm.cs.png)
+
+The result will be an entry in the log like this
+
+```text
+17:31:16.169] [UnityExplorer] Try Update exists code....
+[17:31:16.172] [UnityExplorer] Success!! override
+replacing fieldspec for fsmPath
+replacing fieldspec for filePath
+replacing fieldspec for fsmObj
+replacing fieldspec for fsm
+[17:31:17.290] [PlayMakerDocumenter] FSM Doc: D:\GameDev\modding\BluePrince\FsmDocs\LOCKED DOORS ENGINE.md
+[17:31:17.292] [UnityExplorer] Invoked REPL (no return value)
+[17:31:17.293] [UnityExplorer] Try Update exists code....
+[17:31:17.295] [UnityExplorer] Success!! override
+```
