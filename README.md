@@ -30,7 +30,7 @@ This mod is currently tested only on Blue Prince.
 
 ## Example Output
 
-You can see example FSM docs [here](Examples\FsmDocs).
+You can see example FSM docs [here](Examples/FsmDocs).
 
 ## Usage
 
@@ -87,7 +87,7 @@ public class MyMod : MelonMod
 ### UnityExplorer User Script
 
 UnityExplorer's C# console was the original use case for this mod.
-[2 user scripts](Examples\UnityExplorerUserScripts\) have been included in the examples.
+[2 user scripts](Examples/UnityExplorerUserScripts/) have been included in the examples.
 Download those an place them in your game's `Mods\sinai-dev-UnityExplorer\Scripts`.
 With Blue Prince from Steam, the full path looks like `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\Mods\sinai-dev-UnityExplorer\Scripts`
 
@@ -101,7 +101,7 @@ Then you can use them in the UnityExplorer C# console.
 
 Yes, you must click compile at least twice for each step.
 
-![MyUsings.cs](img\MyUsings.cs.png) ![DocFsm.cs](img\DocFsm.cs.png)
+![MyUsings.cs](img/MyUsings.cs.png) ![DocFsm.cs](img/DocFsm.cs.png)
 
 The result will be an entry in the log like this
 
@@ -127,7 +127,7 @@ replacing fieldspec for fsm
 5. Run the following:
 
 ```powershell
-git clone --recurse-submodules <githuburl>
+git clone --recurse-submodules https://github.com/markekraus/PlayMakerDocumenter.git
 cd PlayMakerDocumenter
 get checkout -b mychanges
 code .
@@ -160,7 +160,7 @@ When [Developing Locally](#developing-locally), you can build and publish this m
 PlayMaker ships with 100's of State Actions.
 Each State Action type has its own unique properties requiring a manual documenter for each (for now).
 As such, there is currently limited support for a decent number of commonly used Action Types.
-The available types are listed in [src\Actions](src\Actions).
+The available types are listed in [src/Actions](src/Actions).
 
 ## Developing New Action Details
 
@@ -186,7 +186,7 @@ public static partial class Documenter
 }
 ```
 
-Then update [`src\Actions\Documenter.cs`](src\Actions\Documenter.cs) to insert the documenter in alpha order:
+Then update [`src/Actions/Documenter.cs`](src/Actions/Documenter.cs) to insert the documenter in alpha order:
 
 ```csharp
     private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, FsmStateAction action, Dictionary<string, string> eventToState) =>
