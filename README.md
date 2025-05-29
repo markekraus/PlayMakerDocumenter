@@ -1,8 +1,25 @@
 # PlayMaker Documenter
 
-A MelonLoader mod for documenting PlayMaker Finite-State Machines (FSMs) in Unity video games.
+A MelonLoader mod for documenting PlayMaker Finite-State Machines (FSMs) in Unity video games with markdown.
 
 This mod is currently tested only on Blue Prince.
+
+## Table of Contents
+
+- [PlayMaker Documenter](#playmaker-documenter)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [MelonLoader Mod Project](#melonloader-mod-project)
+    - [UnityExplorer User Script](#unityexplorer-user-script)
+  - [Developing Locally](#developing-locally)
+  - [Building](#building)
+  - [Publishing](#publishing)
+  - [Supported Action Details](#supported-action-details)
+  - [Developing New Action Details](#developing-new-action-details)
+  - [MarkdownUtilities](#markdownutilities)
+  - [UniverseLib](#universelib)
+
 
 ## Installation
 
@@ -96,3 +113,104 @@ replacing fieldspec for fsm
 [17:31:17.293] [UnityExplorer] Try Update exists code....
 [17:31:17.295] [UnityExplorer] Success!! override
 ```
+
+## Developing Locally
+
+1. Download an install [UnityExplorer](https://github.com/yukieiji/UnityExplorer)
+2. Navigate to the game folder (i.e. `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\`)
+3. Create `ModeCode`
+4. Open a shell navigate to the `ModCode` folder
+5. Run the following:
+
+```powershell
+git clone --recurse-submodules <githuburl>
+cd PlayMakerDocumenter
+get checkout -b mychanges
+code .
+```
+
+This readme file would be at `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\ModCode\PlayMakerDocumenter\README.md`
+
+This was developed in VS Code, not full Visual Studio.
+I Cannot vouch for how it may or may not work in full Visual Studio.
+
+The paths to the relevant MelonLoader and game assemblies should work from a relative path to the gam folder of `<GamFolder>\ModCode\PlayMakerDocumenter\`.
+This provides the benefit of working with the game devs' custom FSM Actions not shipped by the PlayMaker devs.
+
+## Building
+
+```powershell
+& .\build.ps1
+```
+
+## Publishing
+
+When [Developing Locally](#developing-locally), you can build and publish this mod to your game's mod folder as follows:
+
+```powershell
+& .\publish.ps1
+```
+
+## Supported Action Details
+
+PlayMaker ships with 100's of State Actions.
+Each State Action type has its own unique properties requiring a manual documenter for each (for now).
+As such, there is currently limited support for a decent number of commonly used Action Types.
+The available types are listed in [src\Actions](src\Actions).
+
+## Developing New Action Details
+
+For this demo, I will use the fictional State Action `CeaseMeansOfProduction`
+
+Create `src\Actions\Documenter.CeaseMeansOfProduction.cs` with this scaffolding:
+
+```csharp
+using System.Text;
+using Il2CppHutongGames.PlayMaker.Actions;
+
+namespace PlayMakerDocumenter.Actions;
+
+public static partial class Documenter
+{
+    private static StringBuilder DocActionCeaseMeansOfProduction(this StringBuilder sb, CeaseMeansOfProduction action) =>
+        action is null
+        ? sb
+        : sb.AppendHeader($"{nameof(CeaseMeansOfProduction)} Details:")
+            .NewTable()
+            .WithPropertyValueHeaders()
+            .BuildTable();
+}
+```
+
+Then update [`src\Actions\Documenter.cs`](src\Actions\Documenter.cs) to insert the documenter in alpha order:
+
+```csharp
+    private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, FsmStateAction action, Dictionary<string, string> eventToState) =>
+        action is null || eventToState is null
+        ? sb
+        : action.GetActualType().FullName switch
+        {
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(action.TryCast<ArrayListGet>(), eventToState),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(action.TryCast<ArrayListSet>()),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListShuffle" => sb.DocActionArrayListShuffle(action.TryCast<ArrayListShuffle>()),
+            "Il2CppHutongGames.PlayMaker.Actions.CeaseMeansOfProduction" => sb.DocActionCeaseMeansOfProduction(action.TryCast<CeaseMeansOfProduction>()),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArray" => sb.DocActionGetFsmArray(action.TryCast<GetFsmArray>()),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArrayItem" => sb.DocActionGetFsmArrayItem(action.TryCast<GetFsmArrayItem>()),
+```
+
+Then draw the rest of the owl.
+
+## MarkdownUtilities
+
+Because this a pet project, of course it spawned more pet projects.
+This project makes heavy use of [MarkdownUtilities](https://github.com/markekraus/MarkdownUtilities) ( MIT license ) to generate markdown tables.
+MarkdownUtilities is IL repacked into the shipped DLL for this mod and is not a required dependency for shipping mods that use this mod.
+
+## UniverseLib
+
+Il2Cpp games are a pain.
+In Il2Cpp, generic collection types always return collection members as the collections' generic type and _not_ as their actual run time type.
+This si a solved problem in UnityExplorer, which is using UniverseLib under the hood.
+Since I am using yukikeiji's port of UnityExplorer, I'm also using their port of [UniverseLib](https://github.com/yukieiji/UniverseLib) ( LGPL-2.1 license ).
+I've not made any modification to their code.
+I'm also not currently shipping the library with this mod.
