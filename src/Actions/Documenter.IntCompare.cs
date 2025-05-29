@@ -14,22 +14,11 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(IntCompare)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRowIfNotNull(action.integer1, integer1 =>
-                new string[] { nameof(integer1), integer1.FormatValue() })
-            .AddRowIfNotNull(action.integer2, integer2 =>
-                new string[] { nameof(integer2), integer2.FormatValue() })
-            .AddRowIfNotNull(action.equal, equal =>
-                new string[] { nameof(equal), equal.Name })
-            .AddRowIfNotNull(action.equal, equal =>
-                new string[] { "equalState", eventToState.GetValueOrDefault(equal.Name)})
-            .AddRowIfNotNull(action.greaterThan, greaterThan =>
-                new string[] { nameof(greaterThan), greaterThan.Name })
-            .AddRow("everyFrame", $"{action.everyFrame}")
-            .AddRowIfNotNull(action.greaterThan, greaterThan =>
-                new string[] { "greaterThanState", eventToState.GetValueOrDefault(greaterThan.Name)})
-            .AddRowIfNotNull(action.lessThan, lessThan =>
-                new string[] { nameof(lessThan), lessThan.Name })
-            .AddRowIfNotNull(action.lessThan, lessThan =>
-                new string[] { "lessThanState", eventToState.GetValueOrDefault(lessThan.Name)})
+            .AddRow(nameof(action.integer1), action.integer1)
+            .AddRow(nameof(action.integer2), action.integer2)
+            .AddRow(nameof(action.equal), action.equal, eventToState)
+            .AddRow(nameof(action.everyFrame), action.everyFrame)
+            .AddRow(nameof(action.greaterThan), action.greaterThan, eventToState)
+            .AddRow(nameof(action.lessThan), action.lessThan, eventToState)
             .BuildTable();
 }

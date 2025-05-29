@@ -11,14 +11,11 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(ArrayListSet)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRowIfNotNull(action.atIndex, atIndex =>
-                new string[] { "atIndex", $"{atIndex.Value}" })
-            .AddRow("everyFrame", $"{action.everyFrame}")
-            .AddRow("forceResizeIdNeeded", $"{action.forceResizeIdNeeded}")
+            .AddRow(nameof(action.atIndex), action.atIndex)
+            .AddRow(nameof(action.everyFrame), action.everyFrame)
+            .AddRow(nameof(action.forceResizeIdNeeded), action.forceResizeIdNeeded)
             .AddGameObjectRows(action, action.gameObject)
-            .AddRowIfNotNull(action.reference, reference =>
-                new string[] { "reference", $"{reference.Value}" })
-            .AddRowIfNotNull(action.variable, variable =>
-                new string[] { "variable", variable.GetValue(action.fsmComponent) })
+            .AddRow(nameof(action.reference), action.reference)
+            .AddRow(nameof(action.variable), action.variable, action)
             .BuildTable();
 }

@@ -11,7 +11,7 @@ internal static class TableBuilderExtensions
         tb.AddRowIfNotNull(Value, value => new string[] { Property, value.GetFullPath() });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, Dictionary<string, string> eventToState) =>
         tb
-            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.{value.Name}", value.name })
+            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.{nameof(value.Name)}", value.name })
             .AddRowIfNotNull(Value, value => new string[] { $"{Property}.targetState", eventToState.GetValueOrDefault(value.name, "*Unknown*") });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerFSM Value) =>
         tb.AddRowIfNotNull(Value, value =>
@@ -21,7 +21,7 @@ internal static class TableBuilderExtensions
             .AddRowIfNotNull(Value, value =>
                 new string[] { $"{Property}.{nameof(value.Type)}", $"{value.Type}" })
             .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.value", value.GetValue(action.fsmComponent) })
+                new string[] { $"{Property}.Value", value.GetValue(action.fsmComponent) })
             .AddRowIfNotNull(Value, value =>
                 new string[] { $"{Property}.{nameof(value.variableName)}", value.variableName });
 }

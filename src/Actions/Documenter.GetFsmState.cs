@@ -11,13 +11,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(GetFsmState)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow("everyFrame", $"{action.everyFrame}")
-            .AddRowIfNotNull(action.fsm, fsm =>
-                new string[] { nameof(fsm), fsm.GetFullPath() })
-            .AddRowIfNotNull(action.fsmComponent, fsmComponent =>
-                new string[] { nameof(fsmComponent), fsmComponent.GetFullPath() })
-            .AddRowIfNotNull(action.fsmName, fsmName =>
-                new string[] { nameof(fsmName), fsmName.FormatValue() })
+            .AddRow(nameof(action.everyFrame), action.everyFrame)
+            .AddRow(nameof(action.fsm), action.fsm)
+            .AddRow(nameof(action.fsmComponent), action.fsmComponent)
+            .AddRow(nameof(action.fsmName), action.fsmName)
             .AddGameObjectRows(action, action.gameObject)
             .BuildTable();
 }

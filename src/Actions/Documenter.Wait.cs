@@ -12,14 +12,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(Wait)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRowIfNotNull(action.time, time =>
-                new string[] { nameof(time), time.FormatValue() })
-            .AddRowIfNotNull(action.finishEvent, finishEvent =>
-                new string[] { nameof(finishEvent), finishEvent.Name })
-            .AddRow("realTime", $"{action.realTime}")
-            .AddRow("startTime", $"{action.startTime}")
-            .AddRow("timer", $"{action.timer}")
-            .AddRowIfNotNull(action.finishEvent, finishEvent =>
-                new string[] { "targetState", eventToState.GetValueOrDefault(finishEvent.Name) })
+            .AddRow(nameof(action.time), action.time)
+            .AddRow(nameof(action.finishEvent), action.finishEvent, eventToState)
+            .AddRow(nameof(action.realTime), action.realTime)
+            .AddRow(nameof(action.startTime), action.startTime)
+            .AddRow(nameof(action.timer), action.timer)
             .BuildTable();
 }

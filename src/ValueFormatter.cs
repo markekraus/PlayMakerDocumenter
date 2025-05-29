@@ -48,7 +48,7 @@ internal static class ValueFormatter
     public static string FormatValue(this FsmGameObject fsmGameObject) =>
         fsmGameObject is null || fsmGameObject.Value is null
         ? "null"
-        : fsmGameObject.value.GetFullPath();
+        : fsmGameObject.Value.GetFullPath();
     public static string FormatValue(this FsmObject fsmObject) =>
         fsmObject is null || fsmObject.Value is null
         ? "null"

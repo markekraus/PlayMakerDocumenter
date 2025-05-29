@@ -12,20 +12,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(ArrayListGet)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRowIfNotNull(action.atIndex, atIndex =>
-                new string[] { "atIndex", $"{atIndex.Value}" })
-            .AddRowIfNotNull(action.failureEvent, failureEvent =>
-                new string[] { "failureEvent", $"{failureEvent.Name}" })
-            .AddRowIfNotNull(action.failureEvent, failureEvent =>
-                new string[] { "failureEvent state", $"{eventToState.GetValueOrDefault(failureEvent.Name)}" })
+            .AddRow(nameof(action.atIndex), action.atIndex)
+            .AddRow(nameof(action.failureEvent), action.failureEvent, eventToState)
             .AddGameObjectRows(action, action.gameObject)
-            .AddRowIfNotNull(action.reference, reference =>
-                new string[] { "reference", $"{reference.Value}" })
-            .AddRowIfNotNull(action.result, result =>
-                new string[] { "result.variableName", $"{result.variableName}" })
-            .AddRowIfNotNull(action.result, result =>
-                new string[] { "result.Type", $"{result.Type}" })
-            .AddRowIfNotNull(action.result, result =>
-                new string[] { "result.Value", result.GetValue(action.fsmComponent) })
+            .AddRow(nameof(action.reference), action.reference)
+            .AddRow(nameof(action.result), action.result, action)
             .BuildTable();
 }

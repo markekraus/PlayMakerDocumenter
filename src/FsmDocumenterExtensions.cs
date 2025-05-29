@@ -27,7 +27,7 @@ internal static class FsmDocumenterExtensions
             .AddRowIfNotNull(fsmOwner, gameObject =>
                 new string[] { "gameObject.OwnerOption", $"{gameObject.OwnerOption}" })
             .AddRowIfNotNull(fsmOwner, gameObject =>
-                new string[] { "GameObject Path", gameObject.GetFsmOwnerDefaultPath(action.fsmComponent) });
+                new string[] { "GameObject.FullPath", gameObject.GetFsmOwnerDefaultPath(action.fsmComponent) });
     internal static bool IsNullOrWhiteSpace(this string @string) => string.IsNullOrWhiteSpace(@string);
     internal static StringBuilder AppendHeader(this StringBuilder sb, string header) =>
         sb.AppendLine(header).AppendLine("");

@@ -11,19 +11,13 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(SetFsmBool)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow("everyFrame", $"{action.everyFrame}")
-            .AddRowIfNotNull(action.fsm, fsm =>
-                new string[] { nameof(fsm), fsm.GetFullPath() })
-            .AddRowIfNotNull(action.fsmName, fsmName =>
-                new string[] { nameof(fsmName), fsmName.FormatValue() })
-            .AddRowIfNotNull(action.fsmNameLastFrame, fsmNameLastFrame =>
-                new string[] { nameof(fsmNameLastFrame), fsmNameLastFrame })
+            .AddRow(nameof(action.everyFrame), action.everyFrame)
+            .AddRow(nameof(action.fsm), action.fsm)
+            .AddRow(nameof(action.fsmName), action.fsmName)
+            .AddRow(nameof(action.fsmNameLastFrame), action.fsmNameLastFrame)
             .AddGameObjectRows(action, action.gameObject)
-            .AddRowIfNotNull(action.goLastFrame, goLastFrame =>
-                new string[] { nameof(goLastFrame), goLastFrame.GetFullPath() })
-            .AddRowIfNotNull(action.setValue, setValue =>
-                new string[] { nameof(setValue), setValue.FormatValue() })
-            .AddRowIfNotNull(action.variableName, variableName =>
-                new string[] { nameof(variableName), variableName.FormatValue() })
+            .AddRow(nameof(action.goLastFrame), action.goLastFrame)
+            .AddRow(nameof(action.setValue), action.setValue)
+            .AddRow(nameof(action.variableName), action.variableName)
             .BuildTable();
 }

@@ -12,11 +12,8 @@ internal static partial class Documenter
             .NewTable()
             .WithPropertyValueHeaders()
             .AddGameObjectRows(action, action.gameObject)
-            .AddRowIfNotNull(action.reference, reference =>
-                new string[] { nameof(reference), reference.FormatValue() })
-            .AddRowIfNotNull(action.shufflingRange, shufflingRange =>
-                new string[] { nameof(shufflingRange), shufflingRange.FormatValue() })
-            .AddRowIfNotNull(action.startIndex, startIndex =>
-                new string[] { nameof(startIndex), startIndex.FormatValue() })
+            .AddRow(nameof(action.reference), action.reference)
+            .AddRow(nameof(action.shufflingRange), action.shufflingRange)
+            .AddRow(nameof(action.startIndex), action.startIndex)
             .BuildTable();
 }

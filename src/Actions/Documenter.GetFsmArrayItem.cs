@@ -11,17 +11,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(GetFsmArrayItem)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow("everyFrame", $"{action.everyFrame}")
-            .AddRowIfNotNull(action.fsmName, fsmName =>
-                new string[] { nameof(fsmName), fsmName.FormatValue() })
+            .AddRow(nameof(action.everyFrame), action.everyFrame)
+            .AddRow(nameof(action.fsmName), action.fsmName)
             .AddGameObjectRows(action, action.gameObject)
-            .AddRowIfNotNull(action.index, index =>
-                new string[] { nameof(index), $"{index.Value}" })
-            .AddRowIfNotNull(action.storeValue, storeValue =>
-                new string[] { "storeValue.Type", $"{storeValue.Type}" })
-            .AddRowIfNotNull(action.storeValue, storeValue =>
-                new string[] { "storeValue.Value", storeValue.GetValue(action.fsmComponent) })
-            .AddRowIfNotNull(action.variableName, variableName =>
-                new string[] { nameof(variableName), variableName.FormatValue() })
+            .AddRow(nameof(action.index), action.index)
+            .AddRow(nameof(action.storeValue), action.storeValue, action)
             .BuildTable();
 }
