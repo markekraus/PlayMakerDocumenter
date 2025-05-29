@@ -4,6 +4,8 @@ using Il2CppHutongGames.PlayMaker.Actions;
 using Il2Cpp;
 using Il2CppHutongGames.PlayMaker;
 using UnityEngine;
+using Il2CppSystem.Reflection;
+using UniverseLib;
 
 namespace PlayMakerDocumenter;
 
@@ -128,20 +130,59 @@ internal static class TableBuilderExtensions
         : tb
             .AddRow($"{Property}.{nameof(fsmOwner.OwnerOption)}", fsmOwner.OwnerOption.ToString())
             .AddRow($"{Property}.FullPath", fsmOwner.GetFsmOwnerDefaultPath(action.fsmComponent));
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget Value, FsmStateAction action) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget.EventTarget Value) =>
+        tb.AddRow(Property, Value.ToString());
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget Value, FsmStateAction action, Dictionary<string, string> eventToState) =>
         Value is null
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.excludeSelf)}", Value.excludeSelf)
             .AddRow($"{Property}.{nameof(Value.fsmComponent)}", Value.fsmComponent)
             .AddRow($"{Property}.{nameof(Value.fsmName)}", Value.fsmName)
-            .AddRow($"{Property}.{nameof(Value.fsmName)}", Value.gameObject, action)
-            .AddRow();
+            .AddRow($"{Property}.{nameof(Value.gameObject)}", Value.gameObject, action)
+            .AddRow($"{Property}.{nameof(Value.sendToChildren)}", Value.sendToChildren)
+            .AddRow($"{Property}.{nameof(Value.target)}", Value.target);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, MemberInfo Value) =>
+        Value is null
+        ? tb
+        : tb
+            .AddRow($"{Property}.{nameof(Value.DeclaringType)}.{nameof(Value.DeclaringType.FullName)}", Value.DeclaringType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.MemberType)}.FullName", Value.MemberType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.Name)}", Value.Name)
+            .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString())
+        ;
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value)
+    {
+        if (Value is null) return tb;
+        tb
+            .AddRow($"{Property}.{nameof(Value.ArrayParameter)}", Value.ArrayParameter)
+            .AddRow($"{Property}.{nameof(Value.BoolParameter)}", Value.BoolParameter)
+            .AddRow($"{Property}.{nameof(Value.ColorParameter)}", Value.ColorParameter)
+            .AddRow($"{Property}.{nameof(Value.EnumParameter)}", Value.EnumParameter)
+            .AddRow($"{Property}.{nameof(Value.FloatParameter)}", Value.FloatParameter)
+            .AddRow($"{Property}.{nameof(Value.GameObjectParameter)}", Value.GameObjectParameter)
+            .AddRow($"{Property}.{nameof(Value.initialized)}", Value.initialized)
+            .AddRow($"{Property}.{nameof(Value.IntParameter)}", Value.IntParameter)
+            .AddRow($"{Property}.{nameof(Value.MaterialParameter)}", Value.MaterialParameter);
+        foreach (var memberInfo in Value.memberInfo)
+        {
+            tb.AddRow($"{Property}.{nameof(Value.memberInfo)}", memberInfo);
+        }
+        tb
+            .AddRow($"{Property}.{nameof(Value.PropertyName)}", Value.PropertyName)
+            .AddRow($"{Property}.{nameof(Value.PropertyType)}.FullName", Value.PropertyType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.QuaternionParameter)}", Value.QuaternionParameter)
+            .AddRow($"{Property}.{nameof(Value.RectParamater)}", Value.RectParamater)
+            .AddRow($"{Property}.{nameof(Value.setProperty)}", Value.setProperty)
+            .AddRow($"{Property}.{nameof(Value.StringParameter)}", Value.StringParameter)
+            .AddRow($"{Property}.{nameof(Value.TargetObject)}", Value.TargetObject)
+            .AddRow($"{Property}.{nameof(Value.TargetType)}.FullName", Value.TargetType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.TargetTypeName)}", Value.TargetTypeName)
+            .AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);
+        return tb;
+    }
 }
 
 /*
-Il2CppHutongGames.PlayMaker.FsmEventTarget
-Il2CppHutongGames.PlayMaker.FsmProperty
-Il2CppHutongGames.PlayMaker.FsmQuaternion
 Il2CppHutongGames.PlayMaker.InterpolationType
 Il2CppHutongGames.PlayMaker.LogLevel
 Il2CppHutongGames.PlayMaker.MouseButton
