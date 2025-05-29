@@ -141,17 +141,17 @@ public static partial class FsmDocumenter
                 gt => new string[] { gt.EventName, gt.ToFsmState.Name })
             .BuildTable();
 
-    public static string GetValue(this FsmVar fsmVar, PlayMakerFSM fsm) =>
+    internal static string GetValue(this FsmVar fsmVar, PlayMakerFSM fsm) =>
         fsm == null || fsmVar == null
         ? "null"
         : fsmVar.Type.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.variableName);
 
-    public static string GetValue(this NamedVariable fsmVar, PlayMakerFSM fsm) =>
+    internal static string GetValue(this NamedVariable fsmVar, PlayMakerFSM fsm) =>
         fsm == null || fsmVar == null
         ? "null"
         : fsmVar.VariableType.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.name);
 
-    public static string GetFsmOwnerDefaultPath(this FsmOwnerDefault fsmOwner, PlayMakerFSM fsm) =>
+    internal static string GetFsmOwnerDefaultPath(this FsmOwnerDefault fsmOwner, PlayMakerFSM fsm) =>
         fsmOwner.OwnerOption == OwnerDefaultOption.UseOwner
         ? fsm.transform.GetFullPath()
         : fsmOwner.GameObject == null || fsmOwner.GameObject.Value == null

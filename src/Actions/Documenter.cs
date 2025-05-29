@@ -6,7 +6,7 @@ using UniverseLib;
 
 namespace PlayMakerDocumenter.Actions;
 
-public static partial class Documenter
+internal static partial class Documenter
 {
     internal static StringBuilder DocStateActions(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState) =>
         fsmState is null || fsmState.Actions is null || fsmState.Actions.Count < 1

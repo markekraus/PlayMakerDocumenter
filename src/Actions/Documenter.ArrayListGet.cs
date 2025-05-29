@@ -4,7 +4,7 @@ using Il2CppHutongGames.PlayMaker.Actions;
 
 namespace PlayMakerDocumenter.Actions;
 
-public static partial class Documenter
+internal static partial class Documenter
 {
     private static StringBuilder DocActionArrayListGet(this StringBuilder sb, ArrayListGet action, Dictionary<string, string> eventToState) =>
         action is null

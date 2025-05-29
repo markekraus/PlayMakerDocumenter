@@ -3,7 +3,7 @@ using Il2CppHutongGames.PlayMaker.Actions;
 
 namespace PlayMakerDocumenter.Actions;
 
-public static partial class Documenter
+internal static partial class Documenter
 {
     private static StringBuilder DocActionGetFsmVector3(this StringBuilder sb, GetFsmVector3 action) =>
         action is null

@@ -4,11 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Il2CppHutongGames.PlayMaker;
-using MarkdownUtilities;
 
 namespace PlayMakerDocumenter;
 
-public static class FsmDocumenterExtensions
+internal static class FsmDocumenterExtensions
 {
     internal static TableBuilder ForEachAddRow<TKey, TValue>(
         this TableBuilder tb,
