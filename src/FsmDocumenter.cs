@@ -132,7 +132,7 @@ public static partial class FsmDocumenter
             .BuildTable();
 
     private static StringBuilder DocGlobalTransitions(this StringBuilder sb, PlayMakerFSM fsm) =>
-        fsm is null || fsm.FsmGlobalTransitions is null
+        fsm is null || fsm.FsmGlobalTransitions is null || fsm.FsmGlobalTransitions.Count < 1
         ? sb
         : sb.AppendHeader("### Global Transitions")
             .NewTable()

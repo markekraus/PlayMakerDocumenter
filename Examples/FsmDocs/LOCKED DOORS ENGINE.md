@@ -22,11 +22,6 @@
 | FsmName         | FSM                           |
 | FullPath        | /__SYSTEM/LOCKED DOORS ENGINE |
 
-### Global Transitions
-
-| EventName | ToFsmState |
-| --------- | ---------- |
-
 ## Variables
 
 | Name                  | Value                                   | Type          |
