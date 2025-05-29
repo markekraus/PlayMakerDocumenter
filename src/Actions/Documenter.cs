@@ -34,6 +34,7 @@ internal static partial class Documenter
         ? sb
         : action.GetActualType().FullName switch
         {
+            "Il2CppHutongGames.PlayMaker.Actions.ActivateGameObject" => sb.DocActionActivateGameObject(action.TryCast<ActivateGameObject>()),
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(action.TryCast<ArrayListGet>(), eventToState),
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(action.TryCast<ArrayListSet>()),
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListShuffle" => sb.DocActionArrayListShuffle(action.TryCast<ArrayListShuffle>()),
