@@ -9,10 +9,10 @@ internal static class TableBuilderExtensions
 {
     public static TableBuilder AddRow(this TableBuilder tb, string Property, GameObject Value) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, value.GetFullPath() });
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, value.Name });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, Dictionary<string, string> eventToState) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { $"{Property} State", eventToState.GetValueOrDefault(value.name, "*Unknown*") });
+        tb
+            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.{value.Name}", value.name })
+            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.targetState", eventToState.GetValueOrDefault(value.name, "*Unknown*") });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerFSM Value) =>
         tb.AddRowIfNotNull(Value, value =>
             new string[] { Property, value.GetFullPath() });
