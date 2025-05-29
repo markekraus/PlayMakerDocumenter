@@ -31,7 +31,7 @@ This mod is currently tested only on Blue Prince.
 ## Usage
 
 This mod is primarily used by other mods or in conjunction with [UnityExplorer](https://github.com/yukieiji/UnityExplorer) (yukieji's fork) for reverse engineering [PlayMaker](https://hutonggames.com/) FSMs.
-Currently, this mod cannot be used on it's own.
+Currently, this mod cannot be used on its own.
 Maybe one day I'll make a UI for it.
 
 ### MelonLoader Mod Project
@@ -131,10 +131,10 @@ code .
 
 This readme file would be at `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\ModCode\PlayMakerDocumenter\README.md`
 
-This was developed in VS Code, not full Visual Studio.
+This mod was developed in VS Code, not full Visual Studio.
 I Cannot vouch for how it may or may not work in full Visual Studio.
 
-The paths to the relevant MelonLoader and game assemblies should work from a relative path to the gam folder of `<GamFolder>\ModCode\PlayMakerDocumenter\`.
+The paths to the relevant MelonLoader and game assemblies should work from a relative path to the game folder of `<GamFolder>\ModCode\PlayMakerDocumenter\`.
 This provides the benefit of working with the game devs' custom FSM Actions not shipped by the PlayMaker devs.
 
 ## Building
@@ -160,9 +160,9 @@ The available types are listed in [src\Actions](src\Actions).
 
 ## Developing New Action Details
 
-For this demo, I will use the fictional State Action `CeaseMeansOfProduction`
+For this demo, I will use the fictional State Action `SeizeMeansOfProduction`
 
-Create `src\Actions\Documenter.CeaseMeansOfProduction.cs` with this scaffolding:
+Create `src\Actions\Documenter.SeizeMeansOfProduction.cs` with this scaffolding:
 
 ```csharp
 using System.Text;
@@ -172,10 +172,10 @@ namespace PlayMakerDocumenter.Actions;
 
 public static partial class Documenter
 {
-    private static StringBuilder DocActionCeaseMeansOfProduction(this StringBuilder sb, CeaseMeansOfProduction action) =>
+    private static StringBuilder DocActionSeizeMeansOfProduction(this StringBuilder sb, SeizeMeansOfProduction action) =>
         action is null
         ? sb
-        : sb.AppendHeader($"{nameof(CeaseMeansOfProduction)} Details:")
+        : sb.AppendHeader($"{nameof(SeizeMeansOfProduction)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
             .BuildTable();
@@ -193,9 +193,11 @@ Then update [`src\Actions\Documenter.cs`](src\Actions\Documenter.cs) to insert t
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(action.TryCast<ArrayListGet>(), eventToState),
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(action.TryCast<ArrayListSet>()),
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListShuffle" => sb.DocActionArrayListShuffle(action.TryCast<ArrayListShuffle>()),
-            "Il2CppHutongGames.PlayMaker.Actions.CeaseMeansOfProduction" => sb.DocActionCeaseMeansOfProduction(action.TryCast<CeaseMeansOfProduction>()),
             "Il2CppHutongGames.PlayMaker.Actions.GetFsmArray" => sb.DocActionGetFsmArray(action.TryCast<GetFsmArray>()),
             "Il2CppHutongGames.PlayMaker.Actions.GetFsmArrayItem" => sb.DocActionGetFsmArrayItem(action.TryCast<GetFsmArrayItem>()),
+            // ...
+            "Il2CppHutongGames.PlayMaker.Actions.SeizeMeansOfProduction" => sb.DocActionSeizeMeansOfProduction(action.TryCast<SeizeMeansOfProduction>()),
+            // ...
 ```
 
 Then draw the rest of the owl.
@@ -209,8 +211,8 @@ MarkdownUtilities is IL repacked into the shipped DLL for this mod and is not a 
 ## UniverseLib
 
 Il2Cpp games are a pain.
-In Il2Cpp, generic collection types always return collection members as the collections' generic type and _not_ as their actual run time type.
-This si a solved problem in UnityExplorer, which is using UniverseLib under the hood.
+In Il2Cpp, generic collection types always return collection members as the collection's generic type and _not_ as its actual runtime type.
+This is a solved problem in UnityExplorer, which is using UniverseLib under the hood.
 Since I am using yukikeiji's port of UnityExplorer, I'm also using their port of [UniverseLib](https://github.com/yukieiji/UniverseLib) ( LGPL-2.1 license ).
 I've not made any modification to their code.
 I'm also not currently shipping the library with this mod.
