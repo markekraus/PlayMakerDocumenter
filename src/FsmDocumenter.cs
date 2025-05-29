@@ -40,8 +40,7 @@ public static partial class FsmDocumenter
     private static StringBuilder DocFsmStates(this StringBuilder sb, PlayMakerFSM fsm) =>
         fsm is null || fsm.FsmStates is null || fsm.FsmStates.Count < 1
         ? sb
-        : sb.AppendHeader("## States")
-            .DocEachFsmState(fsm);
+        : sb.DocEachFsmState(fsm);
     private static StringBuilder DocEachFsmState(this StringBuilder sb, PlayMakerFSM fsm)
     {
         if (fsm.FsmStates is null || fsm.FsmStates.Count < 1)
@@ -73,7 +72,7 @@ public static partial class FsmDocumenter
     private static StringBuilder DocStateDetails(this StringBuilder sb, FsmState fsmState, int stateIndex) =>
         fsmState is null
         ? sb
-        : sb.AppendHeader($"### State {stateIndex}: {fsmState.Name}")
+        : sb.AppendHeader($"## State {stateIndex}: {fsmState.Name}")
             .NewTable()
             .WithPropertyValueHeaders()
             .AddRow("Description", fsmState.Description)
@@ -135,7 +134,7 @@ public static partial class FsmDocumenter
     private static StringBuilder DocGlobalTransitions(this StringBuilder sb, PlayMakerFSM fsm) =>
         fsm is null || fsm.FsmGlobalTransitions is null
         ? sb
-        : sb.AppendHeader("## Global Transitions")
+        : sb.AppendHeader("### Global Transitions")
             .NewTable()
             .WithHeaders("EventName", "ToFsmState")
             .ForEachAddRow(fsm.FsmGlobalTransitions,

@@ -9,6 +9,7 @@ This mod is currently tested only on Blue Prince.
 - [PlayMaker Documenter](#playmaker-documenter)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
+  - [Example Output](#example-output)
   - [Usage](#usage)
     - [MelonLoader Mod Project](#melonloader-mod-project)
     - [UnityExplorer User Script](#unityexplorer-user-script)
@@ -20,13 +21,16 @@ This mod is currently tested only on Blue Prince.
   - [MarkdownUtilities](#markdownutilities)
   - [UniverseLib](#universelib)
 
-
 ## Installation
 
 1. Install [Melon Loader](https://melonwiki.xyz/#/?id=automated-installation) for Blue Prince
 2. Download an install [UnityExplorer](https://github.com/yukieiji/UnityExplorer)
 3. Download the [latest release](https://github.com/markekraus/PlayMakerDocumenter/releases)
 4. Copy `PlayMakerDocumenter.ML.IL2CPP.dll` to the `Mods` folder in your Blue Prince install folder (i.e. `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\Mods`)
+
+## Example Output
+
+You can see example FSM docs [here](Examples\FsmDocs).
 
 ## Usage
 

@@ -20,21 +20,5 @@ namespace PlayMakerDocumenter
                 return "/" + current.name;
             return current.parent.GetFullPath() + "/" + current.name;
         }
-        public static Result<T, string> FindTypeFromParent<T>(string parent, string self) where T : MonoBehaviour
-        {
-            var result = GameObject.FindObjectsByType<T>(FindObjectsInactive.Include, FindObjectsSortMode.None)
-                .FirstOrDefault(fsm => fsm.gameObject.name == self && fsm.gameObject.transform.parent.name == parent, null);
-            return result is null
-            ? Result<T, string>.Failure($"{parent}/{self}")
-            : Result<T, string>.Success(result);
-        }
-
-        public static Result<T, string> Find<T>(string Name) where T : MonoBehaviour
-        {
-            var result = GameObject.Find("Global Manager").GetComponent<T>();
-            return result is null
-            ? Result<T, string>.Failure(Name)
-            : Result<T, string>.Success(result);
-        }
     }        
 }

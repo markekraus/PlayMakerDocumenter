@@ -12,7 +12,7 @@ public static partial class Documenter
         fsmState is null || fsmState.Actions is null || fsmState.Actions.Count < 1
         ? sb
         : sb
-            .AppendHeader("### Actions").DocEachStateAction(fsmState, stateIndex, eventToState);
+            .AppendHeader($"### {stateIndex} {fsmState.Name}: Actions").DocEachStateAction(fsmState, stateIndex, eventToState);
 
     private static StringBuilder DocEachStateAction(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState)
     {
@@ -23,7 +23,7 @@ public static partial class Documenter
             var action = fsmState.Actions[0];
             var type = fsmState.Actions[0].GetActualType();
             sb
-                .AppendHeader($"#### Action: [{stateIndex}][{actionIndex}] {type.Name}")
+                .AppendHeader($"#### Action: {stateIndex}-{actionIndex} {type.Name}")
                 .DocStateActionGeneralDetails(action, actionIndex)
                 .DocStateActionTypeDetails(action, eventToState);
         }
@@ -49,6 +49,8 @@ public static partial class Documenter
             "Il2CppHutongGames.PlayMaker.Actions.GetFsmTexture" => sb.DocActionGetFsmTexture(action.TryCast<GetFsmTexture>()),
             "Il2CppHutongGames.PlayMaker.Actions.GetFsmVariable" => sb.DocActionGetFsmVariable(action.TryCast<GetFsmVariable>()),
             "Il2CppHutongGames.PlayMaker.Actions.GetFsmVector3" => sb.DocActionGetFsmVector3(action.TryCast<GetFsmVector3>()),
+            "Il2CppHutongGames.PlayMaker.Actions.IntCompare" => sb.DocActionIntCompare(action.TryCast<IntCompare>(), eventToState),
+            "Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent" => sb.DocActionSendRandomEvent(action.TryCast<SendRandomEvent>(), eventToState),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmArray" => sb.DocActionSetFsmArray(action.TryCast<SetFsmArray>()),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmBool" => sb.DocActionSetFsmBool(action.TryCast<SetFsmBool>()),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmColor" => sb.DocActionSetFsmColor(action.TryCast<SetFsmColor>()),
@@ -59,8 +61,6 @@ public static partial class Documenter
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmString" => sb.DocActionSetFsmString(action.TryCast<SetFsmString>()),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmTexture" => sb.DocActionSetFsmTexture(action.TryCast<SetFsmTexture>()),
             "Il2CppHutongGames.PlayMaker.Actions.SetFsmVariable" => sb.DocActionSetFsmVariable(action.TryCast<SetFsmVariable>()),
-            "Il2CppHutongGames.PlayMaker.Actions.IntCompare" => sb.DocActionIntCompare(action.TryCast<IntCompare>(), eventToState),
-            "Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent" => sb.DocActionSendRandomEvent(action.TryCast<SendRandomEvent>(), eventToState),
             "Il2CppHutongGames.PlayMaker.Actions.Wait" => sb.DocActionWait(action.TryCast<Wait>(), eventToState),
             _ => sb
         };
