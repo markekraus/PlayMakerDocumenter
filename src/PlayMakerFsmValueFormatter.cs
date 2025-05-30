@@ -3,7 +3,7 @@ using UniverseLib;
 
 namespace PlayMakerDocumenter;
 
-internal static class ValueFormatter
+internal static class PlayMakerFsmValueFormatter
 {
     public static string FormatValue(this FsmBool fsmBool) =>
         fsmBool is null

@@ -409,6 +409,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
+
 #### Action: 4-1 SetIntValue
 
 General Action Details:
@@ -420,6 +428,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
 
 ## State 5: Set  Avg Luck 2
 
@@ -573,6 +589,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 2     |
+| intVariable | 2     |
+
 #### Action: 8-1 SetIntValue
 
 General Action Details:
@@ -584,6 +608,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 2     |
+| intVariable | 2     |
 
 #### Action: 8-2 SetIntValue
 
@@ -597,6 +629,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 2     |
+| intVariable | 2     |
+
 #### Action: 8-3 SetIntValue
 
 General Action Details:
@@ -608,6 +648,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 2     |
+| intVariable | 2     |
 
 ## State 9: 4 out of 4
 
@@ -638,6 +686,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 4     |
+| intVariable | 2     |
+
 #### Action: 9-1 SetIntValue
 
 General Action Details:
@@ -649,6 +705,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 4     |
+| intVariable | 2     |
 
 ## State 10: 1 Item Guarenteed!
 
@@ -680,6 +744,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
+
 #### Action: 10-1 SetIntValue
 
 General Action Details:
@@ -691,6 +763,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
 
 ## State 11: 2 Items Guarenteed!
 
@@ -722,6 +802,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
+
 #### Action: 11-1 SetIntValue
 
 General Action Details:
@@ -733,6 +821,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
 
 #### Action: 11-2 SetIntValue
 
@@ -746,6 +842,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
+
 #### Action: 11-3 SetIntValue
 
 General Action Details:
@@ -758,6 +862,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
+
 #### Action: 11-4 SetIntValue
 
 General Action Details:
@@ -769,6 +881,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 1     |
+| intVariable | 2     |
 
 ## State 12: 0 Items
 
@@ -799,6 +919,14 @@ General Action Details:
 | Enabled      | True        |
 | Name         |             |
 
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 0     |
+| intVariable | 2     |
+
 ## State 13: Send Drop Target
 
 | Property       | Value |
@@ -828,6 +956,14 @@ General Action Details:
 | Enabled      | False        |
 | Name         |              |
 
+SetBoolValue Details:
+
+| Property     | Value |
+| ------------ | ----- |
+| boolValue    | False |
+| boolVariable | False |
+| everyFrame   | False |
+
 #### Action: 13-1 SetBoolValue
 
 General Action Details:
@@ -840,6 +976,14 @@ General Action Details:
 | Enabled      | False        |
 | Name         |              |
 
+SetBoolValue Details:
+
+| Property     | Value |
+| ------------ | ----- |
+| boolValue    | False |
+| boolVariable | False |
+| everyFrame   | False |
+
 #### Action: 13-2 SetBoolValue
 
 General Action Details:
@@ -851,6 +995,14 @@ General Action Details:
 | BlocksFinish | True         |
 | Enabled      | False        |
 | Name         |              |
+
+SetBoolValue Details:
+
+| Property     | Value |
+| ------------ | ----- |
+| boolValue    | False |
+| boolVariable | False |
+| everyFrame   | False |
 
 ## State 14: Rabbit's Foot
 
@@ -882,6 +1034,21 @@ General Action Details:
 | Enabled      | True              |
 | Name         |                   |
 
+ArrayListContains Details:
+
+| Property                     | Value                                    |
+| ---------------------------- | ---------------------------------------- |
+| gameObject.OwnerOption       | SpecifyGameObject                        |
+| gameObject.FullPath          | /__SYSTEM/Inventory/Inventory (PickedUp) |
+| indexResult                  | 0                                        |
+| isContained                  | False                                    |
+| isContainedEvent.Name        | cont                                     |
+| isContainedEvent.targetState | +3                                       |
+| reference                    |                                          |
+| variable.Type                | GameObject                               |
+| variable.Value               | null                                     |
+| variable.variableName        |                                          |
+
 #### Action: 14-1 ArrayListContains
 
 General Action Details:
@@ -893,6 +1060,21 @@ General Action Details:
 | BlocksFinish | True              |
 | Enabled      | True              |
 | Name         |                   |
+
+ArrayListContains Details:
+
+| Property                     | Value                                    |
+| ---------------------------- | ---------------------------------------- |
+| gameObject.OwnerOption       | SpecifyGameObject                        |
+| gameObject.FullPath          | /__SYSTEM/Inventory/Inventory (PickedUp) |
+| indexResult                  | 0                                        |
+| isContained                  | False                                    |
+| isContainedEvent.Name        | cont                                     |
+| isContainedEvent.targetState | +3                                       |
+| reference                    |                                          |
+| variable.Type                | GameObject                               |
+| variable.Value               | null                                     |
+| variable.variableName        |                                          |
 
 ## State 15: +3
 
@@ -923,6 +1105,14 @@ General Action Details:
 | Enabled      | True   |
 | Name         |        |
 
+IntAdd Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| add         | 3     |
+| everyFrame  | False |
+| intVariable | 0     |
+
 ## State 16: SET INT LUCK
 
 | Property       | Value |
@@ -951,6 +1141,14 @@ General Action Details:
 | BlocksFinish | True        |
 | Enabled      | True        |
 | Name         |             |
+
+SetIntValue Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| everyFrame  | False |
+| intValue    | 999   |
+| intVariable | 0     |
 
 ## State 17: Set Dowsed Luck
 
@@ -981,6 +1179,14 @@ General Action Details:
 | Enabled      | True         |
 | Name         |              |
 
+SetBoolValue Details:
+
+| Property     | Value |
+| ------------ | ----- |
+| boolValue    | True  |
+| boolVariable | False |
+| everyFrame   | False |
+
 #### Action: 17-1 SetBoolValue
 
 General Action Details:
@@ -993,6 +1199,14 @@ General Action Details:
 | Enabled      | True         |
 | Name         |              |
 
+SetBoolValue Details:
+
+| Property     | Value |
+| ------------ | ----- |
+| boolValue    | True  |
+| boolVariable | False |
+| everyFrame   | False |
+
 #### Action: 17-2 SetBoolValue
 
 General Action Details:
@@ -1004,6 +1218,14 @@ General Action Details:
 | BlocksFinish | True         |
 | Enabled      | True         |
 | Name         |              |
+
+SetBoolValue Details:
+
+| Property     | Value |
+| ------------ | ----- |
+| boolValue    | True  |
+| boolVariable | False |
+| everyFrame   | False |
 
 ## State 18: Dowse Correction
 
@@ -1035,6 +1257,15 @@ General Action Details:
 | Enabled      | True     |
 | Name         |          |
 
+BoolTest Details:
+
+| Property            | Value            |
+| ------------------- | ---------------- |
+| boolVariable        | False            |
+| everyFrame          | False            |
+| isFalse.Name        | skip             |
+| isFalse.targetState | Send Drop Target |
+
 #### Action: 18-1 BoolTest
 
 General Action Details:
@@ -1046,6 +1277,15 @@ General Action Details:
 | BlocksFinish | True     |
 | Enabled      | True     |
 | Name         |          |
+
+BoolTest Details:
+
+| Property            | Value            |
+| ------------------- | ---------------- |
+| boolVariable        | False            |
+| everyFrame          | False            |
+| isFalse.Name        | skip             |
+| isFalse.targetState | Send Drop Target |
 
 ## State 19: Luck Balance Modifiers
 
@@ -1077,6 +1317,15 @@ General Action Details:
 | Enabled      | True     |
 | Name         |          |
 
+BoolTest Details:
+
+| Property           | Value      |
+| ------------------ | ---------- |
+| boolVariable       | False      |
+| everyFrame         | False      |
+| isTrue.Name        | skip       |
+| isTrue.targetState | Dows Check |
+
 #### Action: 19-1 BoolTest
 
 General Action Details:
@@ -1088,6 +1337,15 @@ General Action Details:
 | BlocksFinish | True     |
 | Enabled      | True     |
 | Name         |          |
+
+BoolTest Details:
+
+| Property           | Value      |
+| ------------------ | ---------- |
+| boolVariable       | False      |
+| everyFrame         | False      |
+| isTrue.Name        | skip       |
+| isTrue.targetState | Dows Check |
 
 ## State 20: Dowsing Check
 
@@ -1118,6 +1376,17 @@ General Action Details:
 | BlocksFinish | True     |
 | Enabled      | True     |
 | Name         |          |
+
+BoolTest Details:
+
+| Property            | Value           |
+| ------------------- | --------------- |
+| boolVariable        | False           |
+| everyFrame          | False           |
+| isFalse.Name        | FINISHED        |
+| isFalse.targetState | SET INT LUCK    |
+| isTrue.Name         | DOWSED          |
+| isTrue.targetState  | Set Dowsed Luck |
 
 ## State 21: Dowsing Rod
 
@@ -1241,7 +1510,7 @@ GetFsmGameObject Details:
 | ---------------------- | ----------------------------------- |
 | everyFrame             | False                               |
 | fsmName                | FSM                                 |
-| fsmNameLastFrame       | null                                |
+| fsmNameLastFrame       |                                     |
 | gameObject.OwnerOption | SpecifyGameObject                   |
 | gameObject.FullPath    | /__SYSTEM/THE DRAFT/PLAN MANAGEMENT |
 | storeValue             | null                                |
@@ -1265,7 +1534,7 @@ GetFsmGameObject Details:
 | ---------------------- | ----------------------------------- |
 | everyFrame             | False                               |
 | fsmName                | FSM                                 |
-| fsmNameLastFrame       | null                                |
+| fsmNameLastFrame       |                                     |
 | gameObject.OwnerOption | SpecifyGameObject                   |
 | gameObject.FullPath    | /__SYSTEM/THE DRAFT/PLAN MANAGEMENT |
 | storeValue             | null                                |
@@ -1300,6 +1569,14 @@ General Action Details:
 | Enabled      | True   |
 | Name         |        |
 
+IntAdd Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| add         | 1     |
+| everyFrame  | False |
+| intVariable | 0     |
+
 ## State 24: Dows +2
 
 | Property       | Value |
@@ -1328,6 +1605,14 @@ General Action Details:
 | BlocksFinish | True   |
 | Enabled      | True   |
 | Name         |        |
+
+IntAdd Details:
+
+| Property    | Value |
+| ----------- | ----- |
+| add         | 2     |
+| everyFrame  | False |
+| intVariable | 0     |
 
 ## State 25: Dows Check
 

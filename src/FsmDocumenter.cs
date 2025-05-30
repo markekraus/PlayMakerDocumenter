@@ -9,8 +9,21 @@ using static PlayMakerDocumenter.Actions.Documenter;
 
 namespace PlayMakerDocumenter;
 
+/// <summary>
+/// Public interface for PlayMakerDocumenter.
+/// </summary>
 public static partial class FsmDocumenter
 {
+    /// <summary>
+    /// Documents a <see cref="PlayMakerFSM"/> in markdown to the specified <paramref name="filePath"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentFsm("/path/to/target/fsm". "c:\path\to\file.md");
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="fsmPath">The GameObject path of the <see cref="PlayMakerFSM"/> to document.</param>
+    /// <param name="filePath">The file system path of the output markdown file.</param>
     public static void DocumentFsm(string fsmPath, string filePath)
     {
         var fsmObj = GameObject.Find(fsmPath);
@@ -19,8 +32,18 @@ public static partial class FsmDocumenter
         var fsm = fsmObj.GetComponent<PlayMakerFSM>();
         if (fsm is null) { LogError($"Could not find PLayMakerFSM on '{fsmPath}'"); return; }
 
-        DocumentFsm(fsm, filePath);
+        fsm.DocumentFsm(filePath);
     }
+    /// <summary>
+    /// Documents a <see cref="PlayMakerFSM"/> in markdown to the specified <paramref name="filePath"/>.
+    /// <example>
+    /// <code>
+    /// fsm.DocumentFsm("c:\path\to\file.md");
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="fsm">The <see cref="PlayMakerFSM"/> to document.</param>
+    /// <param name="filePath">The file system path of the output markdown file.</param>
     public static void DocumentFsm(this PlayMakerFSM fsm, string filePath)
     {
         if (fsm is null) { LogError("Fsm was null"); return; }
