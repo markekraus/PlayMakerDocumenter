@@ -11,10 +11,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(Wait)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow(nameof(action.time), action.time)
+            .AddRow(nameof(action.time), action.time, ctx)
             .AddRow(nameof(action.finishEvent), action.finishEvent, ctx)
-            .AddRow(nameof(action.realTime), action.realTime)
-            .AddRow(nameof(action.startTime), action.startTime)
-            .AddRow(nameof(action.timer), action.timer)
+            .AddRow(nameof(action.realTime), action.realTime, ctx)
+            .AddRow(nameof(action.startTime), action.startTime, ctx)
+            .AddRow(nameof(action.timer), action.timer, ctx)
             .BuildTable();
 }

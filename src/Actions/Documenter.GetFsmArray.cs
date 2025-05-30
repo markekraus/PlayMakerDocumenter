@@ -11,10 +11,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(GetFsmArray)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow(nameof(action.copyValues), action.copyValues)
-            .AddRow(nameof(action.fsmName), action.fsmName)
+            .AddRow(nameof(action.copyValues), action.copyValues, ctx)
+            .AddRow(nameof(action.fsmName), action.fsmName, ctx)
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)
-            .AddRow(nameof(action.storeValue), action.storeValue)
-            .AddRow(nameof(action.variableName), action.variableName)
+            .AddRow(nameof(action.storeValue), action.storeValue, ctx)
+            .AddRow(nameof(action.variableName), action.variableName, ctx)
             .BuildTable();
 }

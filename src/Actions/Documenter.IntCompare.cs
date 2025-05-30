@@ -13,10 +13,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(IntCompare)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow(nameof(action.integer1), action.integer1)
-            .AddRow(nameof(action.integer2), action.integer2)
+            .AddRow(nameof(action.integer1), action.integer1, ctx)
+            .AddRow(nameof(action.integer2), action.integer2, ctx)
             .AddRow(nameof(action.equal), action.equal, ctx)
-            .AddRow(nameof(action.everyFrame), action.everyFrame)
+            .AddRow(nameof(action.everyFrame), action.everyFrame, ctx)
             .AddRow(nameof(action.greaterThan), action.greaterThan, ctx)
             .AddRow(nameof(action.lessThan), action.lessThan, ctx)
             .BuildTable();

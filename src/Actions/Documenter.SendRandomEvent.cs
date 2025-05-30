@@ -14,7 +14,7 @@ internal static partial class Documenter
             .AppendHeader($"{nameof(SendRandomEvent)} Details:")
             .NewTable()
             .WithNameValueHeaders()
-            .AddRow(nameof(action.delay), action.delay)
+            .AddRow(nameof(action.delay), action.delay, ctx)
             .AddRow(nameof(action.delayedEvent), action.delayedEvent, ctx)
             .BuildTable()
             .NewTable()

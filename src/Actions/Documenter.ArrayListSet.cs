@@ -11,7 +11,7 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(ArrayListSet)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow(nameof(action.atIndex), action.atIndex)
+            .AddRow(nameof(action.atIndex), action.atIndex, ctx)
             .AddRow(nameof(action.everyFrame), action.everyFrame, ctx)
             .AddRow(nameof(action.forceResizeIdNeeded), action.forceResizeIdNeeded, ctx)
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)

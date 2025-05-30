@@ -11,10 +11,10 @@ internal static partial class Documenter
         : sb.AppendHeader($"{nameof(SetFsmVariable)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow(nameof(action.everyFrame), action.everyFrame)
-            .AddRow(nameof(action.fsmName), action.fsmName)
+            .AddRow(nameof(action.everyFrame), action.everyFrame, ctx)
+            .AddRow(nameof(action.fsmName), action.fsmName, ctx)
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)
             .AddRow(nameof(action.setValue), action.setValue, ctx)
-            .AddRow(nameof(action.variableName), action.variableName)
+            .AddRow(nameof(action.variableName), action.variableName, ctx)
             .BuildTable();
 }
