@@ -15,10 +15,10 @@ internal static partial class Documenter
             .NewTable()
             .WithPropertyValueHeaders()
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)
-            .AddRow(nameof(action.activate), action.activate)
-            .AddRow(nameof(action.activatedGameObject), action.activatedGameObject)
-            .AddRow(nameof(action.everyFrame), action.everyFrame)
-            .AddRow(nameof(action.recursive), action.recursive)
-            .AddRow(nameof(action.resetOnExit), action.resetOnExit)
+            .AddRow(nameof(action.activate), action.activate, ctx)
+            .AddRow(nameof(action.activatedGameObject), action.activatedGameObject, ctx)
+            .AddRow(nameof(action.everyFrame), action.everyFrame, ctx)
+            .AddRow(nameof(action.recursive), action.recursive, ctx)
+            .AddRow(nameof(action.resetOnExit), action.resetOnExit, ctx)
             .BuildTable();
 }

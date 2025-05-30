@@ -60,14 +60,15 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.SentByState)}.Name", Value.SentByState.Name)
             .AddRow($"{Property}.{nameof(Value.StringData)}", Value.StringData)
             .AddRow($"{Property}.{nameof(Value.TextureData)}", Value.TextureData);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVar Value, FsmStateAction action) =>
-        tb
-            .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.{nameof(value.Type)}", $"{value.Type}" })
-            .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.Value", value.GetValue(action.fsmComponent) })
-            .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.{nameof(value.variableName)}", value.variableName });
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, VariableType Value, ActionContext ctx = null) =>
+        tb.AddRow(Property, $"{Value}");
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVar Value, ActionContext ctx) =>
+        Value is null
+        ? tb
+        : tb
+            .AddRow($"{Property}.{nameof(Value.Type)}", Value.Type, ctx)
+            .AddRow($"{Property}.{nameof(Value.Type)}", Value.GetValue(ctx.Fsm))
+            .AddRow($"{Property}.{nameof(Value.variableName)}", Value.variableName);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, DelayedEvent Value, ActionContext ctx) =>
        Value is null
        ? tb

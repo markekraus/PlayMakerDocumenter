@@ -17,6 +17,6 @@ internal static partial class Documenter
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)
             .AddRow(nameof(action.reference), action.reference)
-            .AddRow(nameof(action.result), action.result, action)
+            .AddRow(nameof(action.result), action.result, ctx)
             .BuildTable();
 }
