@@ -1,4 +1,3 @@
-using System;
 using Il2CppHutongGames.PlayMaker;
 using Il2CppHutongGames.PlayMaker.Actions;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
@@ -160,6 +159,26 @@ internal static class TableBuilderExtensionsArrays
         }
         return tb;
     }
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppReferenceArray<FsmOwnerDefault> Value, ActionContext ctx)
+    {
+        if (Value is null) return tb;
+        tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
+        for (int i = 0; i < Value.Count; i++)
+        {
+            tb.AddRow($"{Property}[{i}]", Value[i], ctx);
+        }
+        return tb;
+    }
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppReferenceArray<FsmVar> Value, ActionContext ctx)
+    {
+        if (Value is null) return tb;
+        tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
+        for (int i = 0; i < Value.Count; i++)
+        {
+            tb.AddRow($"{Property}[{i}]", Value[i], ctx);
+        }
+        return tb;
+    }
     public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppReferenceArray<Il2CppSystem.Object> Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
@@ -201,7 +220,7 @@ internal static class TableBuilderExtensionsArrays
         }
         return tb;
     }
-    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, Il2CppStructArray<IgnoreEvents.EventType> Value, ActionContext ctx = null)
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppStructArray<IgnoreEvents.EventType> Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
         tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
@@ -212,7 +231,7 @@ internal static class TableBuilderExtensionsArrays
         return tb;
     }
 
-    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, Il2CppStructArray<bool> Value, ActionContext ctx = null)
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray<bool> Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
         tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
@@ -222,7 +241,7 @@ internal static class TableBuilderExtensionsArrays
         }
         return tb;
     }
-    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, Il2CppStructArray<float> Value, ActionContext ctx = null)
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppStructArray<float> Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
         tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
@@ -232,7 +251,7 @@ internal static class TableBuilderExtensionsArrays
         }
         return tb;
     }
-    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, Il2CppStructArray<char> Value, ActionContext ctx = null)
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppStructArray<char> Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
         tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
