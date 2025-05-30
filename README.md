@@ -176,7 +176,7 @@ namespace PlayMakerDocumenter.Actions;
 
 public static partial class Documenter
 {
-    private static StringBuilder DocActionSeizeMeansOfProduction(this StringBuilder sb, SeizeMeansOfProduction action) =>
+    private static StringBuilder DocActionSeizeMeansOfProduction(this StringBuilder sb, SeizeMeansOfProduction action, ActionContext ctx) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(SeizeMeansOfProduction)} Details:")
@@ -189,18 +189,16 @@ public static partial class Documenter
 Then update [`src/Actions/Documenter.cs`](src/Actions/Documenter.cs) to insert the documenter in alpha order:
 
 ```csharp
-    private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, FsmStateAction action, Dictionary<string, string> eventToState) =>
-        action is null || eventToState is null
+    private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>
+        ctx is null || ctx.Action is null || ctx.EventToState is null
         ? sb
-        : action.GetActualType().FullName switch
+        : ctx.ActionType.FullName switch
         {
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(action.TryCast<ArrayListGet>(), eventToState),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(action.TryCast<ArrayListSet>()),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListShuffle" => sb.DocActionArrayListShuffle(action.TryCast<ArrayListShuffle>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArray" => sb.DocActionGetFsmArray(action.TryCast<GetFsmArray>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArrayItem" => sb.DocActionGetFsmArrayItem(action.TryCast<GetFsmArrayItem>()),
+            "Il2CppHutongGames.PlayMaker.Actions.ActivateGameObject" => sb.DocActionActivateGameObject(ctx.Action.TryCast<ActivateGameObject>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(ctx.Action.TryCast<ArrayListGet>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(ctx.Action.TryCast<ArrayListSet>(), ctx),
             // ...
-            "Il2CppHutongGames.PlayMaker.Actions.SeizeMeansOfProduction" => sb.DocActionSeizeMeansOfProduction(action.TryCast<SeizeMeansOfProduction>()),
+            "Il2CppHutongGames.PlayMaker.Actions.SeizeMeansOfProduction" => sb.DocActionSeizeMeansOfProduction(action.TryCast<SeizeMeansOfProduction>(), ctx),
             // ...
 ```
 

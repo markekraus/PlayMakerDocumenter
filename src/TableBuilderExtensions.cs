@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Il2CppHutongGames.PlayMaker.Actions;
 using Il2Cpp;
@@ -6,24 +5,25 @@ using Il2CppHutongGames.PlayMaker;
 using UnityEngine;
 using Il2CppSystem.Reflection;
 using UniverseLib;
+using Il2CppSystem;
 
 namespace PlayMakerDocumenter;
 
 internal static class TableBuilderExtensions
 {
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, int Value) =>
-        PlayMakerDocumenter.TableBuilderExtensions.AddRow(tb, Property, Value);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, GameObject Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, int Value, ActionContext ctx = null) =>
+        MarkdownUtilities.TableBuilderExtensions.AddRow(tb, Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, GameObject Value, ActionContext ctx = null) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, value.GetFullPath() });
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.ArrayList Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.ArrayList Value, ActionContext ctx = null) =>
         Value is null
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.Hashtable Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.Hashtable Value, ActionContext ctx = null) =>
         Value is null
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerArrayListProxy Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerArrayListProxy Value, ActionContext ctx = null) =>
         Value is null
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.addEvent)}", Value.arrayList)
@@ -37,14 +37,14 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.setEvent)}", Value.setEvent)
             .AddRow($"{Property}.{nameof(Value.showContent)}", Value.showContent)
             .AddRow($"{Property}.{nameof(Value.showEvents)}", Value.showEvents);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, Dictionary<string, string> eventToState) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, ActionContext ctx) =>
         tb
             .AddRowIfNotNull(Value, value => new string[] { $"{Property}.{nameof(value.Name)}", value.name })
-            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.targetState", eventToState.GetValueOrDefault(value.name, "*Unknown*") });
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerFSM Value) =>
+            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.targetState", ctx.GetEventState(value, "*Unknown*") });
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerFSM Value, ActionContext ctx = null) =>
         tb.AddRowIfNotNull(Value, value =>
             new string[] { Property, value.GetFullPath() });
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventData Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventData Value, ActionContext ctx = null) =>
         Value is null
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.BoolData)}", Value.BoolData)
@@ -60,28 +60,29 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.SentByState)}.Name", Value.SentByState.Name)
             .AddRow($"{Property}.{nameof(Value.StringData)}", Value.StringData)
             .AddRow($"{Property}.{nameof(Value.TextureData)}", Value.TextureData);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVar Value, FsmStateAction action) =>
-        tb
-            .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.{nameof(value.Type)}", $"{value.Type}" })
-            .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.Value", value.GetValue(action.fsmComponent) })
-            .AddRowIfNotNull(Value, value =>
-                new string[] { $"{Property}.{nameof(value.variableName)}", value.variableName });
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, DelayedEvent Value, Dictionary<string, string> eventToState) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, VariableType Value, ActionContext ctx = null) =>
+        tb.AddRow(Property, $"{Value}");
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVar Value, ActionContext ctx) =>
+        Value is null
+        ? tb
+        : tb
+            .AddRow($"{Property}.{nameof(Value.Type)}", Value.Type, ctx)
+            .AddRow($"{Property}.Value", Value.GetValue(ctx.Fsm))
+            .AddRow($"{Property}.{nameof(Value.variableName)}", Value.variableName);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, DelayedEvent Value, ActionContext ctx) =>
        Value is null
        ? tb
        : tb.AddRow($"{Property}.{nameof(Value.delay)}", Value.delay)
            .AddRow($"{Property}.{nameof(Value.eventFired)}", Value.eventFired)
            .AddRow($"{Property}.{nameof(Value.eventData)}", Value.eventData)
            .AddRow($"{Property}.{nameof(Value.Finished)}", Value.Finished)
-           .AddRow($"{Property}.{nameof(Value.FsmEvent)}", Value.FsmEvent, eventToState)
+           .AddRow($"{Property}.{nameof(Value.FsmEvent)}", Value.FsmEvent, ctx)
            .AddRow($"{Property}.{nameof(Value.Timer)}", Value.Timer);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerActionsUtils.EveryFrameUpdateSelector Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerActionsUtils.EveryFrameUpdateSelector Value, ActionContext ctx = null) =>
         tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerCollectionProxy.VariableEnum Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerCollectionProxy.VariableEnum Value, ActionContext ctx = null) =>
         tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerHashTableProxy Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerHashTableProxy Value, ActionContext ctx = null) =>
         Value is null
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.addEvent)}", Value.hashTable)
@@ -95,7 +96,7 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.setEvent)}", Value.setEvent)
             .AddRow($"{Property}.{nameof(Value.showContent)}", Value.showContent)
             .AddRow($"{Property}.{nameof(Value.showEvents)}", Value.showEvents);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerProxyBase Value)
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerProxyBase Value, ActionContext ctx = null)
     {
         if (Value.TargetFSMs is not null)
         {
@@ -111,46 +112,37 @@ internal static class TableBuilderExtensions
         }
         return tb;
     }
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, ConvertFloatToInt.FloatRounding Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, EaseFsmAction.EasingFunction Value, ActionContext ctx = null) =>
         tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, EaseFsmAction.EaseType Value) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, EaseFsmAction.EasingFunction Value) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FloatOperator.Operation Value) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, GetSceneActionBase.SceneSimpleReferenceOptions Value) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, IntOperator.Operation Value) =>
-        tb.AddRow(Property, Value.ToString());
-    
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, FsmOwnerDefault fsmOwner, FsmStateAction action) =>
+
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmOwnerDefault fsmOwner, ActionContext ctx) =>
         fsmOwner is null
         ? tb
         : tb
             .AddRow($"{Property}.{nameof(fsmOwner.OwnerOption)}", fsmOwner.OwnerOption.ToString())
-            .AddRow($"{Property}.FullPath", fsmOwner.GetFsmOwnerDefaultPath(action.fsmComponent));
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget.EventTarget Value) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget Value, FsmStateAction action, Dictionary<string, string> eventToState) =>
+            .AddRow($"{Property}.FullPath", fsmOwner.GetFsmOwnerDefaultPath(ctx.Action.fsmComponent));
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget Value, ActionContext ctx) =>
         Value is null
         ? tb
-        : tb.AddRow($"{Property}.{nameof(Value.excludeSelf)}", Value.excludeSelf)
-            .AddRow($"{Property}.{nameof(Value.fsmComponent)}", Value.fsmComponent)
-            .AddRow($"{Property}.{nameof(Value.fsmName)}", Value.fsmName)
-            .AddRow($"{Property}.{nameof(Value.gameObject)}", Value.gameObject, action)
+        : tb.AddRow($"{Property}.{nameof(Value.excludeSelf)}", Value.excludeSelf, ctx)
+            .AddRow($"{Property}.{nameof(Value.fsmComponent)}", Value.fsmComponent, ctx)
+            .AddRow($"{Property}.{nameof(Value.fsmName)}", Value.fsmName, ctx)
+            .AddRow($"{Property}.{nameof(Value.gameObject)}", Value.gameObject, ctx)
             .AddRow($"{Property}.{nameof(Value.sendToChildren)}", Value.sendToChildren)
             .AddRow($"{Property}.{nameof(Value.target)}", Value.target);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, MemberInfo Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, MemberInfo Value, ActionContext ctx = null) =>
         Value is null
         ? tb
         : tb
-            .AddRow($"{Property}.{nameof(Value.DeclaringType)}.{nameof(Value.DeclaringType.FullName)}", Value.DeclaringType.GetActualType().FullName)
-            .AddRow($"{Property}.{nameof(Value.MemberType)}.FullName", Value.MemberType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.DeclaringType)}", Value.DeclaringType)
+            .AddRow($"{Property}.{nameof(Value.MemberType)}", Value.MemberType)
             .AddRow($"{Property}.{nameof(Value.Name)}", Value.Name)
-            .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString())
-        ;
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value)
+            .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString());
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Type Value, ActionContext ctx = null) =>
+        Value is null
+        ? tb
+        : tb.AddRow($"{Property}.Fullname", Value.GetActualType().FullName);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
         tb
@@ -169,21 +161,22 @@ internal static class TableBuilderExtensions
         }
         tb
             .AddRow($"{Property}.{nameof(Value.PropertyName)}", Value.PropertyName)
-            .AddRow($"{Property}.{nameof(Value.PropertyType)}.FullName", Value.PropertyType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.PropertyType)}", Value.PropertyType)
             .AddRow($"{Property}.{nameof(Value.QuaternionParameter)}", Value.QuaternionParameter)
             .AddRow($"{Property}.{nameof(Value.RectParamater)}", Value.RectParamater)
             .AddRow($"{Property}.{nameof(Value.setProperty)}", Value.setProperty)
             .AddRow($"{Property}.{nameof(Value.StringParameter)}", Value.StringParameter)
             .AddRow($"{Property}.{nameof(Value.TargetObject)}", Value.TargetObject)
-            .AddRow($"{Property}.{nameof(Value.TargetType)}.FullName", Value.TargetType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.TargetType)}", Value.TargetType)
             .AddRow($"{Property}.{nameof(Value.TargetTypeName)}", Value.TargetTypeName)
             .AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);
         return tb;
     }
+    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, T Value, ActionContext ctx = null) where T : System.Enum =>
+        tb.AddRow(Property, Value.ToString());
 }
 
 /*
-Il2CppHutongGames.PlayMaker.InterpolationType
 Il2CppHutongGames.PlayMaker.LogLevel
 Il2CppHutongGames.PlayMaker.MouseButton
 Il2CppHutongGames.PlayMaker.TriggerType

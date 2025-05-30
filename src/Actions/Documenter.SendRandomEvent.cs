@@ -6,7 +6,7 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionSendRandomEvent(this StringBuilder sb, SendRandomEvent action, Dictionary<string, string> eventToState)
+    private static StringBuilder DocActionSendRandomEvent(this StringBuilder sb, SendRandomEvent action, ActionContext ctx)
     {
         if (action is null || action.events is null || action.events.Count < 1)
             return sb;
@@ -14,8 +14,8 @@ internal static partial class Documenter
             .AppendHeader($"{nameof(SendRandomEvent)} Details:")
             .NewTable()
             .WithNameValueHeaders()
-            .AddRow(nameof(action.delay), action.delay)
-            .AddRow(nameof(action.delayedEvent), action.delayedEvent, eventToState)
+            .AddRow(nameof(action.delay), action.delay, ctx)
+            .AddRow(nameof(action.delayedEvent), action.delayedEvent, ctx)
             .BuildTable()
             .NewTable()
             .WithHeaders("Weight", "Event", "Target State");
@@ -23,7 +23,7 @@ internal static partial class Documenter
         {
             var fsmEvent = action.events[i];
             var weight = action.weights[i];
-            tb.AddRow(weight.FormatValue(), fsmEvent.Name, eventToState.GetValueOrDefault(fsmEvent.Name));
+            tb.AddRow(weight.FormatValue(), fsmEvent.Name, ctx.EventToState.GetValueOrDefault(fsmEvent.Name));
         }
         return tb.BuildTable();
     }

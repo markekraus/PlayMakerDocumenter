@@ -1,80 +1,79 @@
-using System.Collections.Generic;
 using System.Text;
-using Il2CppHutongGames.PlayMaker;
 using Il2CppHutongGames.PlayMaker.Actions;
-using UniverseLib;
 
 namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    internal static StringBuilder DocStateActions(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState) =>
-        fsmState is null || fsmState.Actions is null || fsmState.Actions.Count < 1
+    internal static StringBuilder DocStateActions(this StringBuilder sb, StateContext ctx) =>
+        ctx is null || ctx.State.Actions is null || ctx.State.Actions.Count < 1
         ? sb
         : sb
-            .AppendHeader($"### {stateIndex} {fsmState.Name}: Actions").DocEachStateAction(fsmState, stateIndex, eventToState);
+            .AppendHeader($"### {ctx.StateIndex} {ctx.State.Name}: Actions").DocEachStateAction(ctx);
 
-    private static StringBuilder DocEachStateAction(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState)
+    private static StringBuilder DocEachStateAction(this StringBuilder sb, StateContext ctx)
     {
-        if (fsmState is null || fsmState.Actions is null || fsmState.Actions.Count < 1)
+        if (ctx.State is null || ctx.State.Actions is null || ctx.State.Actions.Count < 1)
             return sb;
-        for (int actionIndex = 0; actionIndex < fsmState.Actions.Count; actionIndex++)
+        for (int actionIndex = 0; actionIndex < ctx.State.Actions.Count; actionIndex++)
         {
-            var action = fsmState.Actions[0];
-            var type = fsmState.Actions[0].GetActualType();
+            var aCtx = ActionContext.Create(
+                ctx,
+                ctx.State.Actions[0],
+                actionIndex);
             sb
-                .AppendHeader($"#### Action: {stateIndex}-{actionIndex} {type.Name}")
-                .DocStateActionGeneralDetails(action, actionIndex)
-                .DocStateActionTypeDetails(action, eventToState);
+                .AppendHeader($"#### Action: {aCtx.StateIndex}-{aCtx.ActionIndex} {aCtx.ActionType.Name}")
+                .DocStateActionGeneralDetails(aCtx)
+                .DocStateActionTypeDetails(aCtx);
         }
         return sb;
     }
-    private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, FsmStateAction action, Dictionary<string, string> eventToState) =>
-        action is null || eventToState is null
+    private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>
+        ctx is null || ctx.Action is null || ctx.EventToState is null
         ? sb
-        : action.GetActualType().FullName switch
+        : ctx.ActionType.FullName switch
         {
-            "Il2CppHutongGames.PlayMaker.Actions.ActivateGameObject" => sb.DocActionActivateGameObject(action.TryCast<ActivateGameObject>()),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(action.TryCast<ArrayListGet>(), eventToState),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(action.TryCast<ArrayListSet>()),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListShuffle" => sb.DocActionArrayListShuffle(action.TryCast<ArrayListShuffle>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArray" => sb.DocActionGetFsmArray(action.TryCast<GetFsmArray>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArrayItem" => sb.DocActionGetFsmArrayItem(action.TryCast<GetFsmArrayItem>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmBool" => sb.DocActionGetFsmBool(action.TryCast<GetFsmBool>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmFloat" => sb.DocActionGetFsmFloat(action.TryCast<GetFsmFloat>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmGameObject" => sb.DocActionGetFsmGameObject(action.TryCast<GetFsmGameObject>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmInt" => sb.DocActionGetFsmInt(action.TryCast<GetFsmInt>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmMaterial" => sb.DocActionGetFsmMaterial(action.TryCast<GetFsmMaterial>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmState" => sb.DocActionGetFsmState(action.TryCast<GetFsmState>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmString" => sb.DocActionGetFsmString(action.TryCast<GetFsmString>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmTexture" => sb.DocActionGetFsmTexture(action.TryCast<GetFsmTexture>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmVariable" => sb.DocActionGetFsmVariable(action.TryCast<GetFsmVariable>()),
-            "Il2CppHutongGames.PlayMaker.Actions.GetFsmVector3" => sb.DocActionGetFsmVector3(action.TryCast<GetFsmVector3>()),
-            "Il2CppHutongGames.PlayMaker.Actions.IntCompare" => sb.DocActionIntCompare(action.TryCast<IntCompare>(), eventToState),
-            "Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent" => sb.DocActionSendRandomEvent(action.TryCast<SendRandomEvent>(), eventToState),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmArray" => sb.DocActionSetFsmArray(action.TryCast<SetFsmArray>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmBool" => sb.DocActionSetFsmBool(action.TryCast<SetFsmBool>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmColor" => sb.DocActionSetFsmColor(action.TryCast<SetFsmColor>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmFloat" => sb.DocActionSetFsmFloat(action.TryCast<SetFsmFloat>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmGameObject" => sb.DocActionSetFsmGameObject(action.TryCast<SetFsmGameObject>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmInt" => sb.DocActionSetFsmInt(action.TryCast<SetFsmInt>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmObject" => sb.DocActionSetFsmObject(action.TryCast<SetFsmObject>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmString" => sb.DocActionSetFsmString(action.TryCast<SetFsmString>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmTexture" => sb.DocActionSetFsmTexture(action.TryCast<SetFsmTexture>()),
-            "Il2CppHutongGames.PlayMaker.Actions.SetFsmVariable" => sb.DocActionSetFsmVariable(action.TryCast<SetFsmVariable>()),
-            "Il2CppHutongGames.PlayMaker.Actions.Wait" => sb.DocActionWait(action.TryCast<Wait>(), eventToState),
+            "Il2CppHutongGames.PlayMaker.Actions.ActivateGameObject" => sb.DocActionActivateGameObject(ctx.Action.TryCast<ActivateGameObject>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(ctx.Action.TryCast<ArrayListGet>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(ctx.Action.TryCast<ArrayListSet>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.ArrayListShuffle" => sb.DocActionArrayListShuffle(ctx.Action.TryCast<ArrayListShuffle>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArray" => sb.DocActionGetFsmArray(ctx.Action.TryCast<GetFsmArray>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmArrayItem" => sb.DocActionGetFsmArrayItem(ctx.Action.TryCast<GetFsmArrayItem>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmBool" => sb.DocActionGetFsmBool(ctx.Action.TryCast<GetFsmBool>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmFloat" => sb.DocActionGetFsmFloat(ctx.Action.TryCast<GetFsmFloat>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmGameObject" => sb.DocActionGetFsmGameObject(ctx.Action.TryCast<GetFsmGameObject>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmInt" => sb.DocActionGetFsmInt(ctx.Action.TryCast<GetFsmInt>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmMaterial" => sb.DocActionGetFsmMaterial(ctx.Action.TryCast<GetFsmMaterial>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmState" => sb.DocActionGetFsmState(ctx.Action.TryCast<GetFsmState>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmString" => sb.DocActionGetFsmString(ctx.Action.TryCast<GetFsmString>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmTexture" => sb.DocActionGetFsmTexture(ctx.Action.TryCast<GetFsmTexture>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmVariable" => sb.DocActionGetFsmVariable(ctx.Action.TryCast<GetFsmVariable>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.GetFsmVector3" => sb.DocActionGetFsmVector3(ctx.Action.TryCast<GetFsmVector3>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.IntCompare" => sb.DocActionIntCompare(ctx.Action.TryCast<IntCompare>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent" => sb.DocActionSendRandomEvent(ctx.Action.TryCast<SendRandomEvent>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmArray" => sb.DocActionSetFsmArray(ctx.Action.TryCast<SetFsmArray>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmBool" => sb.DocActionSetFsmBool(ctx.Action.TryCast<SetFsmBool>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmColor" => sb.DocActionSetFsmColor(ctx.Action.TryCast<SetFsmColor>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmFloat" => sb.DocActionSetFsmFloat(ctx.Action.TryCast<SetFsmFloat>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmGameObject" => sb.DocActionSetFsmGameObject(ctx.Action.TryCast<SetFsmGameObject>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmInt" => sb.DocActionSetFsmInt(ctx.Action.TryCast<SetFsmInt>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmObject" => sb.DocActionSetFsmObject(ctx.Action.TryCast<SetFsmObject>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmString" => sb.DocActionSetFsmString(ctx.Action.TryCast<SetFsmString>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmTexture" => sb.DocActionSetFsmTexture(ctx.Action.TryCast<SetFsmTexture>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.SetFsmVariable" => sb.DocActionSetFsmVariable(ctx.Action.TryCast<SetFsmVariable>(), ctx),
+            "Il2CppHutongGames.PlayMaker.Actions.Wait" => sb.DocActionWait(ctx.Action.TryCast<Wait>(), ctx),
             _ => sb
         };
-    private static StringBuilder DocStateActionGeneralDetails(this StringBuilder sb, FsmStateAction action, int actionIndex) =>
-        action is null
+    private static StringBuilder DocStateActionGeneralDetails(this StringBuilder sb, ActionContext ctx) =>
+        ctx is null || ctx.Action is null
         ? sb
         : sb.AppendHeader("General Action Details:")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow("Action Index", $"{actionIndex}")
-            .AddRow("Type", action.GetActualType().Name)
-            .AddRow("BlocksFinish", $"{action.BlocksFinish}")
-            .AddRow("Enabled", $"{action.Enabled}")
-            .AddRow("Name", $"{action.Name}")
+            .AddRow(nameof(ctx.ActionIndex), ctx.ActionIndex)
+            .AddRow("Type", ctx.ActionType.Name)
+            .AddRow(nameof(ctx.Action.BlocksFinish), ctx.Action.BlocksFinish)
+            .AddRow(nameof(ctx.Action.Enabled), ctx.Action.Enabled)
+            .AddRow(nameof(ctx.Action.Name), ctx.Action.Name)
             .BuildTable();
 }
