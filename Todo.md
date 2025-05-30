@@ -26,7 +26,6 @@ Il2CppHutongGames.PlayMaker.Actions.SetIntValue 806
 Il2CppHutongGames.PlayMaker.Actions.SetBoolValue 764
 Il2CppHutongGames.PlayMaker.Actions.SetAudioClip 750
 Il2CppHutongGames.PlayMaker.Actions.setTextmeshProTextColor 746
-Il2CppHutongGames.PlayMaker.Actions.PmtSpawn 737
 Il2CppHutongGames.PlayMaker.Actions.GetOwner 629
 Il2CppHutongGames.PlayMaker.Actions.AudioPlay 626
 Il2CppHutongGames.PlayMaker.Actions.SetMaterialTexture 611
@@ -49,7 +48,6 @@ Il2CppHutongGames.PlayMaker.Actions.Rotate 270
 Il2CppHutongGames.PlayMaker.Actions.GetPosition 239
 Il2CppHutongGames.PlayMaker.Actions.NextFrameEvent 229
 Il2CppHutongGames.PlayMaker.Actions.BuildString 214
-Il2CppHutongGames.PlayMaker.Actions.PmtDeSpawn 208
 Il2CppHutongGames.PlayMaker.Actions.ActivateChildren 206
 Il2CppHutongGames.PlayMaker.Actions.SendEventByName 189
 Il2CppHutongGames.PlayMaker.Actions.FloatOperator 180
@@ -176,7 +174,6 @@ Il2CppHutongGames.PlayMaker.Actions.AnyKeyStoreString 4
 Il2CppHutongGames.PlayMaker.Actions.TrackFadeFromToVolumeAction 4
 Il2CppHutongGames.PlayMaker.Actions.ConvertFloatToString 4
 Il2CppHutongGames.PlayMaker.Actions.CountupTimer 4
-Il2CppHutongGames.PlayMaker.Actions.PmtDeSpawnAll 4
 Il2CppHutongGames.PlayMaker.Actions.AudioMixerGetFloatValue 4
 Il2CppHutongGames.PlayMaker.Actions.ParticleSystemStop 4
 Il2CppHutongGames.PlayMaker.Actions.ActionPromptEnableActionAsset 4
