@@ -112,27 +112,15 @@ internal static class TableBuilderExtensions
         }
         return tb;
     }
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, ConvertFloatToInt.FloatRounding Value, ActionContext ctx = null) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, EaseFsmAction.EaseType Value, ActionContext ctx = null) =>
-        tb.AddRow(Property, Value.ToString());
     public static TableBuilder AddRow(this TableBuilder tb, string Property, EaseFsmAction.EasingFunction Value, ActionContext ctx = null) =>
         tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FloatOperator.Operation Value, ActionContext ctx = null) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, GetSceneActionBase.SceneSimpleReferenceOptions Value, ActionContext ctx = null) =>
-        tb.AddRow(Property, Value.ToString());
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, IntOperator.Operation Value, ActionContext ctx = null) =>
-        tb.AddRow(Property, Value.ToString());
-    
+
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmOwnerDefault fsmOwner, ActionContext ctx) =>
         fsmOwner is null
         ? tb
         : tb
             .AddRow($"{Property}.{nameof(fsmOwner.OwnerOption)}", fsmOwner.OwnerOption.ToString())
             .AddRow($"{Property}.FullPath", fsmOwner.GetFsmOwnerDefaultPath(ctx.Action.fsmComponent));
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget.EventTarget Value, ActionContext ctx = null) =>
-        tb.AddRow(Property, Value.ToString());
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEventTarget Value, ActionContext ctx) =>
         Value is null
         ? tb
@@ -146,14 +134,14 @@ internal static class TableBuilderExtensions
         Value is null
         ? tb
         : tb
-            .AddRow($"{Property}.{nameof(Value.DeclaringType)}.{nameof(Value.DeclaringType.FullName)}", Value.DeclaringType.GetActualType().FullName)
-            .AddRow($"{Property}.{nameof(Value.MemberType)}.FullName", Value.MemberType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.DeclaringType)}", Value.DeclaringType)
+            .AddRow($"{Property}.{nameof(Value.MemberType)}", Value.MemberType)
             .AddRow($"{Property}.{nameof(Value.Name)}", Value.Name)
             .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString());
     public static TableBuilder AddRow(this TableBuilder tb, string Property, Type Value, ActionContext ctx = null) =>
         Value is null
         ? tb
-        : tb.AddRow(Property, Value.GetActualType().FullName);
+        : tb.AddRow($"{Property}.Fullname", Value.GetActualType().FullName);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
@@ -173,21 +161,22 @@ internal static class TableBuilderExtensions
         }
         tb
             .AddRow($"{Property}.{nameof(Value.PropertyName)}", Value.PropertyName)
-            .AddRow($"{Property}.{nameof(Value.PropertyType)}.FullName", Value.PropertyType)
+            .AddRow($"{Property}.{nameof(Value.PropertyType)}", Value.PropertyType)
             .AddRow($"{Property}.{nameof(Value.QuaternionParameter)}", Value.QuaternionParameter)
             .AddRow($"{Property}.{nameof(Value.RectParamater)}", Value.RectParamater)
             .AddRow($"{Property}.{nameof(Value.setProperty)}", Value.setProperty)
             .AddRow($"{Property}.{nameof(Value.StringParameter)}", Value.StringParameter)
             .AddRow($"{Property}.{nameof(Value.TargetObject)}", Value.TargetObject)
-            .AddRow($"{Property}.{nameof(Value.TargetType)}.FullName", Value.TargetType)
+            .AddRow($"{Property}.{nameof(Value.TargetType)}", Value.TargetType)
             .AddRow($"{Property}.{nameof(Value.TargetTypeName)}", Value.TargetTypeName)
             .AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);
         return tb;
     }
+    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, T Value, ActionContext ctx = null) where T : System.Enum =>
+        tb.AddRow(Property, Value.ToString());
 }
 
 /*
-Il2CppHutongGames.PlayMaker.InterpolationType
 Il2CppHutongGames.PlayMaker.LogLevel
 Il2CppHutongGames.PlayMaker.MouseButton
 Il2CppHutongGames.PlayMaker.TriggerType
