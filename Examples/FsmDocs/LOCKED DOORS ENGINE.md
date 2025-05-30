@@ -24,12 +24,12 @@
 
 ## Variables
 
-| Name                  | Value                                   | Type          |
-| --------------------- | --------------------------------------- | ------------- |
-| day                   | 0                                       | FsmInt        |
-| lock                  | False                                   | FsmBool       |
-| CURRENT LOCKED ENGINE | /__SYSTEM/LOCKED DOORS ENGINE/RANK OPEN | FsmGameObject |
-| active child          | null                                    | FsmGameObject |
+| Name                  | Value | Type          |
+| --------------------- | ----- | ------------- |
+| day                   | 0     | FsmInt        |
+| lock                  | False | FsmBool       |
+| CURRENT LOCKED ENGINE | null  | FsmGameObject |
+| active child          | null  | FsmGameObject |
 
 ## Events
 

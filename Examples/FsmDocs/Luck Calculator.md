@@ -26,8 +26,8 @@
 
 | Name               | Value | Type          |
 | ------------------ | ----- | ------------- |
-| AvgLuck - Bad      | 0.85  | FsmFloat      |
-| AvgLuck - Good     | 0.15  | FsmFloat      |
+| AvgLuck - Bad      | 0.8   | FsmFloat      |
+| AvgLuck - Good     | 0.2   | FsmFloat      |
 | BalanceSubtraction | 0     | FsmInt        |
 | DropTarget         | 2     | FsmInt        |
 | Greenhouse Rank    | 100   | FsmInt        |
@@ -226,7 +226,7 @@ IntCompare Details:
 | Description    |       |
 | HandlesOnEvent | False |
 | IsSequence     | False |
-| maxLoopCount   | 1     |
+| maxLoopCount   | 0     |
 
 ### 1 Item Spawn: Transitions
 
@@ -459,8 +459,8 @@ SendRandomEvent Details:
 
 | Weight | Event    | Target State       |
 | ------ | -------- | ------------------ |
-| 0.85   | Bad Luck | 0 Items            |
-| 0.15   | Lucky    | 1 Item Guarenteed! |
+| 0.8    | Bad Luck | 0 Items            |
+| 0.2    | Lucky    | 1 Item Guarenteed! |
 
 ## State 6: Set  Kinda Lucky 2
 
