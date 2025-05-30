@@ -30,11 +30,11 @@ This mod is currently tested only on Blue Prince.
 
 ## Example Output
 
-You can see example FSM docs [here](Examples/FsmDocs).
+You can see example FSM docs at [Examples/FsmDocs](Examples/FsmDocs).
 
 ## Usage
 
-This mod is primarily used by other mods or in conjunction with [UnityExplorer](https://github.com/yukieiji/UnityExplorer) (yukieji's fork) for reverse engineering [PlayMaker](https://hutonggames.com/) FSMs.
+This mod is primarily used by other mods or in conjunction with [UnityExplorer](https://github.com/yukieiji/UnityExplorer) (yukieiji's fork) for reverse engineering [PlayMaker](https://hutonggames.com/) FSMs.
 Currently, this mod cannot be used on its own.
 Maybe one day I'll make a UI for it.
 
@@ -129,7 +129,7 @@ replacing fieldspec for fsm
 ```powershell
 git clone --recurse-submodules https://github.com/markekraus/PlayMakerDocumenter.git
 cd PlayMakerDocumenter
-get checkout -b mychanges
+get checkout -b changes
 code .
 ```
 
@@ -215,6 +215,6 @@ MarkdownUtilities is IL repacked into the shipped DLL for this mod and is not a 
 Il2Cpp games are a pain.
 In Il2Cpp, generic collection types always return collection members as the collection's generic type and _not_ as its actual runtime type.
 This is a solved problem in UnityExplorer, which is using UniverseLib under the hood.
-Since I am using yukikeiji's port of UnityExplorer, I'm also using their port of [UniverseLib](https://github.com/yukieiji/UniverseLib) ( LGPL-2.1 license ).
+Since I am using yukieiji's port of UnityExplorer, I'm also using their port of [UniverseLib](https://github.com/yukieiji/UniverseLib) ( LGPL-2.1 license ).
 I've not made any modification to their code.
 I'm also not currently shipping the library with this mod.
