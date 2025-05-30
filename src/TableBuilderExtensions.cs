@@ -6,6 +6,7 @@ using Il2CppHutongGames.PlayMaker;
 using UnityEngine;
 using Il2CppSystem.Reflection;
 using UniverseLib;
+using Il2CppSystem;
 
 namespace PlayMakerDocumenter;
 
@@ -96,7 +97,7 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.setEvent)}", Value.setEvent)
             .AddRow($"{Property}.{nameof(Value.showContent)}", Value.showContent)
             .AddRow($"{Property}.{nameof(Value.showEvents)}", Value.showEvents);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerProxyBase Value)
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerProxyBase Value, ActionContext ctx = null)
     {
         if (Value.TargetFSMs is not null)
         {
@@ -149,9 +150,12 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.DeclaringType)}.{nameof(Value.DeclaringType.FullName)}", Value.DeclaringType.GetActualType().FullName)
             .AddRow($"{Property}.{nameof(Value.MemberType)}.FullName", Value.MemberType.GetActualType().FullName)
             .AddRow($"{Property}.{nameof(Value.Name)}", Value.Name)
-            .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString())
-        ;
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value)
+            .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString());
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, Type Value, ActionContext ctx = null) =>
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.GetActualType().FullName);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
         tb
@@ -170,13 +174,13 @@ internal static class TableBuilderExtensions
         }
         tb
             .AddRow($"{Property}.{nameof(Value.PropertyName)}", Value.PropertyName)
-            .AddRow($"{Property}.{nameof(Value.PropertyType)}.FullName", Value.PropertyType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.PropertyType)}.FullName", Value.PropertyType)
             .AddRow($"{Property}.{nameof(Value.QuaternionParameter)}", Value.QuaternionParameter)
             .AddRow($"{Property}.{nameof(Value.RectParamater)}", Value.RectParamater)
             .AddRow($"{Property}.{nameof(Value.setProperty)}", Value.setProperty)
             .AddRow($"{Property}.{nameof(Value.StringParameter)}", Value.StringParameter)
             .AddRow($"{Property}.{nameof(Value.TargetObject)}", Value.TargetObject)
-            .AddRow($"{Property}.{nameof(Value.TargetType)}.FullName", Value.TargetType.GetActualType().FullName)
+            .AddRow($"{Property}.{nameof(Value.TargetType)}.FullName", Value.TargetType)
             .AddRow($"{Property}.{nameof(Value.TargetTypeName)}", Value.TargetTypeName)
             .AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);
         return tb;
