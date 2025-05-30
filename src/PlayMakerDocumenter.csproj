@@ -79,6 +79,22 @@
             <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.AnimationModule.dll</HintPath>
             <Private>False</Private>
         </Reference>
+        <Reference Include="UnityEngine.AudioModule">
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.AudioModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.Physics2DModule">
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.Physics2DModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.VideoModule">
+            <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\UnityEngine.VideoModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
     </ItemGroup>
     <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
         <Reference Include="UniverseLib">
