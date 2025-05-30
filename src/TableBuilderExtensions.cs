@@ -12,7 +12,7 @@ namespace PlayMakerDocumenter;
 internal static class TableBuilderExtensions
 {
     public static TableBuilder AddRow(this TableBuilder tb, string Property, int Value, ActionContext ctx = null) =>
-        PlayMakerDocumenter.TableBuilderExtensions.AddRow(tb, Property, Value);
+        MarkdownUtilities.TableBuilderExtensions.AddRow(tb, Property, Value);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, GameObject Value, ActionContext ctx = null) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, value.GetFullPath() });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.ArrayList Value, ActionContext ctx = null) =>
@@ -67,7 +67,7 @@ internal static class TableBuilderExtensions
         ? tb
         : tb
             .AddRow($"{Property}.{nameof(Value.Type)}", Value.Type, ctx)
-            .AddRow($"{Property}.{nameof(Value.Type)}", Value.GetValue(ctx.Fsm))
+            .AddRow($"{Property}.Value", Value.GetValue(ctx.Fsm))
             .AddRow($"{Property}.{nameof(Value.variableName)}", Value.variableName);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, DelayedEvent Value, ActionContext ctx) =>
        Value is null
