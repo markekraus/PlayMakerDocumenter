@@ -5,7 +5,7 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionSetFsmArray(this StringBuilder sb, SetFsmArray action) =>
+    private static StringBuilder DocActionSetFsmArray(this StringBuilder sb, SetFsmArray action, ActionContext ctx = null) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(SetFsmArray)} Details:")

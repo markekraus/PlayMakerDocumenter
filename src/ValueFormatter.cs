@@ -65,7 +65,7 @@ internal static class ValueFormatter
         fsmString is null || fsmString.Value is null
         ? "null"
         : fsmString.Value;
-public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmBool Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmBool Value) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmColor Value) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
@@ -95,6 +95,36 @@ public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmBool
         tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmString Value) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmBool Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmColor Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmInt Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmFloat Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmQuaternion Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmRect Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVector2 Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVector3 Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmTexture Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmMaterial Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmGameObject Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmObject Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmArray Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEnum Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmString Value, ActionContext context) =>
+        tb.AddRow(Property, Value);
     internal static string ValueFormatTypeSwitch(this VariableType type, FsmVariables vars, string name) =>
         type switch
         {

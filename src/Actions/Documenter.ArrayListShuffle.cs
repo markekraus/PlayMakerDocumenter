@@ -5,7 +5,7 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionArrayListShuffle(this StringBuilder sb, ArrayListShuffle action) =>
+    private static StringBuilder DocActionArrayListShuffle(this StringBuilder sb, ArrayListShuffle action, ActionContext ctx = null) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(ArrayListShuffle)} Details:")

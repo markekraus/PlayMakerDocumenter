@@ -8,7 +8,7 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionActivateGameObject(this StringBuilder sb, ActivateGameObject action) =>
+    private static StringBuilder DocActionActivateGameObject(this StringBuilder sb, ActivateGameObject action, ActionContext ctx = null) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(ActivateGameObject)} Details:")

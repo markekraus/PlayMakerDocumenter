@@ -6,14 +6,14 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionWait(this StringBuilder sb, Wait action, Dictionary<string, string> eventToState) =>
+    private static StringBuilder DocActionWait(this StringBuilder sb, Wait action, ActionContext ctx) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(Wait)} Details:")
             .NewTable()
             .WithPropertyValueHeaders()
             .AddRow(nameof(action.time), action.time)
-            .AddRow(nameof(action.finishEvent), action.finishEvent, eventToState)
+            .AddRow(nameof(action.finishEvent), action.finishEvent, ctx.EventToState)
             .AddRow(nameof(action.realTime), action.realTime)
             .AddRow(nameof(action.startTime), action.startTime)
             .AddRow(nameof(action.timer), action.timer)

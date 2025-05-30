@@ -124,7 +124,7 @@ internal static class TableBuilderExtensions
     public static TableBuilder AddRow(this TableBuilder tb, string Property, IntOperator.Operation Value) =>
         tb.AddRow(Property, Value.ToString());
     
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, FsmOwnerDefault fsmOwner, FsmStateAction action) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmOwnerDefault fsmOwner, FsmStateAction action) =>
         fsmOwner is null
         ? tb
         : tb

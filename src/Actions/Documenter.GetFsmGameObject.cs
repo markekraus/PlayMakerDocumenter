@@ -5,7 +5,7 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionGetFsmGameObject(this StringBuilder sb, GetFsmGameObject action) =>
+    private static StringBuilder DocActionGetFsmGameObject(this StringBuilder sb, GetFsmGameObject action, ActionContext ctx = null) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(GetFsmGameObject)} Details:")

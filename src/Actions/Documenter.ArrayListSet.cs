@@ -5,7 +5,7 @@ namespace PlayMakerDocumenter.Actions;
 
 internal static partial class Documenter
 {
-    private static StringBuilder DocActionArrayListSet(this StringBuilder sb, ArrayListSet action) =>
+    private static StringBuilder DocActionArrayListSet(this StringBuilder sb, ArrayListSet action, ActionContext ctx = null) =>
         action is null
         ? sb
         : sb.AppendHeader($"{nameof(ArrayListSet)} Details:")
