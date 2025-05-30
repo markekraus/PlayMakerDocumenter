@@ -12,10 +12,10 @@ internal static partial class Documenter
             .NewTable()
             .WithPropertyValueHeaders()
             .AddRow(nameof(action.atIndex), action.atIndex)
-            .AddRow(nameof(action.everyFrame), action.everyFrame)
-            .AddRow(nameof(action.forceResizeIdNeeded), action.forceResizeIdNeeded)
+            .AddRow(nameof(action.everyFrame), action.everyFrame, ctx)
+            .AddRow(nameof(action.forceResizeIdNeeded), action.forceResizeIdNeeded, ctx)
             .AddRow(nameof(action.gameObject), action.gameObject, ctx)
-            .AddRow(nameof(action.reference), action.reference)
+            .AddRow(nameof(action.reference), action.reference, ctx)
             .AddRow(nameof(action.variable), action.variable, ctx)
             .BuildTable();
 }

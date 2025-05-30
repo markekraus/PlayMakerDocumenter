@@ -4,8 +4,11 @@ using Il2CppHutongGames.PlayMaker;
 
 namespace PlayMakerDocumenter;
 
-internal record ActionContext(PlayMakerFSM Fsm, FsmState State, int StateIndex, FsmStateAction Action, int ActionIndex, Dictionary<string,string> EventToState);
-
+internal record ActionContext(PlayMakerFSM Fsm, FsmState State, int StateIndex, FsmStateAction Action, int ActionIndex, Dictionary<string,string> EventToState)
+{
+    public static ActionContext Create(StateContext ctx, FsmStateAction Action, int ActionIndex) =>
+        new(ctx.Fsm, ctx.State, ctx.StateIndex, Action, ActionIndex, ctx.EventToState);
+}
 internal static class ActionContextExtensions
 {
     public static string GetEventState(this ActionContext ctx, string eventName, string defaultString = "*Unknown*") =>
@@ -16,4 +19,6 @@ internal static class ActionContextExtensions
         ctx is null || fsmEvent is null || fsmEvent.Name is null
         ? defaultString
         : ctx.EventToState.GetValueOrDefault(fsmEvent.Name, defaultString);
+    public static ActionContext Create(StateContext ctx, FsmStateAction Action, int ActionIndex) =>
+        new(ctx.Fsm, ctx.State, ctx.StateIndex, Action, ActionIndex, ctx.EventToState);
 }

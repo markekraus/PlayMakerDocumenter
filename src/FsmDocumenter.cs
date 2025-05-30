@@ -48,37 +48,41 @@ public static partial class FsmDocumenter
         for (int stateIndex = 0; stateIndex < fsm.FsmStates.Count; stateIndex++)
         {
             var fsmState = fsm.FsmStates[stateIndex];
-            var eventToState = new Dictionary<string, string>();
+            var ctx = new StateContext(
+                fsm,
+                fsm.FsmStates[stateIndex],
+                stateIndex,
+                new Dictionary<string, string>());
             sb
-                .DocStateDetails(fsmState, stateIndex)
-                .DocStateTransitions(fsmState, stateIndex, eventToState)
-                .DocStateActions(fsmState, stateIndex, eventToState);
+                .DocStateDetails(ctx)
+                .DocStateTransitions(ctx)
+                .DocStateActions(ctx);
         }
         return sb;
     }
 
-    private static StringBuilder DocStateTransitions(this StringBuilder sb, FsmState fsmState, int stateIndex, Dictionary<string, string> eventToState) =>
-        fsmState is null || fsmState.transitions is null || fsmState.transitions.Count < 1
+    private static StringBuilder DocStateTransitions(this StringBuilder sb, StateContext ctx) =>
+         ctx is null || ctx.State is null || ctx.State.transitions is null || ctx.State.transitions.Count < 1
         ? sb
-        : sb.AppendHeader($"### {stateIndex} {fsmState.Name}: Transitions")
+        : sb.AppendHeader($"### {ctx.StateIndex} {ctx.State.Name}: Transitions")
             .NewTable()
             .WithHeaders("EventName", "ToState")
-            .ForEachAddRow(fsmState.transitions, transition =>
+            .ForEachAddRow(ctx.State.transitions, transition =>
             {
-                eventToState.Add(transition.EventName, transition.ToState);
+                ctx.EventToState.Add(transition.EventName, transition.ToState);
                 return new string[] { transition.EventName, transition.ToState };
             })
             .BuildTable();
-    private static StringBuilder DocStateDetails(this StringBuilder sb, FsmState fsmState, int stateIndex) =>
-        fsmState is null
+    private static StringBuilder DocStateDetails(this StringBuilder sb, StateContext ctx) =>
+        ctx is null || ctx.State is null
         ? sb
-        : sb.AppendHeader($"## State {stateIndex}: {fsmState.Name}")
+        : sb.AppendHeader($"## State {ctx.StateIndex}: {ctx.State.Name}")
             .NewTable()
             .WithPropertyValueHeaders()
-            .AddRow("Description", fsmState.Description)
-            .AddRow("HandlesOnEvent", $"{fsmState.HandlesOnEvent}")
-            .AddRow("IsSequence", $"{fsmState.IsSequence}")
-            .AddRow("maxLoopCount", $"{fsmState.maxLoopCount}")
+            .AddRow(nameof(ctx.State.Description), ctx.State.Description)
+            .AddRow(nameof(ctx.State.HandlesOnEvent), ctx.State.HandlesOnEvent)
+            .AddRow(nameof(ctx.State.IsSequence), ctx.State.IsSequence)
+            .AddRow(nameof(ctx.State.maxLoopCount), ctx.State.maxLoopCount)
             .BuildTable();
     private static StringBuilder DocFsmEvents(this StringBuilder sb, PlayMakerFSM fsm) =>
         fsm is null || fsm.FsmEvents is null || fsm.FsmEvents.Count < 1
