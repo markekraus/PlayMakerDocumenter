@@ -6,15 +6,13 @@ using UnityEngine;
 using Il2CppSystem.Reflection;
 using UniverseLib;
 using Il2CppSystem;
+using System.Collections;
+using Il2CppTMPro;
 
 namespace PlayMakerDocumenter;
 
 internal static class TableBuilderExtensions
 {
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, GameObject Value, ActionContext ctx = null) =>
-        Value is null
-        ? tb
-        : tb.AddRow(Property, Value.GetFullPath());
     public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.ArrayList Value, ActionContext ctx = null) =>
         Value is null
         ? tb
@@ -178,50 +176,26 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);
         return tb;
     }
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, ParameterInfo Value, ActionContext ctx = null) =>
+        Value is null
+        ? tb
+        : tb.AddRow($"{Property}.{nameof(Value.Attributes)}", Value.Attributes)
+            .AddRow($"{Property}.{nameof(Value.DefaultValue)}", Value.DefaultValue.ToString())
+            .AddRow($"{Property}.{nameof(Value.IsIn)}", Value.IsIn)
+            .AddRow($"{Property}.{nameof(Value.IsOut)}", Value.IsOptional)
+            .AddRow($"{Property}.{nameof(Value.IsOut)}", Value.IsOut)
+            .AddRow($"{Property}.{nameof(Value.Member)}", Value.Member)
+            .AddRow($"{Property}.{nameof(Value.Name)}", Value.Name)
+            .AddRow($"{Property}.{nameof(Value.ParameterType)}", Value.ParameterType)
+            .AddRow($"{Property}.{nameof(Value.Position)}", Value.Position)
+            .AddRow($"{Property}.{nameof(Value.ToString)}", Value.ToString());
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, ArrayList Value, ActionContext ctx = null) =>
+        Value is null
+        ? tb
+        : tb.AddRow($"{Property}.Count", Value.Count);
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, TextMeshPro Value, ActionContext ctx = null) =>
+        Value is null
+        ? tb
+        : tb.AddRow($"{Property}.{nameof(Value.enabled)}", Value.enabled)
+            .AddRow($"{Property}.{nameof(Value.text)}", Value.text);
 }
-
-
-/*
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmBool, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmEvent, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmFloat, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmInt, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmObject, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmOwnerDefault, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmString, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmVar, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppHutongGames.PlayMaker.FsmVector3, Il2CppPlayMaker, Version=1.6.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppSystem.Object, Il2Cppmscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]        
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[Il2CppSystem.Reflection.ParameterInfo, Il2Cppmscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray`1[[UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1[[Il2CppHutongGames.PlayMaker.Actions.IgnoreEvents+EventType, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1[[System.Char, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppStructArray`1[[System.Single, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Il2CppPathologicalGames.SpawnPool
-Il2CppSystem.Collections.ArrayList
-Il2CppSystem.Reflection.MethodInfo
-Il2CppSystem.Type
-Il2CppTMPro.TextMeshPro
-System.Char
-System.Int32
-UnityEngine.Animation
-UnityEngine.Animator
-UnityEngine.AsyncOperation
-UnityEngine.AudioClip
-UnityEngine.AudioSource
-UnityEngine.Camera
-UnityEngine.Color
-UnityEngine.KeyCode
-UnityEngine.Light
-UnityEngine.ParticleSystem
-UnityEngine.Renderer
-UnityEngine.Rigidbody
-UnityEngine.Rigidbody2D
-UnityEngine.Space
-UnityEngine.Transform
-UnityEngine.Vector3
-UnityEngine.Video.VideoClip
-UnityEngine.Video.VideoPlayer
-*/

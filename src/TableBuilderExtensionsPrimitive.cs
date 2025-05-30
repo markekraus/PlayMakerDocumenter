@@ -23,4 +23,6 @@ internal static class TableBuilderExtensionsPrimitive
         tb.AddRow(Property, Value);
     public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, T Value, ActionContext ctx = null) where T : System.Enum =>
         tb.AddRow(Property, Value.ToString());
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, char Value, ActionContext ctx = null) =>
+        tb.AddRow(Property, Value.ToString());
 }
