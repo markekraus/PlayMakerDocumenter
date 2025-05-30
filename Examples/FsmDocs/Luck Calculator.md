@@ -1241,7 +1241,7 @@ GetFsmGameObject Details:
 | ---------------------- | ----------------------------------- |
 | everyFrame             | False                               |
 | fsmName                | FSM                                 |
-| fsmNameLastFrame       | null                                |
+| fsmNameLastFrame       |                                     |
 | gameObject.OwnerOption | SpecifyGameObject                   |
 | gameObject.FullPath    | /__SYSTEM/THE DRAFT/PLAN MANAGEMENT |
 | storeValue             | null                                |
@@ -1265,7 +1265,7 @@ GetFsmGameObject Details:
 | ---------------------- | ----------------------------------- |
 | everyFrame             | False                               |
 | fsmName                | FSM                                 |
-| fsmNameLastFrame       | null                                |
+| fsmNameLastFrame       |                                     |
 | gameObject.OwnerOption | SpecifyGameObject                   |
 | gameObject.FullPath    | /__SYSTEM/THE DRAFT/PLAN MANAGEMENT |
 | storeValue             | null                                |

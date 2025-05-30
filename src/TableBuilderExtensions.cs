@@ -11,8 +11,6 @@ namespace PlayMakerDocumenter;
 
 internal static class TableBuilderExtensions
 {
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, int Value, ActionContext ctx = null) =>
-        MarkdownUtilities.TableBuilderExtensions.AddRow(tb, Property, Value);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, GameObject Value, ActionContext ctx = null) =>
         tb.AddRowIfNotNull(Value, value => new string[] { Property, value.GetFullPath() });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.ArrayList Value, ActionContext ctx = null) =>
