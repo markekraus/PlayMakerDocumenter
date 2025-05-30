@@ -37,10 +37,10 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.setEvent)}", Value.setEvent)
             .AddRow($"{Property}.{nameof(Value.showContent)}", Value.showContent)
             .AddRow($"{Property}.{nameof(Value.showEvents)}", Value.showEvents);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, Dictionary<string, string> eventToState) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, ActionContext ctx) =>
         tb
             .AddRowIfNotNull(Value, value => new string[] { $"{Property}.{nameof(value.Name)}", value.name })
-            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.targetState", eventToState.GetValueOrDefault(value.name, "*Unknown*") });
+            .AddRowIfNotNull(Value, value => new string[] { $"{Property}.targetState", ctx.GetEventState(value, "*Unknown*") });
     public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerFSM Value, ActionContext ctx = null) =>
         tb.AddRowIfNotNull(Value, value =>
             new string[] { Property, value.GetFullPath() });
@@ -68,14 +68,14 @@ internal static class TableBuilderExtensions
                 new string[] { $"{Property}.Value", value.GetValue(action.fsmComponent) })
             .AddRowIfNotNull(Value, value =>
                 new string[] { $"{Property}.{nameof(value.variableName)}", value.variableName });
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, DelayedEvent Value, Dictionary<string, string> eventToState) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, DelayedEvent Value, ActionContext ctx) =>
        Value is null
        ? tb
        : tb.AddRow($"{Property}.{nameof(Value.delay)}", Value.delay)
            .AddRow($"{Property}.{nameof(Value.eventFired)}", Value.eventFired)
            .AddRow($"{Property}.{nameof(Value.eventData)}", Value.eventData)
            .AddRow($"{Property}.{nameof(Value.Finished)}", Value.Finished)
-           .AddRow($"{Property}.{nameof(Value.FsmEvent)}", Value.FsmEvent, eventToState)
+           .AddRow($"{Property}.{nameof(Value.FsmEvent)}", Value.FsmEvent, ctx)
            .AddRow($"{Property}.{nameof(Value.Timer)}", Value.Timer);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerActionsUtils.EveryFrameUpdateSelector Value, ActionContext ctx = null) =>
         tb.AddRow(Property, Value.ToString());

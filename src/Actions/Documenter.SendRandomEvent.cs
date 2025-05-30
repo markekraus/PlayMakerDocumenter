@@ -15,7 +15,7 @@ internal static partial class Documenter
             .NewTable()
             .WithNameValueHeaders()
             .AddRow(nameof(action.delay), action.delay)
-            .AddRow(nameof(action.delayedEvent), action.delayedEvent, ctx.EventToState)
+            .AddRow(nameof(action.delayedEvent), action.delayedEvent, ctx)
             .BuildTable()
             .NewTable()
             .WithHeaders("Weight", "Event", "Target State");

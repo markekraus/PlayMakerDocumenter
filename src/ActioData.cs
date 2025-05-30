@@ -8,12 +8,12 @@ internal record ActionContext(PlayMakerFSM Fsm, FsmState State, int StateIndex, 
 
 internal static class ActionContextExtensions
 {
-    public static string GetEventState(this ActionContext ctx, string eventName) =>
+    public static string GetEventState(this ActionContext ctx, string eventName, string defaultString = "*Unknown*") =>
         ctx is null || eventName is null
-        ? string.Empty
-        : ctx.EventToState.GetValueOrDefault(eventName, string.Empty);
-    public static string GetEventState(this ActionContext ctx, FsmEvent fsmEvent) =>
+        ? defaultString
+        : ctx.EventToState.GetValueOrDefault(eventName, defaultString);
+    public static string GetEventState(this ActionContext ctx, FsmEvent fsmEvent, string defaultString = "*Unknown*") =>
         ctx is null || fsmEvent is null || fsmEvent.Name is null
-        ? string.Empty
-        : ctx.EventToState.GetValueOrDefault(fsmEvent.Name, string.Empty);
+        ? defaultString
+        : ctx.EventToState.GetValueOrDefault(fsmEvent.Name, defaultString);
 }

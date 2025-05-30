@@ -13,7 +13,7 @@ internal static partial class Documenter
             .NewTable()
             .WithPropertyValueHeaders()
             .AddRow(nameof(action.time), action.time)
-            .AddRow(nameof(action.finishEvent), action.finishEvent, ctx.EventToState)
+            .AddRow(nameof(action.finishEvent), action.finishEvent, ctx)
             .AddRow(nameof(action.realTime), action.realTime)
             .AddRow(nameof(action.startTime), action.startTime)
             .AddRow(nameof(action.timer), action.timer)
