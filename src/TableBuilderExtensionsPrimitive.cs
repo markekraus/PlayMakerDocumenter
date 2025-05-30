@@ -21,4 +21,6 @@ internal static class TableBuilderExtensionsPrimitive
         MarkdownUtilities.TableBuilderExtensions.AddRow(tb, Property, Value);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, string Value, ActionContext ctx = null) =>
         tb.AddRow(Property, Value);
+    public static TableBuilder AddRow<T>(this TableBuilder tb, string Property, T Value, ActionContext ctx = null) where T : System.Enum =>
+        tb.AddRow(Property, Value.ToString());
 }
