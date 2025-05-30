@@ -20,11 +20,12 @@ internal static partial class Documenter
             return sb;
         for (int actionIndex = 0; actionIndex < ctx.State.Actions.Count; actionIndex++)
         {
-            var action = ctx.State.Actions[0];
-            var type = ctx.State.Actions[0].GetActualType();
-            var aCtx = ActionContext.Create(ctx, action, actionIndex);
+            var aCtx = ActionContext.Create(
+                ctx,
+                ctx.State.Actions[0],
+                actionIndex);
             sb
-                .AppendHeader($"#### Action: {aCtx.StateIndex}-{aCtx.ActionIndex} {type.Name}")
+                .AppendHeader($"#### Action: {aCtx.StateIndex}-{aCtx.ActionIndex} {aCtx.ActionType.Name}")
                 .DocStateActionGeneralDetails(aCtx)
                 .DocStateActionTypeDetails(aCtx);
         }
@@ -33,7 +34,7 @@ internal static partial class Documenter
     private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>
         ctx is null || ctx.Action is null || ctx.EventToState is null
         ? sb
-        : ctx.Action.GetActualType().FullName switch
+        : ctx.ActionType.FullName switch
         {
             "Il2CppHutongGames.PlayMaker.Actions.ActivateGameObject" => sb.DocActionActivateGameObject(ctx.Action.TryCast<ActivateGameObject>(), ctx),
             "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(ctx.Action.TryCast<ArrayListGet>(), ctx),
@@ -73,7 +74,7 @@ internal static partial class Documenter
             .NewTable()
             .WithPropertyValueHeaders()
             .AddRow(nameof(ctx.ActionIndex), ctx.ActionIndex)
-            .AddRow("Type", ctx.Action.GetActualType().Name)
+            .AddRow("Type", ctx.ActionType.Name)
             .AddRow(nameof(ctx.Action.BlocksFinish), ctx.Action.BlocksFinish)
             .AddRow(nameof(ctx.Action.Enabled), ctx.Action.Enabled)
             .AddRow(nameof(ctx.Action.Name), ctx.Action.Name)
