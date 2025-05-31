@@ -1,6 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Il2Cpp;
+using Newtonsoft.Json;
 using UnityEngine;
+using UUIDNext;
 
 namespace PlayMakerDocumenter;
 
@@ -9,6 +14,8 @@ namespace PlayMakerDocumenter;
 /// </summary>
 public static partial class FsmDocumenter
 {
+    public const string AppNamespaceString = "c9d71ad1-b78e-4bc8-94cc-404db44cfd48";
+    public static readonly Guid AppNamespace = new(AppNamespaceString);
     /// <summary>
     /// Documents a <see cref="PlayMakerFSM"/> in markdown to the specified <paramref name="filePath"/>.
     /// <example>
@@ -41,8 +48,8 @@ public static partial class FsmDocumenter
     /// <param name="filePath">The file system path of the output markdown file.</param>
     public static void DocumentFsm(this PlayMakerFSM fsm, string filePath)
     {
-        if (fsm is null) { LogError("Fsm was null"); return; }
-        if (filePath.IsNullOrWhiteSpace()) { LogError("Fsm was null"); return; }
+        if (fsm is null) { LogError("fsm was null"); return; }
+        if (filePath.IsNullOrWhiteSpace()) { LogError("filePath was null"); return; }
 
         new StringBuilder()
             .AppendHeader("# PlayMaker FSM Documentation")
@@ -54,5 +61,45 @@ public static partial class FsmDocumenter
             .DocFsmStates(fsm)
             .WriteToFile(filePath);
         LogMsg($"FSM Doc: {filePath}");
+    }
+    /// <summary>
+    /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentAllFsm("c:\path\to\output\directory\");
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="OutputDirectory">Directory where <see cref="PlayMakerFSM"/> markdown docs will be stored.</param> 
+    /// <param name="IncludeInactive"><see cref="FindObjectsInactive"/> setting to include or exclude inactive <see cref="PlayMakerFSM"/>s. Default is Include.</param> 
+    /// <param name="DeleteExistingFiles">Whether to delete existing markdown files (*.md) from <paramref name="OutputDirectory"/>. Default is False.</param> 
+    public static void DocumentAllFsm(string OutputDirectory, FindObjectsInactive IncludeInactive = FindObjectsInactive.Include, bool DeleteExistingFiles = false)
+    {
+        if (OutputDirectory.IsNullOrWhiteSpace()) { LogError("outputDirectory was null"); return; }
+
+        DirectoryInfo outputDir;
+        try { outputDir = Directory.CreateDirectory(OutputDirectory); }
+        catch (Exception ex) { LogError(ex.Message); return; }
+
+        if (DeleteExistingFiles)
+        {
+            foreach (var file in outputDir.EnumerateFiles("*.md"))
+            {
+                try { file.Delete(); }
+                catch (Exception ex) { LogError(ex.Message); return; }
+            }
+        }
+        var indexFile = Path.Join(outputDir.FullName, "index.json");
+        LogMsg($"Index file: {indexFile}");
+        var fsmList = GameObject.FindObjectsByType<PlayMakerFSM>(IncludeInactive, FindObjectsSortMode.None);
+        var index = new List<DocumentMap>(fsmList.Count);
+        foreach (var fsm in fsmList)
+        {
+            var curDoc = DocumentMap.Create(fsm);
+            index.Add(curDoc);
+            fsm.DocumentFsm(curDoc.GetFullPath(outputDir));
+            File.WriteAllText(indexFile, JsonConvert.SerializeObject(index));
+        }
+        LogMsg($"Index file: {indexFile}");
     }
 }

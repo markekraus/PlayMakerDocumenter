@@ -10,6 +10,7 @@
     <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
     <TargetFramework>net6</TargetFramework>
     <OutputPath>..\Release\PlayMakerDocumenter.ML.IL2CPP\</OutputPath>
+    <PublishDir>..\Publish\PlayMakerDocumenter.ML.IL2CPP\</PublishDir>
     <AssemblyName>PlayMakerDocumenter.ML.IL2CPP</AssemblyName>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
@@ -45,6 +46,10 @@
         </Reference>
         <Reference Include="MelonLoader">
             <HintPath>..\..\..\MelonLoader\net6\MelonLoader.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>..\..\..\MelonLoader\net6\Newtonsoft.Json.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
@@ -89,6 +94,8 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="UUIDNext" Version="4.1.2" />
+        <PackageReference Include="UUIDNext" Version="4.1.2">
+            <Private>True</Private>
+        </PackageReference>
     </ItemGroup>
 </Project>

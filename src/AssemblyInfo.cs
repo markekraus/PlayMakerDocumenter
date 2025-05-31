@@ -18,4 +18,4 @@ using PlayMakerDocumenter;
 [assembly: AssemblyCopyright("Copyright © Mark E. Kraus 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("c9d71ad1-b78e-4bc8-94cc-404db44cfd48")]
+[assembly: Guid(FsmDocumenter.AppNamespaceString)]
