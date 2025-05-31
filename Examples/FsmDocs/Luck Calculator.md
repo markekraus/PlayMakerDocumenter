@@ -97,17 +97,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value          |
-| -------------------- | -------------- |
-| integer1             | 0              |
-| integer2             | 5              |
-| everyFrame           | False          |
-| lessThan.Name        | Bad Luck       |
-| lessThan.targetState | Set Bad Luck 2 |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 5                |
+| everyFrame           | False            |
+| lessThan.Name        | Bad Luck         |
+| lessThan.targetState | Set Bad Luck 2   |
 
 #### Action: 0-1 IntCompare
 
@@ -119,17 +119,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value          |
-| -------------------- | -------------- |
-| integer1             | 0              |
-| integer2             | 5              |
-| everyFrame           | False          |
-| lessThan.Name        | Bad Luck       |
-| lessThan.targetState | Set Bad Luck 2 |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 5                |
+| everyFrame           | False            |
+| lessThan.Name        | Bad Luck         |
+| lessThan.targetState | Set Bad Luck 2   |
 
 #### Action: 0-2 IntCompare
 
@@ -141,17 +141,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value          |
-| -------------------- | -------------- |
-| integer1             | 0              |
-| integer2             | 5              |
-| everyFrame           | False          |
-| lessThan.Name        | Bad Luck       |
-| lessThan.targetState | Set Bad Luck 2 |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 5                |
+| everyFrame           | False            |
+| lessThan.Name        | Bad Luck         |
+| lessThan.targetState | Set Bad Luck 2   |
 
 #### Action: 0-3 IntCompare
 
@@ -163,17 +163,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value          |
-| -------------------- | -------------- |
-| integer1             | 0              |
-| integer2             | 5              |
-| everyFrame           | False          |
-| lessThan.Name        | Bad Luck       |
-| lessThan.targetState | Set Bad Luck 2 |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 5                |
+| everyFrame           | False            |
+| lessThan.Name        | Bad Luck         |
+| lessThan.targetState | Set Bad Luck 2   |
 
 #### Action: 0-4 IntCompare
 
@@ -185,17 +185,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value          |
-| -------------------- | -------------- |
-| integer1             | 0              |
-| integer2             | 5              |
-| everyFrame           | False          |
-| lessThan.Name        | Bad Luck       |
-| lessThan.targetState | Set Bad Luck 2 |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 5                |
+| everyFrame           | False            |
+| lessThan.Name        | Bad Luck         |
+| lessThan.targetState | Set Bad Luck 2   |
 
 #### Action: 0-5 IntCompare
 
@@ -207,17 +207,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value          |
-| -------------------- | -------------- |
-| integer1             | 0              |
-| integer2             | 5              |
-| everyFrame           | False          |
-| lessThan.Name        | Bad Luck       |
-| lessThan.targetState | Set Bad Luck 2 |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 5                |
+| everyFrame           | False            |
+| lessThan.Name        | Bad Luck         |
+| lessThan.targetState | Set Bad Luck 2   |
 
 ## State 1: Item Spawn
 
@@ -261,7 +261,6 @@ General Action Details:
 | Type         | Wait  |
 | BlocksFinish | True  |
 | Enabled      | True  |
-| Name         |       |
 
 Wait Details:
 
@@ -301,13 +300,13 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
 | Property          | Value                  |
 | ----------------- | ---------------------- |
 | integer1          | 0                      |
+| integer1.Name     | Veranda Luck Bonus     |
 | integer2          | 0                      |
 | equal.Name        | FINISHED               |
 | equal.targetState | Luck Balance Modifiers |
@@ -323,13 +322,13 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
 | Property          | Value                  |
 | ----------------- | ---------------------- |
 | integer1          | 0                      |
+| integer1.Name     | Veranda Luck Bonus     |
 | integer2          | 0                      |
 | equal.Name        | FINISHED               |
 | equal.targetState | Luck Balance Modifiers |
@@ -345,13 +344,13 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
 | Property          | Value                  |
 | ----------------- | ---------------------- |
 | integer1          | 0                      |
+| integer1.Name     | Veranda Luck Bonus     |
 | integer2          | 0                      |
 | equal.Name        | FINISHED               |
 | equal.targetState | Luck Balance Modifiers |
@@ -367,13 +366,13 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
 | Property          | Value                  |
 | ----------------- | ---------------------- |
 | integer1          | 0                      |
+| integer1.Name     | Veranda Luck Bonus     |
 | integer2          | 0                      |
 | equal.Name        | FINISHED               |
 | equal.targetState | Luck Balance Modifiers |
@@ -407,15 +406,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 4-1 SetIntValue
 
@@ -427,15 +426,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 ## State 5: Set  Avg Luck 2
 
@@ -465,7 +464,6 @@ General Action Details:
 | Type         | SendRandomEvent |
 | BlocksFinish | True            |
 | Enabled      | True            |
-| Name         |                 |
 
 SendRandomEvent Details:
 
@@ -506,7 +504,6 @@ General Action Details:
 | Type         | SendRandomEvent |
 | BlocksFinish | True            |
 | Enabled      | True            |
-| Name         |                 |
 
 SendRandomEvent Details:
 
@@ -547,7 +544,6 @@ General Action Details:
 | Type         | SendRandomEvent |
 | BlocksFinish | True            |
 | Enabled      | True            |
-| Name         |                 |
 
 SendRandomEvent Details:
 
@@ -587,15 +583,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 2     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 2          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 8-1 SetIntValue
 
@@ -607,15 +603,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 2     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 2          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 8-2 SetIntValue
 
@@ -627,15 +623,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 2     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 2          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 8-3 SetIntValue
 
@@ -647,15 +643,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 2     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 2          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 ## State 9: 4 out of 4
 
@@ -684,15 +680,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 4     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 4          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 9-1 SetIntValue
 
@@ -704,15 +700,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 4     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 4          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 ## State 10: 1 Item Guarenteed!
 
@@ -742,15 +738,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 10-1 SetIntValue
 
@@ -762,15 +758,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 ## State 11: 2 Items Guarenteed!
 
@@ -800,15 +796,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 11-1 SetIntValue
 
@@ -820,15 +816,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 11-2 SetIntValue
 
@@ -840,15 +836,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 11-3 SetIntValue
 
@@ -860,15 +856,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 #### Action: 11-4 SetIntValue
 
@@ -880,15 +876,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 1     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 1          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 ## State 12: 0 Items
 
@@ -917,15 +913,15 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 0     |
-| intVariable | 2     |
+| Property         | Value      |
+| ---------------- | ---------- |
+| everyFrame       | False      |
+| intValue         | 0          |
+| intVariable      | 2          |
+| intVariable.Name | DropTarget |
 
 ## State 13: Send Drop Target
 
@@ -954,15 +950,15 @@ General Action Details:
 | Type         | SetBoolValue |
 | BlocksFinish | True         |
 | Enabled      | False        |
-| Name         |              |
 
 SetBoolValue Details:
 
-| Property     | Value |
-| ------------ | ----- |
-| boolValue    | False |
-| boolVariable | False |
-| everyFrame   | False |
+| Property          | Value |
+| ----------------- | ----- |
+| boolValue         | False |
+| boolVariable      | False |
+| boolVariable.Name | dowse |
+| everyFrame        | False |
 
 #### Action: 13-1 SetBoolValue
 
@@ -974,15 +970,15 @@ General Action Details:
 | Type         | SetBoolValue |
 | BlocksFinish | True         |
 | Enabled      | False        |
-| Name         |              |
 
 SetBoolValue Details:
 
-| Property     | Value |
-| ------------ | ----- |
-| boolValue    | False |
-| boolVariable | False |
-| everyFrame   | False |
+| Property          | Value |
+| ----------------- | ----- |
+| boolValue         | False |
+| boolVariable      | False |
+| boolVariable.Name | dowse |
+| everyFrame        | False |
 
 #### Action: 13-2 SetBoolValue
 
@@ -994,15 +990,15 @@ General Action Details:
 | Type         | SetBoolValue |
 | BlocksFinish | True         |
 | Enabled      | False        |
-| Name         |              |
 
 SetBoolValue Details:
 
-| Property     | Value |
-| ------------ | ----- |
-| boolValue    | False |
-| boolVariable | False |
-| everyFrame   | False |
+| Property          | Value |
+| ----------------- | ----- |
+| boolValue         | False |
+| boolVariable      | False |
+| boolVariable.Name | dowse |
+| everyFrame        | False |
 
 ## State 14: Rabbit's Foot
 
@@ -1032,7 +1028,6 @@ General Action Details:
 | Type         | ArrayListContains |
 | BlocksFinish | True              |
 | Enabled      | True              |
-| Name         |                   |
 
 ArrayListContains Details:
 
@@ -1059,7 +1054,6 @@ General Action Details:
 | Type         | ArrayListContains |
 | BlocksFinish | True              |
 | Enabled      | True              |
-| Name         |                   |
 
 ArrayListContains Details:
 
@@ -1103,15 +1097,15 @@ General Action Details:
 | Type         | IntAdd |
 | BlocksFinish | True   |
 | Enabled      | True   |
-| Name         |        |
 
 IntAdd Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| add         | 3     |
-| everyFrame  | False |
-| intVariable | 0     |
+| Property         | Value            |
+| ---------------- | ---------------- |
+| add              | 3                |
+| everyFrame       | False            |
+| intVariable      | 0                |
+| intVariable.Name | This Room's Luck |
 
 ## State 16: SET INT LUCK
 
@@ -1140,15 +1134,16 @@ General Action Details:
 | Type         | SetIntValue |
 | BlocksFinish | True        |
 | Enabled      | True        |
-| Name         |             |
 
 SetIntValue Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| everyFrame  | False |
-| intValue    | 999   |
-| intVariable | 0     |
+| Property         | Value            |
+| ---------------- | ---------------- |
+| everyFrame       | False            |
+| intValue         | 999              |
+| intValue.Name    | LUCK             |
+| intVariable      | 0                |
+| intVariable.Name | This Room's Luck |
 
 ## State 17: Set Dowsed Luck
 
@@ -1177,15 +1172,15 @@ General Action Details:
 | Type         | SetBoolValue |
 | BlocksFinish | True         |
 | Enabled      | True         |
-| Name         |              |
 
 SetBoolValue Details:
 
-| Property     | Value |
-| ------------ | ----- |
-| boolValue    | True  |
-| boolVariable | False |
-| everyFrame   | False |
+| Property          | Value |
+| ----------------- | ----- |
+| boolValue         | True  |
+| boolVariable      | False |
+| boolVariable.Name | dowse |
+| everyFrame        | False |
 
 #### Action: 17-1 SetBoolValue
 
@@ -1197,15 +1192,15 @@ General Action Details:
 | Type         | SetBoolValue |
 | BlocksFinish | True         |
 | Enabled      | True         |
-| Name         |              |
 
 SetBoolValue Details:
 
-| Property     | Value |
-| ------------ | ----- |
-| boolValue    | True  |
-| boolVariable | False |
-| everyFrame   | False |
+| Property          | Value |
+| ----------------- | ----- |
+| boolValue         | True  |
+| boolVariable      | False |
+| boolVariable.Name | dowse |
+| everyFrame        | False |
 
 #### Action: 17-2 SetBoolValue
 
@@ -1217,15 +1212,15 @@ General Action Details:
 | Type         | SetBoolValue |
 | BlocksFinish | True         |
 | Enabled      | True         |
-| Name         |              |
 
 SetBoolValue Details:
 
-| Property     | Value |
-| ------------ | ----- |
-| boolValue    | True  |
-| boolVariable | False |
-| everyFrame   | False |
+| Property          | Value |
+| ----------------- | ----- |
+| boolValue         | True  |
+| boolVariable      | False |
+| boolVariable.Name | dowse |
+| everyFrame        | False |
 
 ## State 18: Dowse Correction
 
@@ -1255,13 +1250,13 @@ General Action Details:
 | Type         | BoolTest |
 | BlocksFinish | True     |
 | Enabled      | True     |
-| Name         |          |
 
 BoolTest Details:
 
 | Property            | Value            |
 | ------------------- | ---------------- |
 | boolVariable        | False            |
+| boolVariable.Name   | dowse            |
 | everyFrame          | False            |
 | isFalse.Name        | skip             |
 | isFalse.targetState | Send Drop Target |
@@ -1276,13 +1271,13 @@ General Action Details:
 | Type         | BoolTest |
 | BlocksFinish | True     |
 | Enabled      | True     |
-| Name         |          |
 
 BoolTest Details:
 
 | Property            | Value            |
 | ------------------- | ---------------- |
 | boolVariable        | False            |
+| boolVariable.Name   | dowse            |
 | everyFrame          | False            |
 | isFalse.Name        | skip             |
 | isFalse.targetState | Send Drop Target |
@@ -1315,13 +1310,13 @@ General Action Details:
 | Type         | BoolTest |
 | BlocksFinish | True     |
 | Enabled      | True     |
-| Name         |          |
 
 BoolTest Details:
 
 | Property           | Value      |
 | ------------------ | ---------- |
 | boolVariable       | False      |
+| boolVariable.Name  | dowse      |
 | everyFrame         | False      |
 | isTrue.Name        | skip       |
 | isTrue.targetState | Dows Check |
@@ -1336,13 +1331,13 @@ General Action Details:
 | Type         | BoolTest |
 | BlocksFinish | True     |
 | Enabled      | True     |
-| Name         |          |
 
 BoolTest Details:
 
 | Property           | Value      |
 | ------------------ | ---------- |
 | boolVariable       | False      |
+| boolVariable.Name  | dowse      |
 | everyFrame         | False      |
 | isTrue.Name        | skip       |
 | isTrue.targetState | Dows Check |
@@ -1375,13 +1370,13 @@ General Action Details:
 | Type         | BoolTest |
 | BlocksFinish | True     |
 | Enabled      | True     |
-| Name         |          |
 
 BoolTest Details:
 
 | Property            | Value           |
 | ------------------- | --------------- |
 | boolVariable        | False           |
+| boolVariable.Name   | dowse           |
 | everyFrame          | False           |
 | isFalse.Name        | FINISHED        |
 | isFalse.targetState | SET INT LUCK    |
@@ -1418,17 +1413,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value      |
-| -------------------- | ---------- |
-| integer1             | 0          |
-| integer2             | 19         |
-| everyFrame           | False      |
-| lessThan.Name        | skip       |
-| lessThan.targetState | Luck Check |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 19               |
+| everyFrame           | False            |
+| lessThan.Name        | skip             |
+| lessThan.targetState | Luck Check       |
 
 #### Action: 21-1 IntCompare
 
@@ -1440,17 +1435,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value      |
-| -------------------- | ---------- |
-| integer1             | 0          |
-| integer2             | 19         |
-| everyFrame           | False      |
-| lessThan.Name        | skip       |
-| lessThan.targetState | Luck Check |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 19               |
+| everyFrame           | False            |
+| lessThan.Name        | skip             |
+| lessThan.targetState | Luck Check       |
 
 #### Action: 21-2 IntCompare
 
@@ -1462,17 +1457,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property             | Value      |
-| -------------------- | ---------- |
-| integer1             | 0          |
-| integer2             | 19         |
-| everyFrame           | False      |
-| lessThan.Name        | skip       |
-| lessThan.targetState | Luck Check |
+| Property             | Value            |
+| -------------------- | ---------------- |
+| integer1             | 0                |
+| integer1.Name        | This Room's Luck |
+| integer2             | 19               |
+| everyFrame           | False            |
+| lessThan.Name        | skip             |
+| lessThan.targetState | Luck Check       |
 
 ## State 22: Check Dowsing Array
 
@@ -1502,7 +1497,6 @@ General Action Details:
 | Type         | GetFsmGameObject |
 | BlocksFinish | True             |
 | Enabled      | True             |
-| Name         |                  |
 
 GetFsmGameObject Details:
 
@@ -1510,10 +1504,10 @@ GetFsmGameObject Details:
 | ---------------------- | ----------------------------------- |
 | everyFrame             | False                               |
 | fsmName                | FSM                                 |
-| fsmNameLastFrame       |                                     |
 | gameObject.OwnerOption | SpecifyGameObject                   |
 | gameObject.FullPath    | /__SYSTEM/THE DRAFT/PLAN MANAGEMENT |
 | storeValue             | null                                |
+| storeValue.Name        | Current Engine                      |
 | variableName           | PLAN1 - ENGINE                      |
 
 #### Action: 22-1 GetFsmGameObject
@@ -1526,7 +1520,6 @@ General Action Details:
 | Type         | GetFsmGameObject |
 | BlocksFinish | True             |
 | Enabled      | True             |
-| Name         |                  |
 
 GetFsmGameObject Details:
 
@@ -1534,10 +1527,10 @@ GetFsmGameObject Details:
 | ---------------------- | ----------------------------------- |
 | everyFrame             | False                               |
 | fsmName                | FSM                                 |
-| fsmNameLastFrame       |                                     |
 | gameObject.OwnerOption | SpecifyGameObject                   |
 | gameObject.FullPath    | /__SYSTEM/THE DRAFT/PLAN MANAGEMENT |
 | storeValue             | null                                |
+| storeValue.Name        | Current Engine                      |
 | variableName           | PLAN1 - ENGINE                      |
 
 ## State 23: Dows +1
@@ -1567,15 +1560,15 @@ General Action Details:
 | Type         | IntAdd |
 | BlocksFinish | True   |
 | Enabled      | True   |
-| Name         |        |
 
 IntAdd Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| add         | 1     |
-| everyFrame  | False |
-| intVariable | 0     |
+| Property         | Value     |
+| ---------------- | --------- |
+| add              | 1         |
+| everyFrame       | False     |
+| intVariable      | 0         |
+| intVariable.Name | dows luck |
 
 ## State 24: Dows +2
 
@@ -1604,15 +1597,15 @@ General Action Details:
 | Type         | IntAdd |
 | BlocksFinish | True   |
 | Enabled      | True   |
-| Name         |        |
 
 IntAdd Details:
 
-| Property    | Value |
-| ----------- | ----- |
-| add         | 2     |
-| everyFrame  | False |
-| intVariable | 0     |
+| Property         | Value     |
+| ---------------- | --------- |
+| add              | 2         |
+| everyFrame       | False     |
+| intVariable      | 0         |
+| intVariable.Name | dows luck |
 
 ## State 25: Dows Check
 
@@ -1643,17 +1636,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property                | Value   |
-| ----------------------- | ------- |
-| integer1                | 0       |
-| integer2                | 5       |
-| everyFrame              | False   |
-| greaterThan.Name        | 0       |
-| greaterThan.targetState | State 2 |
+| Property                | Value     |
+| ----------------------- | --------- |
+| integer1                | 0         |
+| integer1.Name           | dows luck |
+| integer2                | 5         |
+| everyFrame              | False     |
+| greaterThan.Name        | 0         |
+| greaterThan.targetState | State 2   |
 
 #### Action: 25-1 IntCompare
 
@@ -1665,17 +1658,17 @@ General Action Details:
 | Type         | IntCompare |
 | BlocksFinish | True       |
 | Enabled      | True       |
-| Name         |            |
 
 IntCompare Details:
 
-| Property                | Value   |
-| ----------------------- | ------- |
-| integer1                | 0       |
-| integer2                | 5       |
-| everyFrame              | False   |
-| greaterThan.Name        | 0       |
-| greaterThan.targetState | State 2 |
+| Property                | Value     |
+| ----------------------- | --------- |
+| integer1                | 0         |
+| integer1.Name           | dows luck |
+| integer2                | 5         |
+| everyFrame              | False     |
+| greaterThan.Name        | 0         |
+| greaterThan.targetState | State 2   |
 
 ## State 26: State 1
 
@@ -1706,7 +1699,6 @@ General Action Details:
 | Type         | SendRandomEvent |
 | BlocksFinish | True            |
 | Enabled      | True            |
-| Name         |                 |
 
 SendRandomEvent Details:
 
@@ -1748,7 +1740,6 @@ General Action Details:
 | Type         | SendRandomEvent |
 | BlocksFinish | True            |
 | Enabled      | True            |
-| Name         |                 |
 
 SendRandomEvent Details:
 

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Il2CppHutongGames.PlayMaker;
 using UniverseLib;
 
@@ -5,6 +6,7 @@ namespace PlayMakerDocumenter;
 
 internal static class PlayMakerFsmValueFormatter
 {
+    #region FormatValue
     public static string FormatValue(this FsmBool fsmBool) =>
         fsmBool is null
         ? "null"
@@ -65,36 +67,85 @@ internal static class PlayMakerFsmValueFormatter
         fsmString is null || fsmString.Value is null
         ? "null"
         : fsmString.Value;
+    #endregion
+    #region AddRow
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmBool Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmColor Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmInt Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmFloat Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmQuaternion Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmRect Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVector2 Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmVector3 Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmTexture Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmMaterial Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmGameObject Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmObject Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmArray Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEnum Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmString Value) =>
-        tb.AddRowIfNotNull(Value, value => new string[] { Property, Value.FormatValue() });
+        Value is null
+        ? tb
+        : tb.AddRow(Property, Value.FormatValue())
+            .AddRowNotNull($"{Property}.{nameof(Value.Name)}", Value.Name);
+    #endregion
+    #region AddRowCtx
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmBool Value, ActionContext ctx) =>
         tb.AddRow(Property, Value);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmColor Value, ActionContext ctx) =>
@@ -125,6 +176,8 @@ internal static class PlayMakerFsmValueFormatter
         tb.AddRow(Property, Value);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmString Value, ActionContext ctx) =>
         tb.AddRow(Property, Value);
+    #endregion
+    #region TypeSwitch
     internal static string ValueFormatTypeSwitch(this VariableType type, FsmVariables vars, string name) =>
         type switch
         {
@@ -146,4 +199,5 @@ internal static class PlayMakerFsmValueFormatter
             VariableType.Enum => vars.GetFsmEnum(name).FormatValue(),
             _ => "*Unknown*"
         };  
+    #endregion
 }
