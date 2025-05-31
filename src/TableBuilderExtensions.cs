@@ -13,28 +13,7 @@ namespace PlayMakerDocumenter;
 
 internal static class TableBuilderExtensions
 {
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.ArrayList Value, ActionContext ctx = null) =>
-        Value is null
-        ? tb
-        : tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, Il2CppSystem.Collections.Hashtable Value, ActionContext ctx = null) =>
-        Value is null
-        ? tb
-        : tb.AddRow($"{Property}.{nameof(Value.Count)}", Value.Count);
-    public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerArrayListProxy Value, ActionContext ctx = null) =>
-        Value is null
-        ? tb
-        : tb.AddRow($"{Property}.{nameof(Value.addEvent)}", Value.arrayList)
-            .AddRow($"{Property}.{nameof(Value.contentPreviewMaxRows)}", Value.contentPreviewMaxRows)
-            .AddRow($"{Property}.{nameof(Value.condensedView)}", Value.condensedView)
-            .AddRow($"{Property}.{nameof(Value.contentPreviewStartIndex)}", Value.contentPreviewStartIndex)
-            .AddRow($"{Property}.{nameof(Value.enablePlayMakerEvents)}", Value.enablePlayMakerEvents)
-            .AddRow($"{Property}.{nameof(Value.gameObject)}", Value.gameObject)
-            .AddRow($"{Property}.{nameof(Value.name)}", Value.name)
-            .AddRow($"{Property}.{nameof(Value.removeEvent)}", Value.removeEvent)
-            .AddRow($"{Property}.{nameof(Value.setEvent)}", Value.setEvent)
-            .AddRow($"{Property}.{nameof(Value.showContent)}", Value.showContent)
-            .AddRow($"{Property}.{nameof(Value.showEvents)}", Value.showEvents);
+    
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmEvent Value, ActionContext ctx) =>
          Value is null
         ? tb
@@ -198,4 +177,8 @@ internal static class TableBuilderExtensions
         ? tb
         : tb.AddRow($"{Property}.{nameof(Value.enabled)}", Value.enabled)
             .AddRow($"{Property}.{nameof(Value.text)}", Value.text);
+    public static TableBuilder AddRowNotNull(this TableBuilder tb, string Property, string Value) =>
+        Value is null || string.IsNullOrWhiteSpace(Value)
+        ? tb
+        : tb.AddRow(Property, Value);
 }

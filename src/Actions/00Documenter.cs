@@ -39,7 +39,7 @@ internal static partial class Documenter
             .AddRow("Type", ctx.ActionType.Name)
             .AddRow(nameof(ctx.Action.BlocksFinish), ctx.Action.BlocksFinish)
             .AddRow(nameof(ctx.Action.Enabled), ctx.Action.Enabled)
-            .AddRow(nameof(ctx.Action.Name), ctx.Action.Name)
+            .AddRowNotNull(nameof(ctx.Action.Name), ctx.Action.Name)
             .BuildTable();
 
     private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>
