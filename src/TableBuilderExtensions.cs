@@ -71,6 +71,8 @@ internal static class TableBuilderExtensions
             .AddRow($"{Property}.{nameof(Value.showEvents)}", Value.showEvents);
     public static TableBuilder AddRow(this TableBuilder tb, string Property, PlayMakerProxyBase Value, ActionContext ctx = null)
     {
+        if (Value is null) return tb;
+
         if (Value.TargetFSMs is not null)
         {
             tb.AddRow(

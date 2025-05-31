@@ -131,9 +131,13 @@ internal static class FsmDocumenterPrivate
         : fsmVar.VariableType.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.name);
 
     internal static string GetFsmOwnerDefaultPath(this FsmOwnerDefault fsmOwner, PlayMakerFSM fsm) =>
-        fsmOwner.OwnerOption == OwnerDefaultOption.UseOwner
-        ? fsm.transform.GetFullPath()
-        : fsmOwner.GameObject == null || fsmOwner.GameObject.Value == null
-            ? "null"
-            : fsmOwner.GameObject.Value.GetFullPath();
+        fsmOwner is null
+        ? "null"
+        : fsmOwner.OwnerOption == OwnerDefaultOption.UseOwner
+            ? fsm is null
+                ? "null"
+                : fsm.transform.GetFullPath()
+            : fsmOwner.GameObject == null || fsmOwner.GameObject.Value == null
+                ? "null"
+                : fsmOwner.GameObject.Value.GetFullPath();
 }

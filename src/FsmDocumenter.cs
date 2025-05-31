@@ -102,4 +102,30 @@ public static partial class FsmDocumenter
         }
         LogMsg($"Index file: {indexFile}");
     }
+
+    /// <summary>
+    /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentAllFsm("c:\path\to\output\directory\", true);
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="OutputDirectory">Directory where <see cref="PlayMakerFSM"/> markdown docs will be stored.</param> 
+    /// <param name="DeleteExistingFiles">Whether to delete existing markdown files (*.md) from <paramref name="OutputDirectory"/>. Default is False.</param> 
+    public static void DocumentAllFsm(string OutputDirectory, bool DeleteExistingFiles) =>
+        DocumentAllFsm(OutputDirectory, DeleteExistingFiles: DeleteExistingFiles);
+
+    /// <summary>
+    /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentAllFsm("c:\path\to\output\directory\", FindObjectsInactive.Exclude);
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="OutputDirectory">Directory where <see cref="PlayMakerFSM"/> markdown docs will be stored.</param> 
+    /// <param name="IncludeInactive"><see cref="FindObjectsInactive"/> setting to include or exclude inactive <see cref="PlayMakerFSM"/>s. Default is Include.</param> 
+    public static void DocumentAllFsm(string OutputDirectory, FindObjectsInactive IncludeInactive) =>
+        DocumentAllFsm(OutputDirectory, IncludeInactive: IncludeInactive);
 }
