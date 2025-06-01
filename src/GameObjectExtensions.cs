@@ -5,19 +5,19 @@ namespace PlayMakerDocumenter
 {
     public static class GameObjectExtensions
     {
-        public static string GetFullPath(this GameObject go)
-        {
-            return go.transform.GetFullPath();
-        }
-        public static string GetFullPath(this PlayMakerFSM fsm)
-        {
-            return fsm.transform.GetFullPath();
-        }
-        public static string GetFullPath(this Transform current)
-        {
-            if (current.parent == null)
-                return "/" + current.name;
-            return current.parent.GetFullPath() + "/" + current.name;
-        }
+        public static string GetFullPath(this GameObject go) =>
+            go is null
+            ? "null"
+            : go.transform.GetFullPath();
+        public static string GetFullPath(this PlayMakerFSM fsm) =>
+            fsm is null
+            ? "null"
+            : fsm.transform.GetFullPath();
+        public static string GetFullPath(this Transform current) =>
+            current is null
+            ? "null"
+            : current.parent is null
+                ? "/" + current.name
+                : current.parent.GetFullPath() + "/" + current.name;
     }        
 }
