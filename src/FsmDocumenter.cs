@@ -5,7 +5,6 @@ using System.Text;
 using Il2Cpp;
 using Newtonsoft.Json;
 using UnityEngine;
-using UUIDNext;
 
 namespace PlayMakerDocumenter;
 
@@ -94,15 +93,37 @@ public static partial class FsmDocumenter
         }
         var indexFile = Path.Join(outputDir.FullName, "index.json");
         LogMsg($"Index file: {indexFile}");
+        LogWarn($"This process may take some time and the game will be frozen until it completes or fails.");
         var fsmList = GameObject.FindObjectsByType<PlayMakerFSM>(IncludeInactive, FindObjectsSortMode.None);
         var index = new List<DocumentMap>(fsmList.Count);
+        var i = 1;
+        var fails = 0;
+        LogMsg($"Processing {i} of {fsmList.Count}...");
+        var nextUpdate = DateTime.UtcNow.AddSeconds(3);
         foreach (var fsm in fsmList)
         {
+            if (DateTime.UtcNow > nextUpdate)
+            {
+                LogMsg($"Processing {i} of {fsmList.Count}...");
+                nextUpdate = DateTime.UtcNow.AddSeconds(3);
+            }
             var curDoc = DocumentMap.Create(fsm);
-            index.Add(curDoc);
-            fsm.DocumentFsm(curDoc.GetFullPath(outputDir), false);
-            File.WriteAllText(indexFile, JsonConvert.SerializeObject(index));
+            try
+            {
+                fsm.DocumentFsm(curDoc.GetFullPath(outputDir), false);
+                index.Add(curDoc);
+            }
+            catch (Exception ex)
+            {
+                fails++;
+                LogError($"Failed to process FSM: {curDoc}");
+                LogError($"{ex}");
+            }
+            File.WriteAllText(indexFile, JsonConvert.SerializeObject(index, Formatting.Indented));
+            i++;
         }
+        LogMsg($"Index file: {indexFile}");
+        LogMsg($"Documented {fsmList.Count - fails} of {fsmList.Count} PlayMakerFSMs with {fails} failures.");
     }
 
     /// <summary>

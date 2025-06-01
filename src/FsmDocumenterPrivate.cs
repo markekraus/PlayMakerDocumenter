@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 using Il2Cpp;
 using Il2CppHutongGames.PlayMaker;
@@ -36,18 +37,26 @@ internal static class FsmDocumenterPrivate
         return sb;
     }
 
-    internal static StringBuilder DocStateTransitions(this StringBuilder sb, StateContext ctx) =>
-         ctx is null || ctx.State is null || ctx.State.transitions is null || ctx.State.transitions.Count < 1
-        ? sb
-        : sb.AppendHeader($"### {ctx.StateIndex} {ctx.State.Name}: Transitions")
+    internal static StringBuilder DocStateTransitions(this StringBuilder sb, StateContext ctx)
+    {
+        if (ctx is null || ctx.State is null || ctx.State.transitions is null || ctx.State.transitions.Count < 1)
+            return sb;
+        var tb = sb
+            .AppendHeader($"### {ctx.StateIndex} {ctx.State.Name}: Transitions")
             .NewTable()
-            .WithHeaders("EventName", "ToState")
-            .ForEachAddRow(ctx.State.transitions, transition =>
+            .WithHeaders("EventName", "ToState");
+        foreach (var transition in ctx.State.transitions)
+        {
+            // Todo: skip if state is null
+            if (!ctx.AddEventMap(transition.EventName, transition.ToState))
             {
-                ctx.EventToState.Add(transition.EventName, transition.ToState);
-                return new string[] { transition.EventName, transition.ToState };
-            })
-            .BuildTable();
+                LogError($"Duplicate event key '{transition.EventName}'. Should map to '{transition.ToState}'. State: {ctx.StateIndex}, FSM: {ctx.Fsm.GetFullPath()}");
+            }
+            tb.AddRow(transition.EventName, transition.ToState);
+        }
+        return tb.BuildTable();
+    }
+
     internal static StringBuilder DocStateDetails(this StringBuilder sb, StateContext ctx) =>
         ctx is null || ctx.State is null
         ? sb

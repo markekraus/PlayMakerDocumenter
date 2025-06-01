@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Il2Cpp;
+using Il2CppHutongGames.PlayMaker;
 using Il2CppHutongGames.PlayMaker.Actions;
 
 namespace PlayMakerDocumenter.Actions;
@@ -13,17 +16,54 @@ internal static partial class Documenter
         var tb = sb
             .AppendHeader($"{nameof(SendRandomEvent)} Details:")
             .NewTable()
-            .WithNameValueHeaders()
-            .AddRow(nameof(action.delay), action.delay, ctx)
-            .AddRow(nameof(action.delayedEvent), action.delayedEvent, ctx)
+            .WithNameValueHeaders();
+        try{tb.AddRow(nameof(action.delay), action.delay, ctx);}
+            catch { LogError($"Could not access 'delay'. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].delay"); }
+        try{tb.AddRow(nameof(action.delayedEvent), action.delayedEvent, ctx);}
+            catch { LogError($"Could not access 'delayedEvent'. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].delayedEvent"); }
+        tb = tb
             .BuildTable()
             .NewTable()
             .WithHeaders("Weight", "Event", "Target State");
         for (int i = 0; i < action.events.Count; i++)
         {
-            var fsmEvent = action.events[i];
-            var weight = action.weights[i];
-            tb.AddRow(weight.FormatValue(), fsmEvent.Name, ctx.EventToState.GetValueOrDefault(fsmEvent.Name));
+            FsmEvent fsmEvent;
+            FsmFloat fsmFloat;
+            string eventName;
+            string weight;
+            string stateName;
+            try
+            {
+                fsmEvent = action.events[i];
+                if (fsmEvent is null)
+                {
+                    eventName = " null";
+                    stateName = "";
+                }
+                else
+                {
+                    eventName = fsmEvent.Name;
+                    stateName = ctx.GetEventState(fsmEvent.Name);   
+                }
+            }
+            catch (Exception ex)
+            {
+                eventName = "";
+                stateName = "";
+                LogError($"Could not evaluate event/state. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].events[{i}]");
+            }
+            try
+            {
+                fsmFloat = action.weights[i];
+                weight = fsmFloat?.FormatValue();
+            }
+            catch (Exception ex)
+            {
+                weight = "";
+                LogError($"Could not evaluate weight. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].weights[{i}]");
+            }
+            
+            tb.AddRow(weight, eventName, stateName);
         }
         return tb.BuildTable();
     }

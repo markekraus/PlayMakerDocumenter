@@ -47,10 +47,13 @@ internal static class PlayMakerFsmValueFormatter
         fsmMaterial is null || fsmMaterial.Value is null
         ? "null"
         : $"name: {fsmMaterial.Value.name}";
-    public static string FormatValue(this FsmGameObject fsmGameObject) =>
-        fsmGameObject is null || fsmGameObject.Value is null
-        ? "null"
-        : fsmGameObject.Value.GetFullPath();
+    public static string FormatValue(this FsmGameObject fsmGameObject)
+    {
+        if (fsmGameObject is null || fsmGameObject.Value is null) return "null";
+        try { return fsmGameObject.Value.GetFullPath(); } catch { return "null"; }
+    }
+
+
     public static string FormatValue(this FsmObject fsmObject) =>
         fsmObject is null || fsmObject.Value is null
         ? "null"
