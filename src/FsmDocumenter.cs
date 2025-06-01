@@ -26,7 +26,8 @@ public static partial class FsmDocumenter
     /// </summary>
     /// <param name="fsmPath">The GameObject path of the <see cref="PlayMakerFSM"/> to document.</param>
     /// <param name="filePath">The file system path of the output markdown file.</param>
-    public static void DocumentFsm(string fsmPath, string filePath)
+    /// <param name="enableLogs">Whether or not to enable logging. Default is True.</param>
+    public static void DocumentFsm(string fsmPath, string filePath, bool enableLogs = true)
     {
         var fsmObj = GameObject.Find(fsmPath);
         if (fsmObj is null) { LogError($"Could not find '{fsmPath}'"); return; }
@@ -34,7 +35,7 @@ public static partial class FsmDocumenter
         var fsm = fsmObj.GetComponent<PlayMakerFSM>();
         if (fsm is null) { LogError($"Could not find PLayMakerFSM on '{fsmPath}'"); return; }
 
-        fsm.DocumentFsm(filePath);
+        fsm.DocumentFsm(filePath, enableLogs);
     }
     /// <summary>
     /// Documents a <see cref="PlayMakerFSM"/> in markdown to the specified <paramref name="filePath"/>.
@@ -46,7 +47,8 @@ public static partial class FsmDocumenter
     /// </summary>
     /// <param name="fsm">The <see cref="PlayMakerFSM"/> to document.</param>
     /// <param name="filePath">The file system path of the output markdown file.</param>
-    public static void DocumentFsm(this PlayMakerFSM fsm, string filePath)
+    /// <param name="enableLogs">Whether or not to enable logging. Default is True.</param>
+    public static void DocumentFsm(this PlayMakerFSM fsm, string filePath, bool enableLogs = true)
     {
         if (fsm is null) { LogError("fsm was null"); return; }
         if (filePath.IsNullOrWhiteSpace()) { LogError("filePath was null"); return; }
@@ -60,7 +62,8 @@ public static partial class FsmDocumenter
             .DocFsmEvents(fsm)
             .DocFsmStates(fsm)
             .WriteToFile(filePath);
-        LogMsg($"FSM Doc: {filePath}");
+        if (enableLogs)
+            LogMsg($"FSM Doc: {filePath}");
     }
     /// <summary>
     /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
@@ -97,10 +100,9 @@ public static partial class FsmDocumenter
         {
             var curDoc = DocumentMap.Create(fsm);
             index.Add(curDoc);
-            fsm.DocumentFsm(curDoc.GetFullPath(outputDir));
+            fsm.DocumentFsm(curDoc.GetFullPath(outputDir), false);
             File.WriteAllText(indexFile, JsonConvert.SerializeObject(index));
         }
-        LogMsg($"Index file: {indexFile}");
     }
 
     /// <summary>
