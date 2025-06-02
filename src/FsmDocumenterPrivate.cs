@@ -47,8 +47,7 @@ internal static class FsmDocumenterPrivate
             .WithHeaders("EventName", "ToState");
         foreach (var transition in ctx.State.transitions)
         {
-            // Todo: skip if state is null
-            if (!ctx.AddEventMap(transition.EventName, transition.ToState))
+            if (transition.ToFsmState is not null && !ctx.AddEventMap(transition.EventName, transition.ToState))
             {
                 LogError($"Duplicate event key '{transition.EventName}'. Should map to '{transition.ToState}'. State: {ctx.StateIndex}, FSM: {ctx.Fsm.GetFullPath()}");
             }
@@ -99,6 +98,7 @@ internal static class FsmDocumenterPrivate
         : sb.AppendHeader($"## {fsm.name}")
             .NewTable()
             .WithPropertyValueHeaders()
+            .AddRow("PMDUuid", fsm.GetUuid())
             .AddRow("Active", $"{fsm.Active}")
             .AddRow("ActiveStateName", fsm.ActiveStateName)
             .AddRow("enabled", $"{fsm.enabled}")

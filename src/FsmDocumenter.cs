@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Il2Cpp;
 using Newtonsoft.Json;
@@ -119,9 +120,9 @@ public static partial class FsmDocumenter
                 LogError($"Failed to process FSM: {curDoc}");
                 LogError($"{ex}");
             }
-            File.WriteAllText(indexFile, JsonConvert.SerializeObject(index, Formatting.Indented));
             i++;
         }
+        File.WriteAllText(indexFile, JsonConvert.SerializeObject(index.OrderBy(ind => ind.FileName), Formatting.Indented));
         LogMsg($"Index file: {indexFile}");
         LogMsg($"Documented {fsmList.Count - fails} of {fsmList.Count} PlayMakerFSMs with {fails} failures.");
     }

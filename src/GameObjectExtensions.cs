@@ -1,5 +1,8 @@
+using System;
 using Il2Cpp;
 using UnityEngine;
+using UUIDNext;
+using UUIDNext.Tools;
 
 namespace PlayMakerDocumenter
 {
@@ -22,5 +25,12 @@ namespace PlayMakerDocumenter
             : current.parent is null
                 ? "/" + current.name
                 : current.parent.GetFullPath() + "/" + current.name;
+        internal static string GetUuid(this PlayMakerFSM fsm)
+        {
+            if(fsm is null){ return "null"; }
+            var index = Array.IndexOf(fsm.gameObject.GetComponents<PlayMakerFSM>(), fsm);
+            var go = fsm.GetFullPath();
+            return Uuid.NewNameBased(FsmDocumenter.AppNamespace, $"{go}[{index}]").ToString();
+        }
     }        
 }

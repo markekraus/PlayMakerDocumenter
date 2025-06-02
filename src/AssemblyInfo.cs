@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using MelonLoader;
 using PlayMakerDocumenter;
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: MelonInfo(typeof(Entry), "PlayMakerDocumenter", "1.0.0", "MarkEKraus", null)]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: MelonInfo(typeof(Entry), "PlayMakerDocumenter", "2.0.0", "MarkEKraus", null)]
 [assembly: MelonAuthorColor(255, 255, 0, 188)]
 [assembly: MelonColor(255, 51, 95, 255)]
 [assembly: MelonGame("Dogubomb", "BLUE PRINCE")]

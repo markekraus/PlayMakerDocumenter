@@ -130,38 +130,58 @@ internal static class TableBuilderExtensions
     public static TableBuilder AddRow(this TableBuilder tb, string Property, FsmProperty Value, ActionContext ctx = null)
     {
         if (Value is null) return tb;
-        // tb
-            try{tb.AddRow($"{Property}.{nameof(Value.ArrayParameter)}", Value.ArrayParameter);} catch { LogError($"{Property}.{nameof(Value.ArrayParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.BoolParameter)}", Value.BoolParameter);} catch { LogError($"{Property}.{nameof(Value.BoolParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.ColorParameter)}", Value.ColorParameter);} catch { LogError($"{Property}.{nameof(Value.ColorParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.EnumParameter)}", Value.EnumParameter);} catch { LogError($"{Property}.{nameof(Value.EnumParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.FloatParameter)}", Value.FloatParameter);} catch { LogError($"{Property}.{nameof(Value.FloatParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.GameObjectParameter)}", Value.GameObjectParameter);} catch { LogError($"{Property}.{nameof(Value.GameObjectParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.initialized)}", Value.initialized);} catch { LogError($"{Property}.{nameof(Value.initialized)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.IntParameter)}", Value.IntParameter);} catch { LogError($"{Property}.{nameof(Value.IntParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.MaterialParameter)}", Value.MaterialParameter);} catch { LogError($"{Property}.{nameof(Value.MaterialParameter)}");}
-        // ;
+        
+        try{tb.AddRow($"{Property}.{nameof(Value.ArrayParameter)}", Value.ArrayParameter);} 
+            catch { LogError($"{Property}.{nameof(Value.ArrayParameter)}");}
+        try{tb.AddRow($"{Property}.{nameof(Value.BoolParameter)}", Value.BoolParameter);}
+            catch { LogError($"{Property}.{nameof(Value.BoolParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.ColorParameter)}", Value.ColorParameter);}
+            catch { LogError($"{Property}.{nameof(Value.ColorParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.EnumParameter)}", Value.EnumParameter);}
+            catch { LogError($"{Property}.{nameof(Value.EnumParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.FloatParameter)}", Value.FloatParameter);}
+            catch { LogError($"{Property}.{nameof(Value.FloatParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.GameObjectParameter)}", Value.GameObjectParameter);}
+            catch { LogError($"{Property}.{nameof(Value.GameObjectParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.initialized)}", Value.initialized);} 
+            catch { LogError($"{Property}.{nameof(Value.initialized)}");}
+        try{tb.AddRow($"{Property}.{nameof(Value.IntParameter)}", Value.IntParameter);}
+            catch { LogError($"{Property}.{nameof(Value.IntParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.MaterialParameter)}", Value.MaterialParameter);}
+            catch { LogError($"{Property}.{nameof(Value.MaterialParameter)}"); }
+
         if (Value.memberInfo is not null)
         {
             for (int i = 0; i < Value.memberInfo.Count; i++)
             {
                 var memberInfo = Value.memberInfo[i];
                 if (memberInfo is null) continue;
-                try { tb.AddRow($"{Property}.{nameof(Value.memberInfo)}[{i}]", memberInfo); } catch { LogError($"{Property}.{nameof(Value.memberInfo)}[{i}]"); }
+                try { tb.AddRow($"{Property}.{nameof(Value.memberInfo)}[{i}]", memberInfo); }
+                    catch { LogError($"{Property}.{nameof(Value.memberInfo)}[{i}]"); }
             }
         }
-        // tb
-            try{tb.AddRow($"{Property}.{nameof(Value.PropertyName)}", Value.PropertyName);} catch {LogError($"{Property}.{nameof(Value.PropertyName)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.PropertyType)}", Value.PropertyType);} catch {LogError($"{Property}.{nameof(Value.PropertyType)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.QuaternionParameter)}", Value.QuaternionParameter);} catch {LogError($"{Property}.{nameof(Value.QuaternionParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.RectParamater)}", Value.RectParamater);} catch {LogError($"{Property}.{nameof(Value.RectParamater)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.setProperty)}", Value.setProperty);} catch {LogError($"{Property}.{nameof(Value.setProperty)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.StringParameter)}", Value.StringParameter);} catch {LogError($"{Property}.{nameof(Value.StringParameter)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.TargetObject)}", Value.TargetObject);} catch {LogError($"{Property}.{nameof(Value.TargetObject)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.TargetType)}", Value.TargetType);} catch {LogError($"{Property}.{nameof(Value.TargetType)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.TargetTypeName)}", Value.TargetTypeName);} catch {LogError($"{Property}.{nameof(Value.TargetTypeName)}");}
-            try{tb.AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);} catch {LogError($"{Property}.{nameof(Value.TextureParameter)}");}
-        // ;
+
+        try { tb.AddRow($"{Property}.{nameof(Value.PropertyName)}", Value.PropertyName); }
+            catch { LogError($"{Property}.{nameof(Value.PropertyName)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.PropertyType)}", Value.PropertyType);}
+            catch { LogError($"{Property}.{nameof(Value.PropertyType)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.QuaternionParameter)}", Value.QuaternionParameter);}
+            catch { LogError($"{Property}.{nameof(Value.QuaternionParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.RectParamater)}", Value.RectParamater);}
+            catch { LogError($"{Property}.{nameof(Value.RectParamater)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.setProperty)}", Value.setProperty);}
+            catch { LogError($"{Property}.{nameof(Value.setProperty)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.StringParameter)}", Value.StringParameter);}
+            catch { LogError($"{Property}.{nameof(Value.StringParameter)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.TargetObject)}", Value.TargetObject);}
+            catch { LogError($"{Property}.{nameof(Value.TargetObject)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.TargetType)}", Value.TargetType);}
+            catch { LogError($"{Property}.{nameof(Value.TargetType)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.TargetTypeName)}", Value.TargetTypeName);}
+            catch { LogError($"{Property}.{nameof(Value.TargetTypeName)}"); }
+        try{tb.AddRow($"{Property}.{nameof(Value.TextureParameter)}", Value.TextureParameter);}
+            catch { LogError($"{Property}.{nameof(Value.TextureParameter)}"); }
+
         return tb;
     }
     public static TableBuilder AddRow(this TableBuilder tb, string Property, ParameterInfo Value, ActionContext ctx = null) =>

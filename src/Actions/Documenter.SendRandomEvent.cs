@@ -51,6 +51,7 @@ internal static partial class Documenter
                 eventName = "";
                 stateName = "";
                 LogError($"Could not evaluate event/state. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].events[{i}]");
+                LogError($"{ex}");
             }
             try
             {

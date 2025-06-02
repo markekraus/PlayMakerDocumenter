@@ -13,7 +13,7 @@ internal record DocumentMap(string FileName, string GameObject, int ComponentInd
 
         var index = Array.IndexOf(fsm.gameObject.GetComponents<PlayMakerFSM>(), fsm);
         var go = fsm.GetFullPath();
-        var name = Uuid.NewNameBased(FsmDocumenter.AppNamespace, $"{go}[{index}]").ToString() + ".md";
+        var name = fsm.GetUuid() + ".md";
         return new(name, go, index);
     }
 }
