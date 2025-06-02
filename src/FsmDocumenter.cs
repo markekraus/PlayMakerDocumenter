@@ -54,7 +54,7 @@ public static partial class FsmDocumenter
         if (filePath.IsNullOrWhiteSpace()) { LogError("filePath was null"); return; }
 
         new StringBuilder()
-            .AppendHeader("# PlayMaker FSM Documentation")
+            .AppendHeader($"# {fsm.GetFullPath()}")
             .DocEnvironmentDetails()
             .DocFsmDetails(fsm)
             .DocGlobalTransitions(fsm)

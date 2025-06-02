@@ -1,4 +1,4 @@
-# PlayMaker FSM Documentation
+# /__SYSTEM/Luck Calculator
 
 ## Environment details
 
