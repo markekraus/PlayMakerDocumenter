@@ -65,7 +65,7 @@
     </ItemGroup>
     <ItemGroup>
         <Reference Include="PlayMakerDocumenter">
-            <HintPath>..\..\Release\PlayMakerDocumenter.ML.IL2CPP\PlayMakerDocumenter.ML.IL2CPP.dll</HintPath>
+            <HintPath>..\..\Publish\PlayMakerDocumenter.ML.IL2CPP\PlayMakerDocumenter.ML.IL2CPP.dll</HintPath>
             <Private>false</Private>
         </Reference>
     </ItemGroup>

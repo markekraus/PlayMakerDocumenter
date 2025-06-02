@@ -7,29 +7,10 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <configurations>ML_Cpp_CoreCLR</configurations>
     </PropertyGroup>
-    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-        <ItemGroup
-            Condition="'$(Configuration)'=='ML_Cpp_net6' or '$(Configuration)'=='ML_Cpp_net472' or '$(Configuration)'=='STANDALONE_Cpp' or '$(Configuration)'=='BIE_Cpp'">
-            <Exec
-                Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_IL2CPP_Unhollower" />
-        </ItemGroup>
-        <ItemGroup
-            Condition="'$(Configuration)'=='BIE_Cpp_CoreCLR' or '$(Configuration)'=='BIE_Unity_Cpp_CoreCLR' or '$(Configuration)'=='STANDALONE_Cpp_CoreCLR'">
-            <Exec
-                Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_IL2CPP_Interop_BIE" />
-        </ItemGroup>
-        <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
-            <Exec
-                Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_IL2CPP_Interop_ML" />
-        </ItemGroup>
-        <ItemGroup
-            Condition="'$(Configuration)'=='BIE6_Mono' or '$(Configuration)'=='BIE6_Unity_Mono' or '$(Configuration)'=='BIE5_Mono' or '$(Configuration)'=='ML_Mono' or '$(Configuration)'=='STANDALONE_Mono'">
-            <Exec Command="dotnet build ..\UniverseLib\src\UniverseLib.sln -c Release_Mono" />
-        </ItemGroup>
-    </Target>
     <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
     <TargetFramework>net6</TargetFramework>
     <OutputPath>..\Release\PlayMakerDocumenter.ML.IL2CPP\</OutputPath>
+    <PublishDir>..\Publish\PlayMakerDocumenter.ML.IL2CPP\</PublishDir>
     <AssemblyName>PlayMakerDocumenter.ML.IL2CPP</AssemblyName>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
@@ -65,6 +46,10 @@
         </Reference>
         <Reference Include="MelonLoader">
             <HintPath>..\..\..\MelonLoader\net6\MelonLoader.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>..\..\..\MelonLoader\net6\Newtonsoft.Json.dll</HintPath>
             <Private>False</Private>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
@@ -107,5 +92,10 @@
             <HintPath>..\MarkdownUtilities\Release\MarkdownUtilities.net6/MarkdownUtilities.net6.dll</HintPath>
             <Private>True</Private>
         </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="UUIDNext" Version="4.1.2">
+            <Private>True</Private>
+        </PackageReference>
     </ItemGroup>
 </Project>

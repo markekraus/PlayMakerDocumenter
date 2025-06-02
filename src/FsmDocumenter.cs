@@ -1,11 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using Il2Cpp;
-using Il2CppHutongGames.PlayMaker;
+using Newtonsoft.Json;
 using UnityEngine;
-using UniverseLib;
-
-using static PlayMakerDocumenter.Actions.Documenter;
 
 namespace PlayMakerDocumenter;
 
@@ -14,6 +14,8 @@ namespace PlayMakerDocumenter;
 /// </summary>
 public static partial class FsmDocumenter
 {
+    public const string AppNamespaceString = "c9d71ad1-b78e-4bc8-94cc-404db44cfd48";
+    public static readonly Guid AppNamespace = new(AppNamespaceString);
     /// <summary>
     /// Documents a <see cref="PlayMakerFSM"/> in markdown to the specified <paramref name="filePath"/>.
     /// <example>
@@ -24,7 +26,8 @@ public static partial class FsmDocumenter
     /// </summary>
     /// <param name="fsmPath">The GameObject path of the <see cref="PlayMakerFSM"/> to document.</param>
     /// <param name="filePath">The file system path of the output markdown file.</param>
-    public static void DocumentFsm(string fsmPath, string filePath)
+    /// <param name="enableLogs">Whether or not to enable logging. Default is True.</param>
+    public static void DocumentFsm(string fsmPath, string filePath, bool enableLogs = true)
     {
         var fsmObj = GameObject.Find(fsmPath);
         if (fsmObj is null) { LogError($"Could not find '{fsmPath}'"); return; }
@@ -32,7 +35,7 @@ public static partial class FsmDocumenter
         var fsm = fsmObj.GetComponent<PlayMakerFSM>();
         if (fsm is null) { LogError($"Could not find PLayMakerFSM on '{fsmPath}'"); return; }
 
-        fsm.DocumentFsm(filePath);
+        fsm.DocumentFsm(filePath, enableLogs);
     }
     /// <summary>
     /// Documents a <see cref="PlayMakerFSM"/> in markdown to the specified <paramref name="filePath"/>.
@@ -44,13 +47,14 @@ public static partial class FsmDocumenter
     /// </summary>
     /// <param name="fsm">The <see cref="PlayMakerFSM"/> to document.</param>
     /// <param name="filePath">The file system path of the output markdown file.</param>
-    public static void DocumentFsm(this PlayMakerFSM fsm, string filePath)
+    /// <param name="enableLogs">Whether or not to enable logging. Default is True.</param>
+    public static void DocumentFsm(this PlayMakerFSM fsm, string filePath, bool enableLogs = true)
     {
-        if (fsm is null) { LogError("Fsm was null"); return; }
-        if (filePath.IsNullOrWhiteSpace()) { LogError("Fsm was null"); return; }
+        if (fsm is null) { LogError("fsm was null"); return; }
+        if (filePath.IsNullOrWhiteSpace()) { LogError("filePath was null"); return; }
 
         new StringBuilder()
-            .AppendHeader("# PlayMaker FSM Documentation")
+            .AppendHeader($"# {fsm.GetFullPath()}")
             .DocEnvironmentDetails()
             .DocFsmDetails(fsm)
             .DocGlobalTransitions(fsm)
@@ -58,130 +62,94 @@ public static partial class FsmDocumenter
             .DocFsmEvents(fsm)
             .DocFsmStates(fsm)
             .WriteToFile(filePath);
-        LogMsg($"FSM Doc: {filePath}");
+        if (enableLogs)
+            LogMsg($"FSM Doc: {filePath}");
     }
-    private static StringBuilder DocFsmStates(this StringBuilder sb, PlayMakerFSM fsm) =>
-        fsm is null || fsm.FsmStates is null || fsm.FsmStates.Count < 1
-        ? sb
-        : sb.DocEachFsmState(fsm);
-    private static StringBuilder DocEachFsmState(this StringBuilder sb, PlayMakerFSM fsm)
+    /// <summary>
+    /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentAllFsm("c:\path\to\output\directory\");
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="OutputDirectory">Directory where <see cref="PlayMakerFSM"/> markdown docs will be stored.</param> 
+    /// <param name="IncludeInactive"><see cref="FindObjectsInactive"/> setting to include or exclude inactive <see cref="PlayMakerFSM"/>s. Default is Include.</param> 
+    /// <param name="DeleteExistingFiles">Whether to delete existing markdown files (*.md) from <paramref name="OutputDirectory"/>. Default is False.</param> 
+    public static void DocumentAllFsm(string OutputDirectory, FindObjectsInactive IncludeInactive = FindObjectsInactive.Include, bool DeleteExistingFiles = false)
     {
-        if (fsm.FsmStates is null || fsm.FsmStates.Count < 1)
-            return sb;
-        for (int stateIndex = 0; stateIndex < fsm.FsmStates.Count; stateIndex++)
+        if (OutputDirectory.IsNullOrWhiteSpace()) { LogError("outputDirectory was null"); return; }
+
+        DirectoryInfo outputDir;
+        try { outputDir = Directory.CreateDirectory(OutputDirectory); }
+        catch (Exception ex) { LogError(ex.Message); return; }
+
+        if (DeleteExistingFiles)
         {
-            var fsmState = fsm.FsmStates[stateIndex];
-            var ctx = new StateContext(
-                fsm,
-                fsm.FsmStates[stateIndex],
-                stateIndex,
-                new Dictionary<string, string>());
-            sb
-                .DocStateDetails(ctx)
-                .DocStateTransitions(ctx)
-                .DocStateActions(ctx);
+            foreach (var file in outputDir.EnumerateFiles("*.md"))
+            {
+                try { file.Delete(); }
+                catch (Exception ex) { LogError(ex.Message); return; }
+            }
         }
-        return sb;
+        var indexFile = Path.Join(outputDir.FullName, "index.json");
+        LogMsg($"Index file: {indexFile}");
+        LogWarn($"This process may take some time and the game will be frozen until it completes or fails.");
+        var fsmList = GameObject.FindObjectsByType<PlayMakerFSM>(IncludeInactive, FindObjectsSortMode.None);
+        var index = new List<DocumentMap>(fsmList.Count);
+        var i = 1;
+        var fails = 0;
+        LogMsg($"Processing {i} of {fsmList.Count}...");
+        var nextUpdate = DateTime.UtcNow.AddSeconds(3);
+        foreach (var fsm in fsmList)
+        {
+            if (DateTime.UtcNow > nextUpdate)
+            {
+                LogMsg($"Processing {i} of {fsmList.Count}...");
+                nextUpdate = DateTime.UtcNow.AddSeconds(3);
+            }
+            var curDoc = DocumentMap.Create(fsm);
+            try
+            {
+                fsm.DocumentFsm(curDoc.GetFullPath(outputDir), false);
+                index.Add(curDoc);
+            }
+            catch (Exception ex)
+            {
+                fails++;
+                LogError($"Failed to process FSM: {curDoc}");
+                LogError($"{ex}");
+            }
+            i++;
+        }
+        File.WriteAllText(indexFile, JsonConvert.SerializeObject(index.OrderBy(ind => ind.FileName), Formatting.Indented));
+        LogMsg($"Index file: {indexFile}");
+        LogMsg($"Documented {fsmList.Count - fails} of {fsmList.Count} PlayMakerFSMs with {fails} failures.");
     }
 
-    private static StringBuilder DocStateTransitions(this StringBuilder sb, StateContext ctx) =>
-         ctx is null || ctx.State is null || ctx.State.transitions is null || ctx.State.transitions.Count < 1
-        ? sb
-        : sb.AppendHeader($"### {ctx.StateIndex} {ctx.State.Name}: Transitions")
-            .NewTable()
-            .WithHeaders("EventName", "ToState")
-            .ForEachAddRow(ctx.State.transitions, transition =>
-            {
-                ctx.EventToState.Add(transition.EventName, transition.ToState);
-                return new string[] { transition.EventName, transition.ToState };
-            })
-            .BuildTable();
-    private static StringBuilder DocStateDetails(this StringBuilder sb, StateContext ctx) =>
-        ctx is null || ctx.State is null
-        ? sb
-        : sb.AppendHeader($"## State {ctx.StateIndex}: {ctx.State.Name}")
-            .NewTable()
-            .WithPropertyValueHeaders()
-            .AddRow(nameof(ctx.State.Description), ctx.State.Description)
-            .AddRow(nameof(ctx.State.HandlesOnEvent), ctx.State.HandlesOnEvent)
-            .AddRow(nameof(ctx.State.IsSequence), ctx.State.IsSequence)
-            .AddRow(nameof(ctx.State.maxLoopCount), ctx.State.maxLoopCount)
-            .BuildTable();
-    private static StringBuilder DocFsmEvents(this StringBuilder sb, PlayMakerFSM fsm) =>
-        fsm is null || fsm.FsmEvents is null || fsm.FsmEvents.Count < 1
-        ? sb
-        : sb.AppendHeader("## Events")
-            .NewTable()
-            .WithHeaders("Name", "Path")
-            .ForEachAddRow(fsm.FsmEvents, fsmEvent =>
-                new string[] { fsmEvent.Name, fsmEvent.Path })
-            .BuildTable();
-    private static StringBuilder DocFsmVariables(this StringBuilder sb, PlayMakerFSM fsm) =>
-        fsm is null || fsm.FsmVariables is null || fsm.FsmVariables._variableLookup is null
-        ? sb
-        : sb.AppendHeader("## Variables")
-            .NewTable()
-            .WithHeaders("Name", "Value", "Type")
-            .ForEachAddRow(fsm.FsmVariables._variableLookup, variable =>
-                variable.Value is null
-                ? new string[] { variable.Key, "null", "null" }
-                : new string[] {
-                    variable.Key,
-                    variable.Value.GetValue(fsm),
-                    variable.Value.GetActualType().Name })
-            .BuildTable();
+    /// <summary>
+    /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentAllFsm("c:\path\to\output\directory\", true);
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="OutputDirectory">Directory where <see cref="PlayMakerFSM"/> markdown docs will be stored.</param> 
+    /// <param name="DeleteExistingFiles">Whether to delete existing markdown files (*.md) from <paramref name="OutputDirectory"/>. Default is False.</param> 
+    public static void DocumentAllFsm(string OutputDirectory, bool DeleteExistingFiles) =>
+        DocumentAllFsm(OutputDirectory, DeleteExistingFiles: DeleteExistingFiles);
 
-
-    private static StringBuilder DocFsmDetails(this StringBuilder sb, PlayMakerFSM fsm) =>
-        fsm is null
-        ? sb
-        : sb.AppendHeader($"## {fsm.name}")
-            .NewTable()
-            .WithPropertyValueHeaders()
-            .AddRow("Active", $"{fsm.Active}")
-            .AddRow("ActiveStateName", fsm.ActiveStateName)
-            .AddRow("enabled", $"{fsm.enabled}")
-            .AddRow("FsmDescription", $"{fsm.FsmDescription}")
-            .AddRow("FsmName", $"{fsm.FsmName}")
-            .AddRow("FullPath", $"{fsm.transform.GetFullPath()}")
-            .BuildTable();
-
-    private static StringBuilder DocEnvironmentDetails(this StringBuilder sb) =>
-        sb.AppendHeader("## Environment details")
-            .NewTable()
-            .WithPropertyValueHeaders()
-            .AddRow("productName", Application.productName)
-            .AddRow("companyName", Application.companyName)
-            .AddRow("version", Application.version)
-            .AddRow("buildGUID", Application.buildGUID)
-            .AddRow("unityVersion", Application.unityVersion)
-            .AddRow("PlayMaker Assembly Version", typeof(PlayMakerFSM).Assembly.GetName().Version.ToString())
-            .BuildTable();
-
-    private static StringBuilder DocGlobalTransitions(this StringBuilder sb, PlayMakerFSM fsm) =>
-        fsm is null || fsm.FsmGlobalTransitions is null || fsm.FsmGlobalTransitions.Count < 1
-        ? sb
-        : sb.AppendHeader("### Global Transitions")
-            .NewTable()
-            .WithHeaders("EventName", "ToFsmState")
-            .ForEachAddRow(fsm.FsmGlobalTransitions,
-                gt => new string[] { gt.EventName, gt.ToFsmState.Name })
-            .BuildTable();
-
-    internal static string GetValue(this FsmVar fsmVar, PlayMakerFSM fsm) =>
-        fsm == null || fsmVar == null
-        ? "null"
-        : fsmVar.Type.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.variableName);
-
-    internal static string GetValue(this NamedVariable fsmVar, PlayMakerFSM fsm) =>
-        fsm == null || fsmVar == null
-        ? "null"
-        : fsmVar.VariableType.ValueFormatTypeSwitch(fsm.FsmVariables, fsmVar.name);
-
-    internal static string GetFsmOwnerDefaultPath(this FsmOwnerDefault fsmOwner, PlayMakerFSM fsm) =>
-        fsmOwner.OwnerOption == OwnerDefaultOption.UseOwner
-        ? fsm.transform.GetFullPath()
-        : fsmOwner.GameObject == null || fsmOwner.GameObject.Value == null
-            ? "null"
-            : fsmOwner.GameObject.Value.GetFullPath();
+    /// <summary>
+    /// Documents all <see cref="PlayMakerFSM"/>s in markdown to the specified <paramref name="OutputDirectory"/>.
+    /// <example>
+    /// <code>
+    /// FsmDocumenter.DocumentAllFsm("c:\path\to\output\directory\", FindObjectsInactive.Exclude);
+    /// </code>
+    /// </example>
+    /// </summary>
+    /// <param name="OutputDirectory">Directory where <see cref="PlayMakerFSM"/> markdown docs will be stored.</param> 
+    /// <param name="IncludeInactive"><see cref="FindObjectsInactive"/> setting to include or exclude inactive <see cref="PlayMakerFSM"/>s. Default is Include.</param> 
+    public static void DocumentAllFsm(string OutputDirectory, FindObjectsInactive IncludeInactive) =>
+        DocumentAllFsm(OutputDirectory, IncludeInactive: IncludeInactive);
 }

@@ -1,4 +1,4 @@
-# PlayMaker FSM Documentation
+# /__SYSTEM/Luck Calculator
 
 ## Environment details
 
@@ -13,14 +13,15 @@
 
 ## Luck Calculator
 
-| Property        | Value                     |
-| --------------- | ------------------------- |
-| Active          | True                      |
-| ActiveStateName | Item Spawn                |
-| enabled         | True                      |
-| FsmDescription  |                           |
-| FsmName         | Luck Calculator           |
-| FullPath        | /__SYSTEM/Luck Calculator |
+| Property        | Value                                |
+| --------------- | ------------------------------------ |
+| PMDUuid         | ad6348da-8c1c-507c-84ce-44eab94355ab |
+| Active          | True                                 |
+| ActiveStateName | Item Spawn                           |
+| enabled         | True                                 |
+| FsmDescription  |                                      |
+| FsmName         | Luck Calculator                      |
+| FullPath        | /__SYSTEM/Luck Calculator            |
 
 ## Variables
 

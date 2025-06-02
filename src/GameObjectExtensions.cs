@@ -1,5 +1,8 @@
+using System;
 using Il2Cpp;
 using UnityEngine;
+using UUIDNext;
+using UUIDNext.Tools;
 
 namespace PlayMakerDocumenter
 {
@@ -7,17 +10,27 @@ namespace PlayMakerDocumenter
     {
         public static string GetFullPath(this GameObject go)
         {
-            return go.transform.GetFullPath();
+            if (go is null || go.transform is null) return "null";
+            try { return go.transform.GetFullPath(); } catch { return "null"; }
         }
-        public static string GetFullPath(this PlayMakerFSM fsm)
+
+
+        public static string GetFullPath(this PlayMakerFSM fsm) =>
+            fsm is null || fsm.transform is null
+            ? "null"
+            : fsm.transform.GetFullPath();
+        public static string GetFullPath(this Transform current) =>
+            current is null
+            ? "null"
+            : current.parent is null
+                ? "/" + current.name
+                : current.parent.GetFullPath() + "/" + current.name;
+        internal static string GetUuid(this PlayMakerFSM fsm)
         {
-            return fsm.transform.GetFullPath();
-        }
-        public static string GetFullPath(this Transform current)
-        {
-            if (current.parent == null)
-                return "/" + current.name;
-            return current.parent.GetFullPath() + "/" + current.name;
+            if(fsm is null){ return "null"; }
+            var index = Array.IndexOf(fsm.gameObject.GetComponents<PlayMakerFSM>(), fsm);
+            var go = fsm.GetFullPath();
+            return Uuid.NewNameBased(FsmDocumenter.AppNamespace, $"{go}[{index}]").ToString();
         }
     }        
 }
