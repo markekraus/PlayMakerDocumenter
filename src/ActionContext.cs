@@ -9,6 +9,7 @@ namespace PlayMakerDocumenter;
 internal record ActionContext(PlayMakerFSM Fsm, FsmState State, int StateIndex, FsmStateAction Action, int ActionIndex, Dictionary<string,string> EventToState)
 {
     public Type ActionType => Action.GetActualType();
+    public object ActionCasted = Action.TryCast();
     public static ActionContext Create(StateContext ctx, FsmStateAction Action, int ActionIndex) =>
         new(ctx.Fsm, ctx.State, ctx.StateIndex, Action, ActionIndex, ctx.EventToState);
 }
