@@ -186,20 +186,22 @@ public static partial class Documenter
 }
 ```
 
-Then update [`src/Actions/Documenter.cs`](src/Actions/Documenter.cs) to insert the documenter in alpha order:
+Then update [`src/Actions/00Documenter.cs`](src/Actions/00Documenter.cs) to insert the documenter in alpha order:
 
 ```csharp
     private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>
         ctx is null || ctx.Action is null || ctx.EventToState is null
         ? sb
-        : ctx.ActionType.FullName switch
+        : ctx.ActionCasted switch
         {
-            "Il2CppHutongGames.PlayMaker.Actions.ActivateGameObject" => sb.DocActionActivateGameObject(ctx.Action.TryCast<ActivateGameObject>(), ctx),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListGet" => sb.DocActionArrayListGet(ctx.Action.TryCast<ArrayListGet>(), ctx),
-            "Il2CppHutongGames.PlayMaker.Actions.ArrayListSet" => sb.DocActionArrayListSet(ctx.Action.TryCast<ArrayListSet>(), ctx),
+            ActivateGameObject => sb.DocActionActivateGameObject(ctx.Action.TryCast<ActivateGameObject>(), ctx),
+            ArrayListGet => sb.DocActionArrayListGet(ctx.Action.TryCast<ArrayListGet>(), ctx),
+            ArrayListSet => sb.DocActionArrayListSet(ctx.Action.TryCast<ArrayListSet>(), ctx),
             // ...
-            "Il2CppHutongGames.PlayMaker.Actions.SeizeMeansOfProduction" => sb.DocActionSeizeMeansOfProduction(action.TryCast<SeizeMeansOfProduction>(), ctx),
+            SeizeMeansOfProduction => sb.DocActionSeizeMeansOfProduction(action.TryCast<SeizeMeansOfProduction>(), ctx),
             // ...
+            _ => sb
+        };
 ```
 
 Then draw the rest of the owl.
