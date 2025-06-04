@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Il2Cpp;
+using Il2CppHutongGames.PlayMaker;
+using PlayMakerDocumenter.Serializer.FsmVariables;
 using UniverseLib;
 
 namespace PlayMakerDocumenter.Serializer;
@@ -16,18 +19,10 @@ public class FsmVariablesDoc : List<FsmVariableDoc>
             var fsmVar = lookup.Value;
             if (fsmVar is null)
             {
-                Add(new(
-                    Name: name,
-                    Type: "null",
-                    Value: "null"
-                ));
+                Add(new(name, "null", "null"));
                 continue;
             }
-            Add(new(
-                Name: name,
-                Type: fsmVar.GetActualType().Name,
-                Value: fsmVar.GetValue(Fsm)
-            ));
+            AddRange(fsmVar.GetValue());
         }
     }
     public static implicit operator FsmVariablesDoc(PlayMakerFSM Fsm) =>

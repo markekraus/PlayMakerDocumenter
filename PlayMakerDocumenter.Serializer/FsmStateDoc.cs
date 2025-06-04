@@ -11,8 +11,8 @@ public class FsmStateDoc
     public FsmStateDoc() { }
     internal FsmStateDoc(PlayMakerFSM fsm, int StateIndex)
     {
-        Details = this;
         var ctx = new StateContext(fsm, fsm.FsmStates[StateIndex], StateIndex, new());
+        Details = ctx;
         Transitions = ctx;
         Actions = ctx;
     }

@@ -1,2 +1,2 @@
-using static PlayMakerDocumenter.Logging.Logger;
+global using static PlayMakerDocumenter.Logging.Logger;
 

@@ -8,13 +8,13 @@
         <configurations>ML_Cpp_CoreCLR</configurations>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
-    <TargetFramework>net6</TargetFramework>
-    <OutputPath>..\Release\PlayMakerDocumenter.Serializer.ML.IL2CPP\</OutputPath>
-    <PublishDir>..\Publish\PlayMakerDocumenter.Serializer.ML.IL2CPP\</PublishDir>
-    <AssemblyName>PlayMakerDocumenter.Serializer.ML.IL2CPP</AssemblyName>
-    <DebugSymbols>False</DebugSymbols>
-    <DebugType>None</DebugType>
-  </PropertyGroup>
+        <TargetFramework>net6</TargetFramework>
+        <OutputPath>..\Release\PlayMakerDocumenter.Utility.ML.IL2CPP\</OutputPath>
+        <PublishDir>..\Publish\PlayMakerDocumenter.Utility.ML.IL2CPP\</PublishDir>
+        <AssemblyName>PlayMakerDocumenter.Utility.ML.IL2CPP</AssemblyName>
+        <DebugSymbols>False</DebugSymbols>
+        <DebugType>None</DebugType>
+    </PropertyGroup>
     <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
         <Reference Include="Assembly-CSharp">
             <HintPath>..\..\..\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll</HintPath>
@@ -91,9 +91,5 @@
         <PackageReference Include="UUIDNext" Version="4.1.2">
             <Private>True</Private>
         </PackageReference>
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\PlayMakerDocumenter.Logging\PlayMakerDocumenter.Logging.csproj" />
-      <ProjectReference Include="..\PlayMakerDocumenter.Utility\PlayMakerDocumenter.Utility.csproj" />
     </ItemGroup>
 </Project>

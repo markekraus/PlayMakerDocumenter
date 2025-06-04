@@ -4,7 +4,7 @@ using Il2CppHutongGames.PlayMaker;
 
 namespace PlayMakerDocumenter.Serializer;
 
-public record StateContext(PlayMakerFSM Fsm, FsmState State, int StateIndex, Dictionary<string,string> EventToState);
+public record StateContext(PlayMakerFSM Fsm, FsmState State, int StateIndex, Dictionary<string,string> EventToState) : FsmContext(Fsm);
 
 internal static class StateContextExtensions
 {

@@ -5,10 +5,13 @@
   <Folder Name="/PlayMakerDocumenter.Logging/">
     <Project Path="PlayMakerDocumenter.Logging/PlayMakerDocumenter.Logging.csproj" />
   </Folder>
-  <Folder Name="/src/">
-    <Project Path="src/PlayMakerDocumenter.csproj" />
+  <Folder Name="/PlayMakerDocumenter.Utility/">
+    <Project Path="PlayMakerDocumenter.Utility/PlayMakerDocumenter.Utility.csproj" />
   </Folder>
   <Folder Name="/PlayMakerDocumenter.Serializer/">
     <Project Path="PlayMakerDocumenter.Serializer/PlayMakerDocumenter.Serializer.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/PlayMakerDocumenter.csproj" />
   </Folder>
 </Solution>
