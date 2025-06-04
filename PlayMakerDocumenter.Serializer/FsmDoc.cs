@@ -10,9 +10,18 @@ public class FsmDoc
     public FsmVariablesDoc Variables;
     public FsmEventsDoc Events;
     public FsmStatesDoc States;
+    public FsmDoc() { }
     private FsmDoc(PlayMakerFSM Fsm)
     {
-        (FsmDetails, GlobalTransitions, Variables, Events, States) =
-        (Fsm, Fsm, Fsm, Fsm, Fsm);
+        EnvironmentDetails = new();
+        FsmDetails = Fsm;
+        GlobalTransitions = Fsm;
+        Variables = Fsm;
+        Events = Fsm;
+        States = Fsm;
     }
+    public static implicit operator FsmDoc(PlayMakerFSM Fsm) =>
+        new(Fsm);
+    public static FsmDoc Create(PlayMakerFSM Fsm) =>
+        new(Fsm);
 }
