@@ -3,15 +3,17 @@ using PlayMakerDocumenter.Serializer.ActionProperties;
 
 namespace PlayMakerDocumenter.Serializer.ActionDocs;
 
-public record WaitDoc : FsmActionDoc
+public record CountupTimerDoc : FsmActionDoc
 {
-    internal WaitDoc(ActionContext Ctx, Wait action) : base(Ctx)
+    internal CountupTimerDoc(ActionContext Ctx, CountupTimer action) : base(Ctx)
     {
         if (action is null || Ctx is null) return;
-        this.AddProperty(nameof(action.finishEvent), action.finishEvent);
+        this.AddProperty(nameof(action.pause), action.pause);
         this.AddProperty(nameof(action.realTime), action.realTime);
+        this.AddProperty(nameof(action.reset), action.reset);
+        this.AddProperty(nameof(action.restartOnEnter), action.restartOnEnter);
         this.AddProperty(nameof(action.startTime), action.startTime);
-        this.AddProperty(nameof(action.time), action.time);
+        this.AddProperty(nameof(action.storeTime), action.storeTime);
         this.AddProperty(nameof(action.timer), action.timer);
         DocumentationSupported = true;
     }
@@ -19,6 +21,6 @@ public record WaitDoc : FsmActionDoc
 
 internal static partial class ActionContextExtensions
 {
-    public static WaitDoc Document(this ActionContext ctx, Wait Action) =>
+    public static CountupTimerDoc Document(this ActionContext ctx, CountupTimer Action) =>
         new(ctx, Action);
 }
