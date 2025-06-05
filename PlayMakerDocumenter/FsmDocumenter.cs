@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Il2Cpp;
 using Newtonsoft.Json;
+using PlayMakerDocumenter.Serializer;
 using UnityEngine;
 
 namespace PlayMakerDocumenter;
@@ -152,4 +153,11 @@ public static partial class FsmDocumenter
     /// <param name="IncludeInactive"><see cref="FindObjectsInactive"/> setting to include or exclude inactive <see cref="PlayMakerFSM"/>s. Default is Include.</param> 
     public static void DocumentAllFsm(string OutputDirectory, FindObjectsInactive IncludeInactive) =>
         DocumentAllFsm(OutputDirectory, IncludeInactive: IncludeInactive);
+
+    /// <summary>
+    /// Creates a serialization-friendly representation of a <see cref="PlayMakerFSM"/>.
+    /// </summary>
+    /// <param name="fsm">The <see cref="PlayMakerFSM"/> to serialize.</param>
+    /// <returns><see cref="FsmDoc"/></returns>
+    public static FsmDoc Serialize(this PlayMakerFSM fsm) => new(fsm);
 }
