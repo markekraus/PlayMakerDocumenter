@@ -1,13 +1,12 @@
+using PlayMakerDocumenter.Serializer.ActionProperties;
+
 namespace PlayMakerDocumenter.Serializer.ActionDocs;
 
 public record ObjectDoc : FsmActionDoc
 {
     internal ObjectDoc(ActionContext Ctx) : base(Ctx)
     {
-        TypeDetails = new()
-        {
-            new("ToString", ctx.ActionCasted.ToString())
-        };
+        this.AddProperty("ToString", ctx.ActionCasted.ToString());
         DocumentationSupported = false;
     }
 }
