@@ -1,6 +1,3 @@
-using MelonLoader.ICSharpCode.SharpZipLib.Core;
-using UnityEngine;
-
 namespace PlayMakerDocumenter.Serializer;
 
 public record FsmActionGeneralDetailsDoc

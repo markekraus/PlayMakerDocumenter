@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Il2CppHutongGames.PlayMaker;
-using UniverseLib;
 
 namespace PlayMakerDocumenter.Serializer.FsmVariables;
 

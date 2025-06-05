@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using PlayMakerDocumenter.ActionDocs;
+using PlayMakerDocumenter.Serializer.ActionDocs;
 
 namespace PlayMakerDocumenter.Serializer;
 

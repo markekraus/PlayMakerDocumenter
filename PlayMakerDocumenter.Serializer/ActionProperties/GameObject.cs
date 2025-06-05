@@ -1,4 +1,3 @@
-using PlayMakerDocumenter.Serializer.FsmVariables;
 using UnityEngine;
 
 namespace PlayMakerDocumenter.Serializer.ActionProperties;

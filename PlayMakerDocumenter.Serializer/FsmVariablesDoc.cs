@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Il2Cpp;
-using Il2CppHutongGames.PlayMaker;
 using PlayMakerDocumenter.Serializer.FsmVariables;
-using UniverseLib;
 
 namespace PlayMakerDocumenter.Serializer;
 

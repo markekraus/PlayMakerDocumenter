@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace PlayMakerDocumenter.Serializer;
 
 public record FsmActionDoc

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Il2CppHutongGames.PlayMaker;
-using PlayMakerDocumenter.Serializer.FsmVariables;
 
 namespace PlayMakerDocumenter.Serializer.ActionProperties;
 

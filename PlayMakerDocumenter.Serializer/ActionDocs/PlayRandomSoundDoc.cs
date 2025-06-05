@@ -8,7 +8,7 @@ public record PlayRandomSoundDoc : FsmActionDoc
     internal PlayRandomSoundDoc(ActionContext Ctx, PlayRandomSound action) : base(Ctx)
     {
         if (action is null || Ctx is null) return;
-        this.AddProperty(nameof(action.audioClips), action.audioClips);
+        // this.AddProperty(nameof(action.audioClips), action.audioClips);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.lastIndex), action.lastIndex);
         this.AddProperty(nameof(action.noRepeat), action.noRepeat);
