@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -8,13 +9,10 @@ namespace PlayMakerDocumenter.Serializer;
 public class FsmActionsDoc : List<FsmActionDoc>
 {
     internal StateContext ctx;
-    public FsmActionsDoc() : base() { }
-    internal FsmActionsDoc(StateContext ctx) : base()
-    {
-        if (ctx is null || ctx.State is null || ctx.State.Actions is null) return;
-        this.ctx = ctx;
-        var actions = ctx.State.Actions;
-        var methods = typeof(ActionDocs.ActionContextExtensions)
+    private static readonly Lazy<Dictionary<Type, MethodInfo>> methodsCache = new(GetMethods);
+    private static Dictionary<Type, MethodInfo> methods => methodsCache.Value;
+    private static Dictionary<Type, MethodInfo> GetMethods() =>
+        typeof(ActionDocs.ActionContextExtensions)
             .GetMethods(BindingFlags.Static | BindingFlags.Public)
             .Where(meth => meth.Name == "Document")
             .GroupBy(meth =>
@@ -23,7 +21,12 @@ public class FsmActionsDoc : List<FsmActionDoc>
                 .First()
                 .ParameterType)
             .ToDictionary(g => g.Key, g=> g.First());
-        LogError($"Found {methods.Count} methods");
+    public FsmActionsDoc() : base() { }
+    internal FsmActionsDoc(StateContext ctx) : base()
+    {
+        if (ctx is null || ctx.State is null || ctx.State.Actions is null) return;
+        this.ctx = ctx;
+        var actions = ctx.State.Actions;
         for (int i = 0; i < actions.Count; i++)
         {
             try
