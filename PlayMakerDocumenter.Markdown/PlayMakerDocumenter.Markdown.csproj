@@ -87,6 +87,12 @@
             <Private>True</Private>
         </Reference>
     </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
+        <Reference Include="MarkdownUtilities">
+            <HintPath>..\MarkdownUtilities\Release\MarkdownUtilities.net6/MarkdownUtilities.net6.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="UUIDNext" Version="4.1.2">
             <Private>True</Private>
