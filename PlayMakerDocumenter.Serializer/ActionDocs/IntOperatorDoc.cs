@@ -13,7 +13,7 @@ public record IntOperatorDoc : FsmActionDoc
         this.AddProperty(nameof(action.integer2), action.integer2);
         this.AddProperty(nameof(action.operation), action.operation);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

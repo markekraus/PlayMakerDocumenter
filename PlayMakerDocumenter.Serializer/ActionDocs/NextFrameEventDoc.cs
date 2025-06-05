@@ -9,7 +9,7 @@ public record NextFrameEventDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -10,7 +10,7 @@ public record GetParentDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

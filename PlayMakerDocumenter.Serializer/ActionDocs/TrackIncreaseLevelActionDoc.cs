@@ -9,7 +9,7 @@ public record TrackIncreaseLevelActionDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.GroupID), action.GroupID);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

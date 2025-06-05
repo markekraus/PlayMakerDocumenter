@@ -12,7 +12,7 @@ public record EaseColorDoc : FsmActionDoc
         this.AddProperty(nameof(action.finishInNextStep), action.finishInNextStep);
         this.AddProperty(nameof(action.fromValue), action.fromValue);
         this.AddProperty(nameof(action.toValue), action.toValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

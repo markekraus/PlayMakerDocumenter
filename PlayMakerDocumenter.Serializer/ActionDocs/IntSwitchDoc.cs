@@ -12,7 +12,7 @@ public record IntSwitchDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.intVariable), action.intVariable);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

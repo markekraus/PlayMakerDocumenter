@@ -15,7 +15,7 @@ public record LoadSceneDoc : FsmActionDoc
         this.AddProperty(nameof(action.sceneReference), action.sceneReference);
         this.AddProperty(nameof(action.success), action.success);
         this.AddProperty(nameof(action.successEvent), action.successEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -11,7 +11,7 @@ public record GetKeyUpDoc : FsmActionDoc
         this.AddProperty(nameof(action.key), action.key);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

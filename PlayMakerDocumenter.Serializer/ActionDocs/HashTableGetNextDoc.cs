@@ -20,7 +20,7 @@ public record HashTableGetNextDoc : FsmActionDoc
         this.AddProperty(nameof(action.reset), action.reset);
         this.AddProperty(nameof(action.result), action.result);
         this.AddProperty(nameof(action.startIndex), action.startIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

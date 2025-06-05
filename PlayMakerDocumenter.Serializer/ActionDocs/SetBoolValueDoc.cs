@@ -11,7 +11,7 @@ public record SetBoolValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.boolValue), action.boolValue);
         this.AddProperty(nameof(action.boolVariable), action.boolVariable);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

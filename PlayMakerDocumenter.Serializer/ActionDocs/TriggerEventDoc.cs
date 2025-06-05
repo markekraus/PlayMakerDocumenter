@@ -14,7 +14,7 @@ public record TriggerEventDoc : FsmActionDoc
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
         this.AddProperty(nameof(action.storeCollider), action.storeCollider);
         this.AddProperty(nameof(action.trigger), action.trigger);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

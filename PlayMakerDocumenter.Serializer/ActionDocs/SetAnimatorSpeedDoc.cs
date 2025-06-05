@@ -11,7 +11,7 @@ public record SetAnimatorSpeedDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.speed), action.speed);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

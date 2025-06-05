@@ -9,7 +9,7 @@ public record GetOwnerDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.storeGameObject), action.storeGameObject);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

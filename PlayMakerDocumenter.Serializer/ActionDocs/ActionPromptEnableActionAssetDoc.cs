@@ -10,7 +10,7 @@ public record ActionPromptEnableActionAssetDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.IsEnabled), action.IsEnabled);
         this.AddProperty(nameof(action.TargetAsset), action.TargetAsset);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

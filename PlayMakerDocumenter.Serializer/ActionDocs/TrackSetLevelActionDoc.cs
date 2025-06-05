@@ -10,7 +10,7 @@ public record TrackSetLevelActionDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.GroupID), action.GroupID);
         this.AddProperty(nameof(action.Level), action.Level);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

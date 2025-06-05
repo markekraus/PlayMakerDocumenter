@@ -11,7 +11,7 @@ public record ArrayResizeDoc : FsmActionDoc
         this.AddProperty(nameof(action.array), action.array);
         this.AddProperty(nameof(action.newSize), action.newSize);
         this.AddProperty(nameof(action.sizeOutOfRangeEvent), action.sizeOutOfRangeEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

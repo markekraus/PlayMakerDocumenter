@@ -14,7 +14,7 @@ public record SetColorRGBADoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.green), action.green);
         this.AddProperty(nameof(action.red), action.red);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

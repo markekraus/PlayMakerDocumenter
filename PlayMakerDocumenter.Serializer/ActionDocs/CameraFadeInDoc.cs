@@ -15,7 +15,7 @@ public record CameraFadeInDoc : FsmActionDoc
         this.AddProperty(nameof(action.realTime), action.realTime);
         this.AddProperty(nameof(action.startTime), action.startTime);
         this.AddProperty(nameof(action.time), action.time);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -12,7 +12,7 @@ public record setTextmeshProTextDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.meshproScript), action.meshproScript);
         this.AddProperty(nameof(action.textString), action.textString);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

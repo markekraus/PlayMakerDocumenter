@@ -15,7 +15,7 @@ public record LoadLevelDoc : FsmActionDoc
         this.AddProperty(nameof(action.failedEvent), action.failedEvent);
         this.AddProperty(nameof(action.levelName), action.levelName);
         this.AddProperty(nameof(action.loadedEvent), action.loadedEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

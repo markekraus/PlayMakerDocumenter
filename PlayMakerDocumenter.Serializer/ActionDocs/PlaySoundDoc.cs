@@ -12,7 +12,7 @@ public record PlaySoundDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.position), action.position);
         this.AddProperty(nameof(action.volume), action.volume);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

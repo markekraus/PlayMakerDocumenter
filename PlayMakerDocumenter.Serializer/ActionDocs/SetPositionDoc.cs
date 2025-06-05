@@ -16,7 +16,7 @@ public record SetPositionDoc : FsmActionDoc
         this.AddProperty(nameof(action.x), action.x);
         this.AddProperty(nameof(action.y), action.y);
         this.AddProperty(nameof(action.z), action.z);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

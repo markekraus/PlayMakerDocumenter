@@ -10,7 +10,7 @@ public record SetTagDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.tag), action.tag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

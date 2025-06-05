@@ -16,7 +16,7 @@ public record CountdownTimerDoc : FsmActionDoc
         this.AddProperty(nameof(action.theTime), action.theTime);
         this.AddProperty(nameof(action.time), action.time);
         this.AddProperty(nameof(action.timer), action.timer);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

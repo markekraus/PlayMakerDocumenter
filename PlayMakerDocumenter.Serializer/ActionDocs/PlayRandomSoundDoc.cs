@@ -16,7 +16,7 @@ public record PlayRandomSoundDoc : FsmActionDoc
         this.AddProperty(nameof(action.randomIndex), action.randomIndex);
         this.AddProperty(nameof(action.volume), action.volume);
         this.AddProperty(nameof(action.weights), action.weights);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

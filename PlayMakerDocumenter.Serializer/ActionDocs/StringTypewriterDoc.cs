@@ -40,7 +40,7 @@ public record StringTypewriterDoc : FsmActionDoc
         this.AddProperty(nameof(action.timer), action.timer);
         this.AddProperty(nameof(action.typingSound), action.typingSound);
         this.AddProperty(nameof(action.useSounds), action.useSounds);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

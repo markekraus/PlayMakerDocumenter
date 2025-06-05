@@ -14,7 +14,7 @@ public record ArrayContainsDoc : FsmActionDoc
         this.AddProperty(nameof(action.isContainedEvent), action.isContainedEvent);
         this.AddProperty(nameof(action.isNotContainedEvent), action.isNotContainedEvent);
         this.AddProperty(nameof(action.value), action.value);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

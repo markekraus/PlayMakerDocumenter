@@ -11,7 +11,7 @@ public record SetMouseCursor2Doc : FsmActionDoc
         this.AddProperty(nameof(action.cursorTexture), action.cursorTexture);
         this.AddProperty(nameof(action.hideCursor), action.hideCursor);
         this.AddProperty(nameof(action.lockCursor), action.lockCursor);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

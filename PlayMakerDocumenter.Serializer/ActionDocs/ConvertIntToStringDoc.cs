@@ -12,7 +12,7 @@ public record ConvertIntToStringDoc : FsmActionDoc
         this.AddProperty(nameof(action.format), action.format);
         this.AddProperty(nameof(action.intVariable), action.intVariable);
         this.AddProperty(nameof(action.stringVariable), action.stringVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

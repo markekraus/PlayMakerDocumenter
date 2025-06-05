@@ -12,7 +12,7 @@ public record AudioMixerSetFloatValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.exposedFloatName), action.exposedFloatName);
         this.AddProperty(nameof(action.floatvalue), action.floatvalue);
         this.AddProperty(nameof(action.theMixer), action.theMixer);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -13,7 +13,7 @@ public record ArrayListSendEventToGameObjectsDoc : FsmActionDoc
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
         this.AddProperty(nameof(action.sendToChildren), action.sendToChildren);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -12,7 +12,7 @@ public record ArrayListShuffleDoc : FsmActionDoc
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.shufflingRange), action.shufflingRange);
         this.AddProperty(nameof(action.startIndex), action.startIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -16,7 +16,7 @@ public record GetFsmVector3Doc : FsmActionDoc
         this.AddProperty(nameof(action.goLastFrame), action.goLastFrame);
         this.AddProperty(nameof(action.storeValue), action.storeValue);
         this.AddProperty(nameof(action.variableName), action.variableName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

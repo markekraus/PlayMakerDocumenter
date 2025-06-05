@@ -11,7 +11,7 @@ public record ArrayRemoveDoc : FsmActionDoc
         this.AddProperty(nameof(action.allMatches), action.allMatches);
         this.AddProperty(nameof(action.array), action.array);
         this.AddProperty(nameof(action.value), action.value);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

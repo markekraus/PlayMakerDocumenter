@@ -11,7 +11,7 @@ public record SetIntValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.intValue), action.intValue);
         this.AddProperty(nameof(action.intVariable), action.intVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

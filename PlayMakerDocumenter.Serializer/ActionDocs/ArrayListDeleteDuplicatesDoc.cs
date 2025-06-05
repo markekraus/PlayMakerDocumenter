@@ -19,7 +19,7 @@ public record ArrayListDeleteDuplicatesDoc : FsmActionDoc
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.restartbool), action.restartbool);
         this.AddProperty(nameof(action.sortOn), action.sortOn);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

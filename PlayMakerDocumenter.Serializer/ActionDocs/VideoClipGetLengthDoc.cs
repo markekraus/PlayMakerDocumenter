@@ -15,7 +15,7 @@ public record VideoClipGetLengthDoc : FsmActionDoc
         this.AddProperty(nameof(action.go), action.go);
         this.AddProperty(nameof(action.length), action.length);
         this.AddProperty(nameof(action.orVideoClip), action.orVideoClip);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

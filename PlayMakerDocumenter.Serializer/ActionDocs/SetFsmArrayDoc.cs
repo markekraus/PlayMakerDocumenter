@@ -13,7 +13,7 @@ public record SetFsmArrayDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.setValue), action.setValue);
         this.AddProperty(nameof(action.variableName), action.variableName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

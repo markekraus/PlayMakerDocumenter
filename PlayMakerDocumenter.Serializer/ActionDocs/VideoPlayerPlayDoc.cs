@@ -11,7 +11,7 @@ public record VideoPlayerPlayDoc : FsmActionDoc
         this.AddProperty(nameof(action._vp), action._vp);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.go), action.go);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

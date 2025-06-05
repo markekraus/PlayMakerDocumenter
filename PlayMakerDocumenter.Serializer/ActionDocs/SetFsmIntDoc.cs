@@ -16,7 +16,7 @@ public record SetFsmIntDoc : FsmActionDoc
         this.AddProperty(nameof(action.goLastFrame), action.goLastFrame);
         this.AddProperty(nameof(action.setValue), action.setValue);
         this.AddProperty(nameof(action.variableName), action.variableName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

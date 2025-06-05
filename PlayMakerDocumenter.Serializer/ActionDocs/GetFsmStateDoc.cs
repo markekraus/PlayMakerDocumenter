@@ -14,7 +14,7 @@ public record GetFsmStateDoc : FsmActionDoc
         this.AddProperty(nameof(action.fsmName), action.fsmName);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

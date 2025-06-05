@@ -14,7 +14,7 @@ public record HashTableGetDoc : FsmActionDoc
         this.AddProperty(nameof(action.KeyNotFoundEvent), action.KeyNotFoundEvent);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.result), action.result);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

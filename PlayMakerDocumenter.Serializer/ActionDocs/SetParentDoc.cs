@@ -13,7 +13,7 @@ public record SetParentDoc : FsmActionDoc
         this.AddProperty(nameof(action.resetLocalPosition), action.resetLocalPosition);
         this.AddProperty(nameof(action.resetLocalRotation), action.resetLocalRotation);
         this.AddProperty(nameof(action.worldPositionStays), action.worldPositionStays);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

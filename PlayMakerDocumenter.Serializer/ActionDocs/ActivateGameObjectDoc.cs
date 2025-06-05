@@ -14,7 +14,7 @@ public record ActivateGameObjectDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.recursive), action.recursive);
         this.AddProperty(nameof(action.resetOnExit), action.resetOnExit);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

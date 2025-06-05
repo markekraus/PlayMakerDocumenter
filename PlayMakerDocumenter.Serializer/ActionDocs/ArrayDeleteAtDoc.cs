@@ -11,7 +11,7 @@ public record ArrayDeleteAtDoc : FsmActionDoc
         this.AddProperty(nameof(action.array), action.array);
         this.AddProperty(nameof(action.index), action.index);
         this.AddProperty(nameof(action.indexOutOfRangeEvent), action.indexOutOfRangeEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

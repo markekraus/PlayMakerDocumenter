@@ -7,7 +7,7 @@ public record ObjectDoc : FsmActionDoc
     internal ObjectDoc(ActionContext Ctx) : base(Ctx)
     {
         this.AddProperty("ToString", ctx.ActionCasted.ToString());
-        DocumentationSupported = false;
+        ActionTypeSupported = false;
     }
 }
 

@@ -11,7 +11,7 @@ public record ParticleSystemPauseDoc : FsmActionDoc
         this.AddProperty(nameof(action._ps), action._ps);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.playOnExit), action.playOnExit);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

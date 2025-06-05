@@ -12,7 +12,7 @@ public record ConvertFloatToStringDoc : FsmActionDoc
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
         this.AddProperty(nameof(action.format), action.format);
         this.AddProperty(nameof(action.stringVariable), action.stringVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

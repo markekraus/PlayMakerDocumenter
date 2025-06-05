@@ -11,7 +11,7 @@ public record ArrayLengthDoc : FsmActionDoc
         this.AddProperty(nameof(action.array), action.array);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.length), action.length);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

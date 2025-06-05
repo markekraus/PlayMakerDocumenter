@@ -14,7 +14,7 @@ public record GetFsmArrayItemDoc : FsmActionDoc
         this.AddProperty(nameof(action.index), action.index);
         this.AddProperty(nameof(action.storeValue), action.storeValue);
         this.AddProperty(nameof(action.variableName), action.variableName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

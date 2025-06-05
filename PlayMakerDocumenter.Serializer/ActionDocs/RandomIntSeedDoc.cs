@@ -12,7 +12,7 @@ public record RandomIntSeedDoc : FsmActionDoc
         this.AddProperty(nameof(action.min), action.min);
         this.AddProperty(nameof(action.seed), action.seed);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

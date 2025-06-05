@@ -11,7 +11,7 @@ public record TrackStopImmediateActionDoc : FsmActionDoc
         this.AddProperty(nameof(action.GroupID), action.GroupID);
         this.AddProperty(nameof(action.PriorityCheckEnabled), action.PriorityCheckEnabled);
         this.AddProperty(nameof(action.PriorityCheckValue), action.PriorityCheckValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

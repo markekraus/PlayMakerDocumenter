@@ -11,7 +11,7 @@ public record ArrayListRemoveEmptyDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.proxy), action.proxy);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -15,7 +15,7 @@ public record ArrayListContainsTextureDoc : FsmActionDoc
         this.AddProperty(nameof(action.isNotContainedEvent), action.isNotContainedEvent);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.TextureSearch), action.TextureSearch);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

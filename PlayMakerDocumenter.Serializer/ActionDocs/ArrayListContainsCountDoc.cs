@@ -15,7 +15,7 @@ public record ArrayListContainsCountDoc : FsmActionDoc
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.totalArrayCount), action.totalArrayCount);
         this.AddProperty(nameof(action.variable), action.variable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

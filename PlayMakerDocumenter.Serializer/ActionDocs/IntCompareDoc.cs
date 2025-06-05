@@ -14,7 +14,7 @@ public record IntCompareDoc : FsmActionDoc
         this.AddProperty(nameof(action.integer1), action.integer1);
         this.AddProperty(nameof(action.integer2), action.integer2);
         this.AddProperty(nameof(action.lessThan), action.lessThan);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

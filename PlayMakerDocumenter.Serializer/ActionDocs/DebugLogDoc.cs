@@ -10,7 +10,7 @@ public record DebugLogDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.logLevel), action.logLevel);
         this.AddProperty(nameof(action.text), action.text);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

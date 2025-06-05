@@ -13,7 +13,7 @@ public record ArrayListSortGameObjectByDistanceDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.orDistanceFromVector3), action.orDistanceFromVector3);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -12,7 +12,7 @@ public record GetChildDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.withTag), action.withTag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

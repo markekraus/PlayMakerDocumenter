@@ -13,7 +13,7 @@ public record RandomEventDoc : FsmActionDoc
         this.AddProperty(nameof(action.lastEventIndex), action.lastEventIndex);
         this.AddProperty(nameof(action.noRepeat), action.noRepeat);
         this.AddProperty(nameof(action.randomEventIndex), action.randomEventIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

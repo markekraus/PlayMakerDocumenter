@@ -10,7 +10,7 @@ public record SetFogDensityDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.fogDensity), action.fogDensity);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -14,7 +14,7 @@ public record StringCompareDoc : FsmActionDoc
         this.AddProperty(nameof(action.notEqualEvent), action.notEqualEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.stringVariable), action.stringVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

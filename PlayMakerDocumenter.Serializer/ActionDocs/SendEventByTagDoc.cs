@@ -16,7 +16,7 @@ public record SendEventByTagDoc : FsmActionDoc
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
         this.AddProperty(nameof(action.sendEventName), action.sendEventName);
         this.AddProperty(nameof(action.tag), action.tag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

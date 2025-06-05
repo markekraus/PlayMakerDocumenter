@@ -17,7 +17,7 @@ public record ArrayListIntersectDoc : FsmActionDoc
         this.AddProperty(nameof(action.referenceOne), action.referenceOne);
         this.AddProperty(nameof(action.referenceSave), action.referenceSave);
         this.AddProperty(nameof(action.referenceTwo), action.referenceTwo);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

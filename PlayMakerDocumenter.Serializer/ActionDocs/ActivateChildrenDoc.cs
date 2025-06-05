@@ -13,7 +13,7 @@ public record ActivateChildrenDoc : FsmActionDoc
         this.AddProperty(nameof(action.parent), action.parent);
         this.AddProperty(nameof(action.recursiveDepth), action.recursiveDepth);
         this.AddProperty(nameof(action.resetOnExit), action.resetOnExit);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -13,7 +13,7 @@ public record ArrayListGetDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.result), action.result);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

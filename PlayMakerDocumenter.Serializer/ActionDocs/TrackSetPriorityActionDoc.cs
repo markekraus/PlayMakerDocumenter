@@ -10,7 +10,7 @@ public record TrackSetPriorityActionDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.GroupID), action.GroupID);
         this.AddProperty(nameof(action.Priority), action.Priority);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

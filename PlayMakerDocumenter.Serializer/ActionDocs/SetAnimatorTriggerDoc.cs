@@ -10,7 +10,7 @@ public record SetAnimatorTriggerDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.trigger), action.trigger);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

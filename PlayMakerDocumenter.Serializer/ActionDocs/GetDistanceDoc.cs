@@ -12,7 +12,7 @@ public record GetDistanceDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.target), action.target);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

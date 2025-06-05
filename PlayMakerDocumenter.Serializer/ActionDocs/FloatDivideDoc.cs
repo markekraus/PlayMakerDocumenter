@@ -11,7 +11,7 @@ public record FloatDivideDoc : FsmActionDoc
         this.AddProperty(nameof(action.divideBy), action.divideBy);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

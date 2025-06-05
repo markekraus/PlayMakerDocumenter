@@ -10,7 +10,7 @@ public record SetSkyboxDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.skybox), action.skybox);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

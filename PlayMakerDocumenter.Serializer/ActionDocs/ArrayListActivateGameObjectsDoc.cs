@@ -13,7 +13,7 @@ public record ArrayListActivateGameObjectsDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.resetOnExit), action.resetOnExit);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

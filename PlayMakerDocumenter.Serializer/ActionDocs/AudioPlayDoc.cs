@@ -13,7 +13,7 @@ public record AudioPlayDoc : FsmActionDoc
         this.AddProperty(nameof(action.oneShotClip), action.oneShotClip);
         this.AddProperty(nameof(action.volume), action.volume);
         this.AddProperty(nameof(action.WaitForEndOfClip), action.WaitForEndOfClip);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

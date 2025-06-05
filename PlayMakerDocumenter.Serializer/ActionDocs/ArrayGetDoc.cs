@@ -13,7 +13,7 @@ public record ArrayGetDoc : FsmActionDoc
         this.AddProperty(nameof(action.index), action.index);
         this.AddProperty(nameof(action.indexOutOfRange), action.indexOutOfRange);
         this.AddProperty(nameof(action.storeValue), action.storeValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

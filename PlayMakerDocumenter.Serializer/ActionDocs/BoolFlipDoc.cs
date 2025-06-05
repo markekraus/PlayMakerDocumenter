@@ -9,7 +9,7 @@ public record BoolFlipDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.boolVariable), action.boolVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

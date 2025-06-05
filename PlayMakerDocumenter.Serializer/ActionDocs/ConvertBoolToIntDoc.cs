@@ -13,7 +13,7 @@ public record ConvertBoolToIntDoc : FsmActionDoc
         this.AddProperty(nameof(action.falseValue), action.falseValue);
         this.AddProperty(nameof(action.intVariable), action.intVariable);
         this.AddProperty(nameof(action.trueValue), action.trueValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

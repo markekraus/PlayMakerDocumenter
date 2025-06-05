@@ -12,7 +12,7 @@ public record FloatRoundDoc : FsmActionDoc
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
         this.AddProperty(nameof(action.resultAsFloat), action.resultAsFloat);
         this.AddProperty(nameof(action.resultAsInt), action.resultAsInt);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

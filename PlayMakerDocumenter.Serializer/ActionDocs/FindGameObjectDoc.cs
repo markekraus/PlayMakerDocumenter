@@ -11,7 +11,7 @@ public record FindGameObjectDoc : FsmActionDoc
         this.AddProperty(nameof(action.objectName), action.objectName);
         this.AddProperty(nameof(action.store), action.store);
         this.AddProperty(nameof(action.withTag), action.withTag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

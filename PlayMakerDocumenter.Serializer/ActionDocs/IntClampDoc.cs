@@ -12,7 +12,7 @@ public record IntClampDoc : FsmActionDoc
         this.AddProperty(nameof(action.intVariable), action.intVariable);
         this.AddProperty(nameof(action.maxValue), action.maxValue);
         this.AddProperty(nameof(action.minValue), action.minValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

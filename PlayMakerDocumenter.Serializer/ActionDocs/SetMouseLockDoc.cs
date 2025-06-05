@@ -9,7 +9,7 @@ public record SetMouseLockDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.lockCursor), action.lockCursor);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

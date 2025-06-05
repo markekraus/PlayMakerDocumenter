@@ -12,7 +12,7 @@ public record AudioMixerGetFloatValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.exposedFloatName), action.exposedFloatName);
         this.AddProperty(nameof(action.storeFloatValue), action.storeFloatValue);
         this.AddProperty(nameof(action.theMixer), action.theMixer);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

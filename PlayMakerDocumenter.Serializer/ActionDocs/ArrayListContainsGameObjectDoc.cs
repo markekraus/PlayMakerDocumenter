@@ -17,7 +17,7 @@ public record ArrayListContainsGameObjectDoc : FsmActionDoc
         this.AddProperty(nameof(action.result), action.result);
         this.AddProperty(nameof(action.resultIndex), action.resultIndex);
         this.AddProperty(nameof(action.withTag), action.withTag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

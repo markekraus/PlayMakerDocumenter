@@ -17,7 +17,7 @@ public record AudioFadeDoc : FsmActionDoc
         this.AddProperty(nameof(action.startingVolume), action.startingVolume);
         this.AddProperty(nameof(action.startTime), action.startTime);
         this.AddProperty(nameof(action.time), action.time);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

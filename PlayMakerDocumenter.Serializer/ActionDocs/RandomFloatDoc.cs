@@ -11,7 +11,7 @@ public record RandomFloatDoc : FsmActionDoc
         this.AddProperty(nameof(action.max), action.max);
         this.AddProperty(nameof(action.min), action.min);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

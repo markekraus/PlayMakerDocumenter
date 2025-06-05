@@ -11,7 +11,7 @@ public record SelectRandomVector3Doc : FsmActionDoc
         this.AddProperty(nameof(action.storeVector3), action.storeVector3);
         this.AddProperty(nameof(action.vector3Array), action.vector3Array);
         this.AddProperty(nameof(action.weights), action.weights);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

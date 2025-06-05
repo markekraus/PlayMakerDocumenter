@@ -15,7 +15,7 @@ public record HasChildDoc : FsmActionDoc
         this.AddProperty(nameof(action.notFoundEvent), action.notFoundEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.withTag), action.withTag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -13,7 +13,7 @@ public record GetSubstringDoc : FsmActionDoc
         this.AddProperty(nameof(action.startIndex), action.startIndex);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.stringVariable), action.stringVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

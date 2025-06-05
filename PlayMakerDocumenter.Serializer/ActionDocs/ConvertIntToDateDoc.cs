@@ -14,7 +14,7 @@ public record ConvertIntToDateDoc : FsmActionDoc
         this.AddProperty(nameof(action.dayOfWeek), action.dayOfWeek);
         this.AddProperty(nameof(action.month), action.month);
         this.AddProperty(nameof(action.year), action.year);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

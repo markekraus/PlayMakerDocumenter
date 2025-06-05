@@ -11,7 +11,7 @@ public record SelectRandomIntDoc : FsmActionDoc
         this.AddProperty(nameof(action.ints), action.ints);
         this.AddProperty(nameof(action.storeInt), action.storeInt);
         this.AddProperty(nameof(action.weights), action.weights);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

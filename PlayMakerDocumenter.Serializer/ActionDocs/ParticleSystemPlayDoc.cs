@@ -15,7 +15,7 @@ public record ParticleSystemPlayDoc : FsmActionDoc
         this.AddProperty(nameof(action.go), action.go);
         this.AddProperty(nameof(action.stopOnExit), action.stopOnExit);
         this.AddProperty(nameof(action.withChildren), action.withChildren);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -14,7 +14,7 @@ public record SetMaterialColorDoc : FsmActionDoc
         this.AddProperty(nameof(action.material), action.material);
         this.AddProperty(nameof(action.materialIndex), action.materialIndex);
         this.AddProperty(nameof(action.namedColor), action.namedColor);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

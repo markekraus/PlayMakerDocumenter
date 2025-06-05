@@ -11,7 +11,7 @@ public record IntAddDoc : FsmActionDoc
         this.AddProperty(nameof(action.add), action.add);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.intVariable), action.intVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

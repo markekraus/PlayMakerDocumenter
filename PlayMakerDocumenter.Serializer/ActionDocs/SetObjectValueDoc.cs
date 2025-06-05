@@ -11,7 +11,7 @@ public record SetObjectValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.objectValue), action.objectValue);
         this.AddProperty(nameof(action.objectVariable), action.objectVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

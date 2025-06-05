@@ -11,7 +11,7 @@ public record UIScreenCanOpenActionDoc : FsmActionDoc
         this.AddProperty(nameof(action.CannotOpenEvent), action.CannotOpenEvent);
         this.AddProperty(nameof(action.CanOpenEvent), action.CanOpenEvent);
         this.AddProperty(nameof(action.Target), action.Target);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

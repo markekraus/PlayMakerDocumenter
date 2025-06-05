@@ -11,7 +11,7 @@ public record SetFloatValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.floatValue), action.floatValue);
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

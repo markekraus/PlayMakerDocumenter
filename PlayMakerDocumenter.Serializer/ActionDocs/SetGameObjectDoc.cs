@@ -11,7 +11,7 @@ public record SetGameObjectDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.variable), action.variable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

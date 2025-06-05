@@ -11,7 +11,7 @@ public record ArrayShuffleDoc : FsmActionDoc
         this.AddProperty(nameof(action.array), action.array);
         this.AddProperty(nameof(action.shufflingRange), action.shufflingRange);
         this.AddProperty(nameof(action.startIndex), action.startIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

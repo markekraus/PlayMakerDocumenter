@@ -14,7 +14,7 @@ public record GetDistance2Doc : FsmActionDoc
         this.AddProperty(nameof(action.orVector3Target), action.orVector3Target);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.target), action.target);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

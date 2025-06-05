@@ -12,7 +12,7 @@ public record SetMouseCursorDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.hideCursor), action.hideCursor);
         this.AddProperty(nameof(action.lockCursor), action.lockCursor);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

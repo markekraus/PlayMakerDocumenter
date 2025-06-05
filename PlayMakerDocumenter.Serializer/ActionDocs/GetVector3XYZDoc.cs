@@ -13,7 +13,7 @@ public record GetVector3XYZDoc : FsmActionDoc
         this.AddProperty(nameof(action.storeY), action.storeY);
         this.AddProperty(nameof(action.storeZ), action.storeZ);
         this.AddProperty(nameof(action.vector3Variable), action.vector3Variable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

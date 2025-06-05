@@ -9,7 +9,7 @@ public record CommentDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.comment), action.comment);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

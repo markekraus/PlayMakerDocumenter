@@ -12,7 +12,7 @@ public record TrackPlayParallelActionDoc : FsmActionDoc
         this.AddProperty(nameof(action.OnlyPlaying), action.OnlyPlaying);
         this.AddProperty(nameof(action.StopAllOthers), action.StopAllOthers);
         this.AddProperty(nameof(action.TrackID), action.TrackID);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

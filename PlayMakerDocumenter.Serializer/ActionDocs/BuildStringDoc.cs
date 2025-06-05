@@ -14,7 +14,7 @@ public record BuildStringDoc : FsmActionDoc
         this.AddProperty(nameof(action.separator), action.separator);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.stringParts), action.stringParts);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -11,7 +11,7 @@ public record NextFrameEventAdvanceDoc : FsmActionDoc
         this.AddProperty(nameof(action.frameCount), action.frameCount);
         this.AddProperty(nameof(action.loop), action.loop);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

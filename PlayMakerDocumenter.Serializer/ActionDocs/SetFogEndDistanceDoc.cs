@@ -10,7 +10,7 @@ public record SetFogEndDistanceDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.endDistance), action.endDistance);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

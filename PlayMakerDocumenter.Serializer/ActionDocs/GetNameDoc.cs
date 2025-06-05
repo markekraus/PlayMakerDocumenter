@@ -11,7 +11,7 @@ public record GetNameDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeName), action.storeName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

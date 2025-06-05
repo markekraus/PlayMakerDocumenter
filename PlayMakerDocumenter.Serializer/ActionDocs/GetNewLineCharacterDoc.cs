@@ -9,7 +9,7 @@ public record GetNewLineCharacterDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.newLine), action.newLine);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

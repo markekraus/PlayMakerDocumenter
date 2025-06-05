@@ -16,7 +16,7 @@ public record MouseMoveActivityEventsDoc : FsmActionDoc
         this.AddProperty(nameof(action.isInactive), action.isInactive);
         this.AddProperty(nameof(action.mouseMoveEvent), action.mouseMoveEvent);
         this.AddProperty(nameof(action.mouseStillEvent), action.mouseStillEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

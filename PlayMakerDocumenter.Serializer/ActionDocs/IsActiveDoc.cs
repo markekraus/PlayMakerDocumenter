@@ -13,7 +13,7 @@ public record IsActiveDoc : FsmActionDoc
         this.AddProperty(nameof(action.isActive), action.isActive);
         this.AddProperty(nameof(action.isActiveEvent), action.isActiveEvent);
         this.AddProperty(nameof(action.isNotActiveEvent), action.isNotActiveEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -15,7 +15,7 @@ public record CountupTimerDoc : FsmActionDoc
         this.AddProperty(nameof(action.startTime), action.startTime);
         this.AddProperty(nameof(action.storeTime), action.storeTime);
         this.AddProperty(nameof(action.timer), action.timer);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

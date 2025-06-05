@@ -11,7 +11,7 @@ public record GetMouseButtonDoc : FsmActionDoc
         this.AddProperty(nameof(action.button), action.button);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

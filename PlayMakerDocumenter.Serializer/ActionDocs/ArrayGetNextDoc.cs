@@ -17,7 +17,7 @@ public record ArrayGetNextDoc : FsmActionDoc
         this.AddProperty(nameof(action.resetFlag), action.resetFlag);
         this.AddProperty(nameof(action.result), action.result);
         this.AddProperty(nameof(action.startIndex), action.startIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

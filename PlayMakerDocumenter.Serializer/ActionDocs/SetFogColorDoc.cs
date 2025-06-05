@@ -10,7 +10,7 @@ public record SetFogColorDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.fogColor), action.fogColor);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

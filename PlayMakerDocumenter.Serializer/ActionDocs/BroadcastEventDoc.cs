@@ -12,7 +12,7 @@ public record BroadcastEventDoc : FsmActionDoc
         this.AddProperty(nameof(action.excludeSelf), action.excludeSelf);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.sendToChildren), action.sendToChildren);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

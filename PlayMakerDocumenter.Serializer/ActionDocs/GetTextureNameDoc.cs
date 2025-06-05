@@ -10,7 +10,7 @@ public record GetTextureNameDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.texture), action.texture);
         this.AddProperty(nameof(action.textureName), action.textureName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

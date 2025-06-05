@@ -11,7 +11,7 @@ public record IgnoreEventsDoc : FsmActionDoc
         this.AddProperty(nameof(action.events), action.events);
         this.AddProperty(nameof(action.eventTypes), action.eventTypes);
         this.AddProperty(nameof(action.logIgnoredEvents), action.logIgnoredEvents);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

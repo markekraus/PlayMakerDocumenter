@@ -9,7 +9,7 @@ public record ArrayRemoveAllDoc : FsmActionDoc
     {
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.array), action.array);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

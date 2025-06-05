@@ -12,7 +12,7 @@ public record GetMouseButtonDownDoc : FsmActionDoc
         this.AddProperty(nameof(action.inUpdateOnly), action.inUpdateOnly);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

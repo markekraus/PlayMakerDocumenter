@@ -12,7 +12,7 @@ public record FloatClampDoc : FsmActionDoc
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
         this.AddProperty(nameof(action.maxValue), action.maxValue);
         this.AddProperty(nameof(action.minValue), action.minValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

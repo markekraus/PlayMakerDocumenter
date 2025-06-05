@@ -12,7 +12,7 @@ public record ArrayListRemoveDoc : FsmActionDoc
         this.AddProperty(nameof(action.notFoundEvent), action.notFoundEvent);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.variable), action.variable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

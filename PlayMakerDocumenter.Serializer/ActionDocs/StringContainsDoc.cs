@@ -14,7 +14,7 @@ public record StringContainsDoc : FsmActionDoc
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.stringVariable), action.stringVariable);
         this.AddProperty(nameof(action.trueEvent), action.trueEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

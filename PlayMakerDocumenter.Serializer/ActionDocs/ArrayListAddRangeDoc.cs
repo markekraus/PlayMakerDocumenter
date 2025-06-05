@@ -12,7 +12,7 @@ public record ArrayListAddRangeDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.variables), action.variables);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

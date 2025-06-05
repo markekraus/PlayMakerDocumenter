@@ -17,7 +17,7 @@ public record FloatInterpolateDoc : FsmActionDoc
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.time), action.time);
         this.AddProperty(nameof(action.toFloat), action.toFloat);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -14,7 +14,7 @@ public record GameObjectCompareDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObjectVariable), action.gameObjectVariable);
         this.AddProperty(nameof(action.notEqualEvent), action.notEqualEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

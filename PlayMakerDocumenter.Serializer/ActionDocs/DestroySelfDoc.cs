@@ -12,7 +12,7 @@ public record DestroySelfDoc : FsmActionDoc
         this.AddProperty(nameof(action.detachChildren), action.detachChildren);
         this.AddProperty(nameof(action.elapsedTime), action.elapsedTime);
         this.AddProperty(nameof(action.realTime), action.realTime);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

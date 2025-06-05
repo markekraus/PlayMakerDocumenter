@@ -14,7 +14,7 @@ public record TextureCompareDoc : FsmActionDoc
         this.AddProperty(nameof(action.notEqualEvent), action.notEqualEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.textureVariable), action.textureVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -13,7 +13,7 @@ public record GameObjectIsNullDoc : FsmActionDoc
         this.AddProperty(nameof(action.isNotNull), action.isNotNull);
         this.AddProperty(nameof(action.isNull), action.isNull);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

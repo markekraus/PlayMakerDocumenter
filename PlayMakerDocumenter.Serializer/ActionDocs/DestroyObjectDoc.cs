@@ -11,7 +11,7 @@ public record DestroyObjectDoc : FsmActionDoc
         this.AddProperty(nameof(action.delay), action.delay);
         this.AddProperty(nameof(action.detachChildren), action.detachChildren);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

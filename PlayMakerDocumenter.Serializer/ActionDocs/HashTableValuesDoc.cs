@@ -12,7 +12,7 @@ public record HashTableValuesDoc : FsmActionDoc
         this.AddProperty(nameof(action.arrayListReference), action.arrayListReference);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

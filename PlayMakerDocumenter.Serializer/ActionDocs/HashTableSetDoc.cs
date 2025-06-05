@@ -13,7 +13,7 @@ public record HashTableSetDoc : FsmActionDoc
         this.AddProperty(nameof(action.key), action.key);
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.variable), action.variable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -12,7 +12,7 @@ public record ArrayListRemoveAtDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.index), action.index);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

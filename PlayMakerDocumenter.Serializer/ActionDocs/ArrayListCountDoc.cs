@@ -11,7 +11,7 @@ public record ArrayListCountDoc : FsmActionDoc
         this.AddProperty(nameof(action.count), action.count);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

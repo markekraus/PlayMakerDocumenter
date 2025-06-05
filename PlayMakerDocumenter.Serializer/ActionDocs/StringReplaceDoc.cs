@@ -13,7 +13,7 @@ public record StringReplaceDoc : FsmActionDoc
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.stringVariable), action.stringVariable);
         this.AddProperty(nameof(action.with), action.with);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

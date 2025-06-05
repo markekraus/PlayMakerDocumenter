@@ -11,7 +11,7 @@ public record SetLayerRecursiveDoc : FsmActionDoc
         this.AddProperty(nameof(action.children), action.children);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.layer), action.layer);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

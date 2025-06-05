@@ -12,7 +12,7 @@ public record SendRandomEventDoc : FsmActionDoc
         this.AddProperty(nameof(action.delayedEvent), action.delayedEvent);
         this.AddProperty(nameof(action.events), action.events);
         this.AddProperty(nameof(action.weights), action.weights);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

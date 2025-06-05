@@ -21,7 +21,7 @@ public record CallMethodDoc : FsmActionDoc
         this.AddProperty(nameof(action.parameters), action.parameters);
         this.AddProperty(nameof(action.parametersArray), action.parametersArray);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -13,7 +13,7 @@ public record GetMaterialTextureDoc : FsmActionDoc
         this.AddProperty(nameof(action.materialIndex), action.materialIndex);
         this.AddProperty(nameof(action.namedTexture), action.namedTexture);
         this.AddProperty(nameof(action.storedTexture), action.storedTexture);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

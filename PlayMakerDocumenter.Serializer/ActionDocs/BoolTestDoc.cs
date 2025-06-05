@@ -12,7 +12,7 @@ public record BoolTestDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.isFalse), action.isFalse);
         this.AddProperty(nameof(action.isTrue), action.isTrue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -17,7 +17,7 @@ public record SetRotationDoc : FsmActionDoc
         this.AddProperty(nameof(action.xAngle), action.xAngle);
         this.AddProperty(nameof(action.yAngle), action.yAngle);
         this.AddProperty(nameof(action.zAngle), action.zAngle);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

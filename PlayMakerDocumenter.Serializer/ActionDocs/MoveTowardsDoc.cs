@@ -19,7 +19,7 @@ public record MoveTowardsDoc : FsmActionDoc
         this.AddProperty(nameof(action.targetPos), action.targetPos);
         this.AddProperty(nameof(action.targetPosition), action.targetPosition);
         this.AddProperty(nameof(action.targetPosWithVertical), action.targetPosWithVertical);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

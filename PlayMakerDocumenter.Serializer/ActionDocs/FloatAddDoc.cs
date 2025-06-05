@@ -12,7 +12,7 @@ public record FloatAddDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
         this.AddProperty(nameof(action.perSecond), action.perSecond);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

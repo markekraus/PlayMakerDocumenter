@@ -11,7 +11,7 @@ public record CanDocBackActionDoc : FsmActionDoc
         this.AddProperty(nameof(action.falseEvent), action.falseEvent);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
         this.AddProperty(nameof(action.trueEvent), action.trueEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

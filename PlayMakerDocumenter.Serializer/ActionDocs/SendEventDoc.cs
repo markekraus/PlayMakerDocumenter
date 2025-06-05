@@ -13,7 +13,7 @@ public record SendEventDoc : FsmActionDoc
         this.AddProperty(nameof(action.eventTarget), action.eventTarget);
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

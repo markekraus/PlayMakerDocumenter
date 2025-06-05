@@ -10,7 +10,7 @@ public record AnyKeyDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.eventTarget), action.eventTarget);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

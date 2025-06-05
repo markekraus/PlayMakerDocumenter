@@ -13,7 +13,7 @@ public record FloatOperatorDoc : FsmActionDoc
         this.AddProperty(nameof(action.float2), action.float2);
         this.AddProperty(nameof(action.operation), action.operation);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

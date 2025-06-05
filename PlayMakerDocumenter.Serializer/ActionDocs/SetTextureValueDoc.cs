@@ -11,7 +11,7 @@ public record SetTextureValueDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.textureValue), action.textureValue);
         this.AddProperty(nameof(action.textureVariable), action.textureVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -15,7 +15,7 @@ public record FindClosestDoc : FsmActionDoc
         this.AddProperty(nameof(action.storeDistance), action.storeDistance);
         this.AddProperty(nameof(action.storeObject), action.storeObject);
         this.AddProperty(nameof(action.withTag), action.withTag);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

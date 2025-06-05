@@ -15,7 +15,7 @@ public record RandomIntDoc : FsmActionDoc
         this.AddProperty(nameof(action.noRepeat), action.noRepeat);
         this.AddProperty(nameof(action.randomIndex), action.randomIndex);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

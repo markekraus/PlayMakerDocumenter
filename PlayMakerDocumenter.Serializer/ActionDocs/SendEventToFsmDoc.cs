@@ -15,7 +15,7 @@ public record SendEventToFsmDoc : FsmActionDoc
         this.AddProperty(nameof(action.go), action.go);
         this.AddProperty(nameof(action.requireReceiver), action.requireReceiver);
         this.AddProperty(nameof(action.sendEvent), action.sendEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

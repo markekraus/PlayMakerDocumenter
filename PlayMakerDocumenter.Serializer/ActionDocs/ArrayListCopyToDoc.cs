@@ -15,7 +15,7 @@ public record ArrayListCopyToDoc : FsmActionDoc
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.referenceTarget), action.referenceTarget);
         this.AddProperty(nameof(action.startIndex), action.startIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

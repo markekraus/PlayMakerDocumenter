@@ -14,7 +14,7 @@ public record TrackFadeToVolumeActionDoc : FsmActionDoc
         this.AddProperty(nameof(action.priorityValue), action.priorityValue);
         this.AddProperty(nameof(action.targetGroup), action.targetGroup);
         this.AddProperty(nameof(action.targetVolume), action.targetVolume);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

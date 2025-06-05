@@ -11,7 +11,7 @@ public record UIScreenActiveActionDoc : FsmActionDoc
         this.AddProperty(nameof(action.ActiveEvent), action.ActiveEvent);
         this.AddProperty(nameof(action.Target), action.Target);
         this.AddProperty(nameof(action.UnactiveEvent), action.UnactiveEvent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

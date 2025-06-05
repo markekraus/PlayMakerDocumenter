@@ -12,7 +12,7 @@ public record CutToCameraDoc : FsmActionDoc
         this.AddProperty(nameof(action.cutBackOnExit), action.cutBackOnExit);
         this.AddProperty(nameof(action.makeMainCamera), action.makeMainCamera);
         this.AddProperty(nameof(action.oldCamera), action.oldCamera);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

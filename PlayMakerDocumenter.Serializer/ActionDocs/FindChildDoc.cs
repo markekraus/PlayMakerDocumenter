@@ -11,7 +11,7 @@ public record FindChildDoc : FsmActionDoc
         this.AddProperty(nameof(action.childName), action.childName);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeResult), action.storeResult);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

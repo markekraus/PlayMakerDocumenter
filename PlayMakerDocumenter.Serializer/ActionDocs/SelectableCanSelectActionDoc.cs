@@ -10,7 +10,7 @@ public record SelectableCanSelectActionDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.CanInteract), action.CanInteract);
         this.AddProperty(nameof(action.Target), action.Target);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

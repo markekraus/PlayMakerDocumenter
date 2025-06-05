@@ -11,7 +11,7 @@ public record AudioStopDoc : FsmActionDoc
         this.AddProperty(nameof(action.fadeTime), action.fadeTime);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.volume), action.volume);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -11,7 +11,7 @@ public record GetComponentDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.storeComponent), action.storeComponent);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

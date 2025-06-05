@@ -12,7 +12,7 @@ public record CountBoolStatesDoc : FsmActionDoc
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.falseCount), action.falseCount);
         this.AddProperty(nameof(action.trueCount), action.trueCount);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

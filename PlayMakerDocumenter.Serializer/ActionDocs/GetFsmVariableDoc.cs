@@ -17,7 +17,7 @@ public record GetFsmVariableDoc : FsmActionDoc
         this.AddProperty(nameof(action.sourceVariable), action.sourceVariable);
         this.AddProperty(nameof(action.storeValue), action.storeValue);
         this.AddProperty(nameof(action.targetVariable), action.targetVariable);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

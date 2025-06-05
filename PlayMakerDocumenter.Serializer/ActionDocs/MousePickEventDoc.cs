@@ -18,7 +18,7 @@ public record MousePickEventDoc : FsmActionDoc
         this.AddProperty(nameof(action.mouseOver), action.mouseOver);
         this.AddProperty(nameof(action.mouseUp), action.mouseUp);
         this.AddProperty(nameof(action.rayDistance), action.rayDistance);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

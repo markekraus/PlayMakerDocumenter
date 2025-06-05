@@ -11,7 +11,7 @@ public record SetMaterialDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.material), action.material);
         this.AddProperty(nameof(action.materialIndex), action.materialIndex);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

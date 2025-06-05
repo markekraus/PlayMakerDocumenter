@@ -12,7 +12,7 @@ public record EaseFloatDoc : FsmActionDoc
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
         this.AddProperty(nameof(action.fromValue), action.fromValue);
         this.AddProperty(nameof(action.toValue), action.toValue);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

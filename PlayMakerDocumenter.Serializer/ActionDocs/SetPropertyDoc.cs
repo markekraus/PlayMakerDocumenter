@@ -10,7 +10,7 @@ public record SetPropertyDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.everyFrame), action.everyFrame);
         this.AddProperty(nameof(action.targetProperty), action.targetProperty);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

@@ -10,7 +10,7 @@ public record EnableFOVOffsetActionDoc : FsmActionDoc
         if (action is null || Ctx is null) return;
         this.AddProperty(nameof(action.EnableOffset), action.EnableOffset);
         this.AddProperty(nameof(action.FadeTime), action.FadeTime);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

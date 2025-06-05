@@ -13,7 +13,7 @@ public record ArrayListGetRandomDoc : FsmActionDoc
         this.AddProperty(nameof(action.randomIndex), action.randomIndex);
         this.AddProperty(nameof(action.randomItem), action.randomItem);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

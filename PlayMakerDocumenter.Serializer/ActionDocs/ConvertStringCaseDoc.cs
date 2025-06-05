@@ -12,7 +12,7 @@ public record ConvertStringCaseDoc : FsmActionDoc
         this.AddProperty(nameof(action.operation), action.operation);
         this.AddProperty(nameof(action.result), action.result);
         this.AddProperty(nameof(action.String), action.String);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

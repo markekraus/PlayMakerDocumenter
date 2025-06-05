@@ -13,7 +13,7 @@ public record ArrayListSwapItemsDoc : FsmActionDoc
         this.AddProperty(nameof(action.index1), action.index1);
         this.AddProperty(nameof(action.index2), action.index2);
         this.AddProperty(nameof(action.reference), action.reference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

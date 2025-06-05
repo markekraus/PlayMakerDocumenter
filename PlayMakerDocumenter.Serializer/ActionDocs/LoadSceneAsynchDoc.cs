@@ -24,7 +24,7 @@ public record LoadSceneAsynchDoc : FsmActionDoc
         this.AddProperty(nameof(action.sceneByName), action.sceneByName);
         this.AddProperty(nameof(action.sceneNotFoundEvent), action.sceneNotFoundEvent);
         this.AddProperty(nameof(action.sceneReference), action.sceneReference);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

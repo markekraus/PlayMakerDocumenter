@@ -15,7 +15,7 @@ public record FloatCompareDoc : FsmActionDoc
         this.AddProperty(nameof(action.greaterThan), action.greaterThan);
         this.AddProperty(nameof(action.lessThan), action.lessThan);
         this.AddProperty(nameof(action.tolerance), action.tolerance);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

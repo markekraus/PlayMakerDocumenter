@@ -12,7 +12,7 @@ public record setTextmeshProTextColorDoc : FsmActionDoc
         this.AddProperty(nameof(action.gameObject), action.gameObject);
         this.AddProperty(nameof(action.meshproScript), action.meshproScript);
         this.AddProperty(nameof(action.textColor), action.textColor);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

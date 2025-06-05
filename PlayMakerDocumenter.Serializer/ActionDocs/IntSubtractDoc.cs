@@ -13,7 +13,7 @@ public record IntSubtractDoc : FsmActionDoc
         this.AddProperty(nameof(action.intVariable), action.intVariable);
         this.AddProperty(nameof(action.perSecond), action.perSecond);
         this.AddProperty(nameof(action.subtract), action.subtract);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

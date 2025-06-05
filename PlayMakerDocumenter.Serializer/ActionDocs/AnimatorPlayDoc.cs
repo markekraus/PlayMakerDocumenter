@@ -14,7 +14,7 @@ public record AnimatorPlayDoc : FsmActionDoc
         this.AddProperty(nameof(action.layer), action.layer);
         this.AddProperty(nameof(action.normalizedTime), action.normalizedTime);
         this.AddProperty(nameof(action.stateName), action.stateName);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

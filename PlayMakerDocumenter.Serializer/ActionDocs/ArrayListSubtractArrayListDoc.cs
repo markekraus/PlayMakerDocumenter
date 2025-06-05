@@ -13,7 +13,7 @@ public record ArrayListSubtractArrayListDoc : FsmActionDoc
         this.AddProperty(nameof(action.reference), action.reference);
         this.AddProperty(nameof(action.SubtractReference), action.SubtractReference);
         this.AddProperty(nameof(action.Type), action.Type);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 

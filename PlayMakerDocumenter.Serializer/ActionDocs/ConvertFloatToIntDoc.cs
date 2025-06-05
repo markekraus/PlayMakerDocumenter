@@ -12,7 +12,7 @@ public record ConvertFloatToIntDoc : FsmActionDoc
         this.AddProperty(nameof(action.floatVariable), action.floatVariable);
         this.AddProperty(nameof(action.intVariable), action.intVariable);
         this.AddProperty(nameof(action.rounding), action.rounding);
-        DocumentationSupported = true;
+        ActionTypeSupported = true;
     }
 }
 
