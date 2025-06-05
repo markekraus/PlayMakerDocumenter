@@ -1,5 +1,3 @@
-using UnityEngine.Animations;
-
 namespace PlayMakerDocumenter.Markdown;
 
 internal static class SateActions

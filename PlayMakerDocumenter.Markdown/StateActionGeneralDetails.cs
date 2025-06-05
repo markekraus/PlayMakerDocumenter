@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-
 namespace PlayMakerDocumenter.Markdown;
 
 internal static class StateActionGeneralDetails

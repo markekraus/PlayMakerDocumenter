@@ -1,7 +1,3 @@
-
-
-using System.Linq;
-
 namespace PlayMakerDocumenter.Markdown;
 
 internal static class Transitions
