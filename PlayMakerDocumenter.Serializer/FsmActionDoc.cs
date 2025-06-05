@@ -11,6 +11,7 @@ public record FsmActionDoc
     {
         ctx = Ctx;
         GeneralDetails = ctx;
+        DocumentationSupported = false;
     }
     public static implicit operator FsmActionDoc(ActionContext Ctx) =>
         new(Ctx);

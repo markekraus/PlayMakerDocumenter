@@ -2,7 +2,7 @@ using Il2Cpp;
 
 namespace PlayMakerDocumenter.Serializer;
 
-public class FsmDoc
+public record FsmDoc
 {
     public EnvironmentDoc EnvironmentDetails = new();
     public FsmDetailsDoc FsmDetails;
@@ -11,7 +11,7 @@ public class FsmDoc
     public FsmEventsDoc Events;
     public FsmStatesDoc States;
     public FsmDoc() { }
-    private FsmDoc(PlayMakerFSM Fsm)
+    public FsmDoc(PlayMakerFSM Fsm)
     {
         EnvironmentDetails = new();
         FsmDetails = Fsm;

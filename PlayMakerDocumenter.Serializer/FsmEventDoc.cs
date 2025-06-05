@@ -8,7 +8,7 @@ public record FsmEventDoc(string Name, string Path)
     {
         if (fsmEvent is null) return new("null", "null");
         var name = fsmEvent.Name is null ? "null" : fsmEvent.Name;
-        var path = fsmEvent.Path is null ? "null" : fsmEvent.Name;
+        var path = fsmEvent.Path is null ? "null" : fsmEvent.Path;
         return new(name, path);
     }
 }

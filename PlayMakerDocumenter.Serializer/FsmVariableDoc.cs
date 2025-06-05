@@ -3,7 +3,16 @@ using System.Linq;
 
 namespace PlayMakerDocumenter.Serializer;
 
-public record FsmVariableDoc(string Name, string Type, string Value);
+public record FsmVariableDoc
+{
+    public string Name;
+    public string Type;
+    public string Value;
+    public FsmVariableDoc() { }
+    public FsmVariableDoc(string Name, string Type, string Value) =>
+        (this.Name, this.Type, this.Value) =
+        (Name, Type, Value);
+}
 
 internal static class FsmVariableDocExtensions
 {
