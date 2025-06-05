@@ -98,4 +98,9 @@
             <Private>True</Private>
         </PackageReference>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\PlayMakerDocumenter.Utility\PlayMakerDocumenter.Utility.csproj" />
+      <ProjectReference Include="..\PlayMakerDocumenter.Logging\PlayMakerDocumenter.Logging.csproj" />
+      <ProjectReference Include="..\PlayMakerDocumenter.Serializer\PlayMakerDocumenter.Serializer.csproj" />
+    </ItemGroup>
 </Project>

@@ -160,13 +160,13 @@ When [Developing Locally](#developing-locally), you can build and publish this m
 PlayMaker ships with 100's of State Actions.
 Each State Action type has its own unique properties requiring a manual documenter for each (for now).
 As such, there is currently limited support for a decent number of commonly used Action Types.
-The available types are listed in [src/Actions](src/Actions).
+The available types are listed in [PlayMakerDocumenter/Actions](PlayMakerDocumenter/Actions).
 
 ## Developing New Action Details
 
 For this demo, I will use the fictional State Action `SeizeMeansOfProduction`
 
-Create `src\Actions\Documenter.SeizeMeansOfProduction.cs` with this scaffolding:
+Create `PlayMakerDocumenter/Actions/Documenter.SeizeMeansOfProduction.cs` with this scaffolding:
 
 ```csharp
 using System.Text;
@@ -186,7 +186,7 @@ public static partial class Documenter
 }
 ```
 
-Then update [`src/Actions/00Documenter.cs`](src/Actions/00Documenter.cs) to insert the documenter in alpha order:
+Then update [`PlayMakerDocumenter/Actions/00Documenter.cs`](PlayMakerDocumenter/Actions/00Documenter.cs) to insert the documenter in alpha order:
 
 ```csharp
     private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>

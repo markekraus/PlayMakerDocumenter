@@ -11,7 +11,7 @@
   <Folder Name="/PlayMakerDocumenter.Serializer/">
     <Project Path="PlayMakerDocumenter.Serializer/PlayMakerDocumenter.Serializer.csproj" />
   </Folder>
-  <Folder Name="/src/">
-    <Project Path="src/PlayMakerDocumenter.csproj" />
+  <Folder Name="/PlayMakerDocumenter/">
+    <Project Path="PlayMakerDocumenter/PlayMakerDocumenter.csproj" />
   </Folder>
 </Solution>
