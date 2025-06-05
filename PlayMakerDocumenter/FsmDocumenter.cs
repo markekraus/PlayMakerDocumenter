@@ -118,7 +118,7 @@ public static partial class FsmDocumenter
             {
                 fails++;
                 LogError($"Failed to process FSM: {curDoc}");
-                LogError($"{ex}");
+                LogException(ex);
             }
             i++;
         }

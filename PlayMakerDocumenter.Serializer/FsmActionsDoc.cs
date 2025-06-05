@@ -22,7 +22,7 @@ public class FsmActionsDoc : List<FsmActionDoc>
             catch (System.Exception ex)
             {
                 LogError($"Failed to process Action: {ctx.Fsm.GetFullPath()}.FsmStates[{ctx.StateIndex}].Actions[{i}]");
-                LogError($"{ex}");
+                LogException(ex);
             } 
         }
     }

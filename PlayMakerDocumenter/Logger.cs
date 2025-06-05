@@ -6,27 +6,7 @@ namespace PlayMakerDocumenter;
 
 internal static class Logger
 {
-    public static string LogMsg(string line)
-    {
-        Melon<Entry>.Logger.Msg(line);
-        return line;
-    }
-    public static string LogError(string line)
-    {
-        Melon<Entry>.Logger.Error(line);
-        return line;
-    }
-    public static string LogWarn(string line)
-    {
-        Melon<Entry>.Logger.Error(line);
-        return line;
-    }
-    public static StringBuilder LogMsg(this StringBuilder sb)
-    {
-        Melon<Entry>.Logger.Msg(sb);
-        return sb;
-    }
-    internal static void LogUniverseLib(string message, LogType logType)
+    internal static void LogPlayMakerDocumenter(string message, LogType logType)
     {
         string log = message?.ToString() ?? "";
 
@@ -34,15 +14,18 @@ internal static class Logger
         {
             case LogType.Assert:
             case LogType.Log:
-                LogMsg(log);
+                Melon<Entry>.Logger.Msg(log);
                 break;
             case LogType.Warning:
-                LogWarn(log);
+                Melon<Entry>.Logger.Warning(log);
                 break;
             case LogType.Error:
+                Melon<Entry>.Logger.Error(log);
+                break;
             case LogType.Exception:
-                LogError(log);
+                Melon<Entry>.Logger.BigError(log);
                 break;
         }
     }
+    internal static void LogUniverseLib(string message, LogType logType) => LogPlayMakerDocumenter(message, logType);
 }

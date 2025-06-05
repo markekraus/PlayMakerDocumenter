@@ -51,7 +51,7 @@ internal static partial class Documenter
                 eventName = "";
                 stateName = "";
                 LogError($"Could not evaluate event/state. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].events[{i}]");
-                LogError($"{ex}");
+                LogException(ex);
             }
             try
             {
@@ -62,6 +62,7 @@ internal static partial class Documenter
             {
                 weight = "";
                 LogError($"Could not evaluate weight. '{ctx.Fsm.GetFullPath()}'.States[{ctx.StateIndex}].Actions[{ctx.ActionIndex}].weights[{i}]");
+                LogException(ex);
             }
             
             tb.AddRow(weight, eventName, stateName);

@@ -5,6 +5,7 @@ using UnityEngine;
 using UUIDNext;
 
 [assembly: InternalsVisibleTo("PlayMakerDocumenter.Serializer.ML.IL2CPP")]
+[assembly: InternalsVisibleTo("PlayMakerDocumenter.ML.IL2CPP")]
 
 namespace PlayMakerDocumenter
 {
