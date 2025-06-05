@@ -2,9 +2,16 @@
   <Configurations>
     <BuildType Name="ML_Cpp_CoreCLR" />
   </Configurations>
-  <Folder Name="/src/">
-    <Project Path="src/PlayMakerDocumenter.csproj">
-      <BuildType Solution="ML_Cpp_CoreCLR|*" Project="ML_Cpp_CoreCLR" />
-    </Project>
+  <Folder Name="/PlayMakerDocumenter.Logging/">
+    <Project Path="PlayMakerDocumenter.Logging/PlayMakerDocumenter.Logging.csproj" />
+  </Folder>
+  <Folder Name="/PlayMakerDocumenter.Utility/">
+    <Project Path="PlayMakerDocumenter.Utility/PlayMakerDocumenter.Utility.csproj" />
+  </Folder>
+  <Folder Name="/PlayMakerDocumenter.Serializer/">
+    <Project Path="PlayMakerDocumenter.Serializer/PlayMakerDocumenter.Serializer.csproj" />
+  </Folder>
+  <Folder Name="/PlayMakerDocumenter/">
+    <Project Path="PlayMakerDocumenter/PlayMakerDocumenter.csproj" />
   </Folder>
 </Solution>
