@@ -60,9 +60,9 @@
 
 ### 0 State 1: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | Late Days  |
+| EventName | ToState   |
+| --------- | --------- |
+| FINISHED  | Late Days |
 
 ### 0 State 1: Actions
 
@@ -105,9 +105,9 @@ Wait Details:
 
 ### 1 Set Rank 3 - average: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 5    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 5 |
 
 ### 1 Set Rank 3 - average: Actions
 
@@ -409,7 +409,7 @@ SetFsmBool Details:
 
 ### 2 Early Day: Transitions
 
-| EventName | ToFsmState           |
+| EventName | ToState              |
 | --------- | -------------------- |
 | 1         | Set Rank 3 - average |
 | 2         | Rank 3 open          |
@@ -511,9 +511,9 @@ SendRandomEvent Details:
 
 ### 3 Set Rank 3 - Early: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 5    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 5 |
 
 ### 3 Set Rank 3 - Early: Actions
 
@@ -1043,9 +1043,9 @@ SetFsmBool Details:
 
 ### 4 Rank 3 open: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 3    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 3 |
 
 ## State 5: Set Rank 3 - Double
 
@@ -1060,9 +1060,9 @@ SetFsmBool Details:
 
 ### 5 Set Rank 3 - Double: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 4    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 4 |
 
 ### 5 Set Rank 3 - Double: Actions
 
@@ -1646,7 +1646,7 @@ SetFsmBool Details:
 
 ### 6 Late Days: Transitions
 
-| EventName | ToFsmState           |
+| EventName | ToState              |
 | --------- | -------------------- |
 | -1        | Early Day            |
 | 0         | Set Rank 3 - Double  |
@@ -1815,9 +1815,9 @@ SendRandomEvent Details:
 
 ### 7 Set Rank 4 - One Lock: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 7    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 7 |
 
 ### 7 Set Rank 4 - One Lock: Actions
 
@@ -2372,9 +2372,9 @@ SetFsmBool Details:
 
 ### 8 Rank 4 open: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 6    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 6 |
 
 ## State 9: Set Rank 4 - Triple
 
@@ -2389,9 +2389,9 @@ SetFsmBool Details:
 
 ### 9 Set Rank 4 - Triple: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 8    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 8 |
 
 ### 9 Set Rank 4 - Triple: Actions
 
@@ -2946,7 +2946,7 @@ SetFsmBool Details:
 
 ### 10 State 3: Transitions
 
-| EventName | ToFsmState            |
+| EventName | ToState               |
 | --------- | --------------------- |
 | 1         | Set Rank 4 - Triple   |
 | 2         | Set Rank 4 - One Lock |
@@ -2998,7 +2998,7 @@ SendRandomEvent Details:
 
 ### 11 State 4: Transitions
 
-| EventName | ToFsmState            |
+| EventName | ToState               |
 | --------- | --------------------- |
 | 1         | Set Rank 4 - One Lock |
 | 2         | Rank 4 open           |
@@ -3050,7 +3050,7 @@ SendRandomEvent Details:
 
 ### 12 State 5: Transitions
 
-| EventName | ToFsmState            |
+| EventName | ToState               |
 | --------- | --------------------- |
 | 1         | Set Rank 4 - Triple   |
 | 2         | Set Rank 4 - Average  |
@@ -3112,9 +3112,9 @@ SendRandomEvent Details:
 
 ### 13 Set Rank 5 - average: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 10   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 10 |
 
 ### 13 Set Rank 5 - average: Actions
 
@@ -3555,9 +3555,9 @@ SetFsmBool Details:
 
 ### 14 Set Rank 4 - Average: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 7    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 7 |
 
 ### 14 Set Rank 4 - Average: Actions
 
@@ -4112,9 +4112,9 @@ SetFsmBool Details:
 
 ### 15 Set Rank 5 - Kinda Open: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 9    |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | State 9 |
 
 ### 15 Set Rank 5 - Kinda Open: Actions
 
@@ -4555,9 +4555,9 @@ SetFsmBool Details:
 
 ### 16 Set Rank 5 - Heavy Lock: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 11   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 11 |
 
 ### 16 Set Rank 5 - Heavy Lock: Actions
 
@@ -4998,7 +4998,7 @@ SetFsmBool Details:
 
 ### 17 State 6: Transitions
 
-| EventName | ToFsmState              |
+| EventName | ToState                 |
 | --------- | ----------------------- |
 | 1         | Set Rank 5 - Heavy Lock |
 | 2         | Set Rank 5 - average    |
@@ -5050,7 +5050,7 @@ SendRandomEvent Details:
 
 ### 18 State 7: Transitions
 
-| EventName | ToFsmState              |
+| EventName | ToState                 |
 | --------- | ----------------------- |
 | 1         | Set Rank 5 - Heavy Lock |
 | 2         | Set Rank 5 - average    |
@@ -5107,7 +5107,7 @@ SendRandomEvent Details:
 
 ### 19 State 8: Transitions
 
-| EventName | ToFsmState              |
+| EventName | ToState                 |
 | --------- | ----------------------- |
 | 1         | Set Rank 5 - average    |
 | 2         | Set Rank 5 - Kinda Open |
@@ -5159,9 +5159,9 @@ SendRandomEvent Details:
 
 ### 20 Set Rank 6 - Average 2: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 12   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 12 |
 
 ### 20 Set Rank 6 - Average 2: Actions
 
@@ -5716,9 +5716,9 @@ SetFsmBool Details:
 
 ### 21 Set Rank 6 - Locked: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 12   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 12 |
 
 ### 21 Set Rank 6 - Locked: Actions
 
@@ -6273,7 +6273,7 @@ SetFsmBool Details:
 
 ### 22 Set Rank 6 - Open: Transitions
 
-| EventName | ToFsmState           |
+| EventName | ToState              |
 | --------- | -------------------- |
 | FINISHED  | Set Rank 7 - Average |
 
@@ -6830,7 +6830,7 @@ SetFsmBool Details:
 
 ### 23 State 9: Transitions
 
-| EventName | ToFsmState             |
+| EventName | ToState                |
 | --------- | ---------------------- |
 | 1         | Set Rank 6 - Locked    |
 | 2         | Set Rank 6 - Average 2 |
@@ -6882,7 +6882,7 @@ SendRandomEvent Details:
 
 ### 24 State 10: Transitions
 
-| EventName | ToFsmState             |
+| EventName | ToState                |
 | --------- | ---------------------- |
 | 1         | Set Rank 6 - Locked    |
 | 2         | Set Rank 6 - Average 2 |
@@ -6939,7 +6939,7 @@ SendRandomEvent Details:
 
 ### 25 State 11: Transitions
 
-| EventName | ToFsmState             |
+| EventName | ToState                |
 | --------- | ---------------------- |
 | 1         | Set Rank 6 - Average 2 |
 | 2         | Set Rank 6 - Open      |
@@ -6991,9 +6991,9 @@ SendRandomEvent Details:
 
 ### 26 Set Rank 7 - Average: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 13   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 13 |
 
 ### 26 Set Rank 7 - Average: Actions
 
@@ -7548,7 +7548,7 @@ SetFsmBool Details:
 
 ### 27 Set Rank 7 - Open: Transitions
 
-| EventName | ToFsmState              |
+| EventName | ToState                 |
 | --------- | ----------------------- |
 | FINISHED  | Set Rank 8 - One Unlock |
 
@@ -8105,7 +8105,7 @@ SetFsmBool Details:
 
 ### 28 State 12: Transitions
 
-| EventName | ToFsmState           |
+| EventName | ToState              |
 | --------- | -------------------- |
 | 1         | Set Rank 7 - Average |
 | 2         | Set Rank 7 - Open    |
@@ -8157,9 +8157,9 @@ SendRandomEvent Details:
 
 ### 29 Set Rank 8 - One Unlock: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 14   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 14 |
 
 ### 29 Set Rank 8 - One Unlock: Actions
 
@@ -8714,9 +8714,9 @@ SetFsmBool Details:
 
 ### 30 Set Rank 8 - Two Unlocks: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | State 14   |
+| EventName | ToState  |
+| --------- | -------- |
+| FINISHED  | State 14 |
 
 ### 30 Set Rank 8 - Two Unlocks: Actions
 
@@ -9271,7 +9271,7 @@ SetFsmBool Details:
 
 ### 31 State 13: Transitions
 
-| EventName | ToFsmState               |
+| EventName | ToState                  |
 | --------- | ------------------------ |
 | 1         | Set Rank 8 - One Unlock  |
 | 2         | Set Rank 8 - Two Unlocks |
@@ -9323,7 +9323,7 @@ SendRandomEvent Details:
 
 ### 32 State 14: Transitions
 
-| EventName | ToFsmState              |
+| EventName | ToState                 |
 | --------- | ----------------------- |
 | 1         | All Locked              |
 | 2         | Set Rank 9 - One Unlock |
@@ -9375,9 +9375,9 @@ SendRandomEvent Details:
 
 ### 33 Set Rank 9 - One Unlock: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | Done       |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | Done    |
 
 ### 33 Set Rank 9 - One Unlock: Actions
 
@@ -9761,9 +9761,9 @@ SetFsmBool Details:
 
 ### 34 All Locked: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | Done       |
+| EventName | ToState |
+| --------- | ------- |
+| FINISHED  | Done    |
 
 ## State 35: Done
 

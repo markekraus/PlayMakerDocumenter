@@ -7,10 +7,10 @@ internal static class GlobalTransitions
         if (doc is null || sb is null || doc.Count < 1) return sb;
         var tb = sb.AppendHeader("## Global Transitions")
             .NewTable()
-            .WithHeaders("EventName", "ToFsmState");
-        foreach (var item in doc)
+            .WithHeaders("EventName", "ToState");
+        foreach (var item in doc.OrderBy(t => t.EventName))
         {
-            tb.AddRow(item.Key, item.Value);
+            tb.AddRow(item.EventName, item.ToState);
         }
         return tb.BuildTable();
     }

@@ -9,7 +9,7 @@ internal static class StateTransitions
         if (doc is null || sb is null || doc.Transitions.Count < 1) return sb;
         var tb = sb.AppendHeader($"### {doc.Details.StateIndex} {doc.Details.Name}: Transitions")
             .NewTable()
-            .WithHeaders("EventName", "ToFsmState");
+            .WithHeaders("EventName", "ToState");
         foreach (var item in doc.Transitions)
         {
             tb.AddRow(item.Key, item.Value);

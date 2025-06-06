@@ -80,7 +80,7 @@
 
 ### 0 Luck Check: Transitions
 
-| EventName       | ToFsmState          |
+| EventName       | ToState             |
 | --------------- | ------------------- |
 | Avg Luck        | Set  Avg Luck 2     |
 | Bad Luck        | Set Bad Luck 2      |
@@ -267,7 +267,7 @@ IntCompare Details:
 
 ### 1 Item Spawn: Transitions
 
-| EventName        | ToFsmState    |
+| EventName        | ToState       |
 | ---------------- | ------------- |
 | Luck Calculator  | Dowsing Check |
 
@@ -284,7 +284,7 @@ IntCompare Details:
 
 ### 2 Loop Back: Transitions
 
-| EventName | ToFsmState |
+| EventName | ToState    |
 | --------- | ---------- |
 | FINISHED  | Item Spawn |
 
@@ -329,7 +329,7 @@ Wait Details:
 
 ### 3 VERANDA Check: Transitions
 
-| EventName | ToFsmState             |
+| EventName | ToState                |
 | --------- | ---------------------- |
 | FINISHED  | Luck Balance Modifiers |
 
@@ -446,7 +446,7 @@ SetBoolValue Details:
 
 ### 4 Set Bad Luck 2: Transitions
 
-| EventName | ToFsmState       |
+| EventName | ToState          |
 | --------- | ---------------- |
 | Avg Luck  | Dowse Correction |
 | Bad Luck  | 0 Items          |
@@ -521,7 +521,7 @@ SendRandomEvent Details:
 
 ### 5 Set  Avg Luck 2: Transitions
 
-| EventName | ToFsmState         |
+| EventName | ToState            |
 | --------- | ------------------ |
 | Bad Luck  | 0 Items            |
 | Lucky     | 1 Item Guarenteed! |
@@ -573,7 +573,7 @@ SendRandomEvent Details:
 
 ### 6 Set  Kinda Lucky 2: Transitions
 
-| EventName | ToFsmState         |
+| EventName | ToState            |
 | --------- | ------------------ |
 | Bad Luck  | 0 Items            |
 | Lucky     | 1 Item Guarenteed! |
@@ -625,7 +625,7 @@ SendRandomEvent Details:
 
 ### 7 Set Lucky 2: Transitions
 
-| EventName | ToFsmState         |
+| EventName | ToState            |
 | --------- | ------------------ |
 | Bad Luck  | 0 Items            |
 | Lucky     | 1 Item Guarenteed! |
@@ -677,7 +677,7 @@ SendRandomEvent Details:
 
 ### 8 3 Items Guarenteed!: Transitions
 
-| EventName | ToFsmState       |
+| EventName | ToState          |
 | --------- | ---------------- |
 | FINISHED  | Send Drop Target |
 
@@ -792,7 +792,7 @@ IntAdd Details:
 
 ### 9 4 out of 4: Transitions
 
-| EventName | ToFsmState       |
+| EventName | ToState          |
 | --------- | ---------------- |
 | FINISHED  | Send Drop Target |
 
@@ -857,7 +857,7 @@ IntAdd Details:
 
 ### 10 1 Item Guarenteed!: Transitions
 
-| EventName  | ToFsmState          |
+| EventName  | ToState             |
 | ---------- | ------------------- |
 | Avg Luck   | Dowse Correction    |
 | Very Lucky | 2 Items Guarenteed! |
@@ -932,7 +932,7 @@ SendRandomEvent Details:
 
 ### 11 2 Items Guarenteed!: Transitions
 
-| EventName  | ToFsmState          |
+| EventName  | ToState             |
 | ---------- | ------------------- |
 | Avg Luck   | Send Drop Target    |
 | Very Lucky | 3 Items Guarenteed! |
@@ -1080,7 +1080,7 @@ SendRandomEvent Details:
 
 ### 12 0 Items: Transitions
 
-| EventName | ToFsmState       |
+| EventName | ToState          |
 | --------- | ---------------- |
 | FINISHED  | Dowse Correction |
 
@@ -1122,9 +1122,9 @@ SetIntValue Details:
 
 ### 13 Send Drop Target: Transitions
 
-| EventName | ToFsmState |
-| --------- | ---------- |
-| FINISHED  | Loop Back  |
+| EventName | ToState   |
+| --------- | --------- |
+| FINISHED  | Loop Back |
 
 ### 13 Send Drop Target: Actions
 
@@ -1225,7 +1225,7 @@ SendEvent Details:
 
 ### 14 Rabbit's Foot: Transitions
 
-| EventName | ToFsmState    |
+| EventName | ToState       |
 | --------- | ------------- |
 | cont      | +3            |
 | skip      | VERANDA Check |
@@ -1308,7 +1308,7 @@ ArrayListContains Details:
 
 ### 15 +3: Transitions
 
-| EventName | ToFsmState    |
+| EventName | ToState       |
 | --------- | ------------- |
 | FINISHED  | VERANDA Check |
 
@@ -1350,7 +1350,7 @@ IntAdd Details:
 
 ### 16 SET INT LUCK: Transitions
 
-| EventName | ToFsmState    |
+| EventName | ToState       |
 | --------- | ------------- |
 | FINISHED  | Rabbit's Foot |
 
@@ -1392,7 +1392,7 @@ SetIntValue Details:
 
 ### 17 Set Dowsed Luck: Transitions
 
-| EventName | ToFsmState    |
+| EventName | ToState       |
 | --------- | ------------- |
 | FINISHED  | Rabbit's Foot |
 
@@ -1482,7 +1482,7 @@ SetIntValue Details:
 
 ### 18 Dowse Correction: Transitions
 
-| EventName | ToFsmState       |
+| EventName | ToState          |
 | --------- | ---------------- |
 | FINISHED  | Send Drop Target |
 | skip      | Send Drop Target |
@@ -1550,7 +1550,7 @@ SetIntValue Details:
 
 ### 19 Luck Balance Modifiers: Transitions
 
-| EventName | ToFsmState |
+| EventName | ToState    |
 | --------- | ---------- |
 | FINISHED  | Luck Check |
 | skip      | Dows Check |
@@ -1618,7 +1618,7 @@ IntAdd Details:
 
 ### 20 Dowsing Check: Transitions
 
-| EventName | ToFsmState      |
+| EventName | ToState         |
 | --------- | --------------- |
 | DOWSED    | Set Dowsed Luck |
 | FINISHED  | SET INT LUCK    |
@@ -1664,7 +1664,7 @@ BoolTest Details:
 
 ### 21 Dowsing Rod: Transitions
 
-| EventName       | ToFsmState         |
+| EventName       | ToState            |
 | --------------- | ------------------ |
 | Avg Luck        | 1 Item Guarenteed! |
 | Extremely Lucky | Dows +2            |
@@ -1772,7 +1772,7 @@ SendRandomEvent Details:
 
 ### 22 Check Dowsing Array: Transitions
 
-| EventName | ToFsmState          |
+| EventName | ToState             |
 | --------- | ------------------- |
 | 1         | Dowsing Rod         |
 | 2         | 2 Items Guarenteed! |
@@ -1853,7 +1853,7 @@ ArrayListContains Details:
 
 ### 23 Dows +1: Transitions
 
-| EventName | ToFsmState          |
+| EventName | ToState             |
 | --------- | ------------------- |
 | FINISHED  | 3 Items Guarenteed! |
 
@@ -1895,7 +1895,7 @@ IntAdd Details:
 
 ### 24 Dows +2: Transitions
 
-| EventName | ToFsmState |
+| EventName | ToState    |
 | --------- | ---------- |
 | FINISHED  | 4 out of 4 |
 
@@ -1937,7 +1937,7 @@ IntAdd Details:
 
 ### 25 Dows Check: Transitions
 
-| EventName | ToFsmState          |
+| EventName | ToState             |
 | --------- | ------------------- |
 | 0         | State 2             |
 | 1         | State 1             |
@@ -2012,7 +2012,7 @@ IntCompare Details:
 
 ### 26 State 1: Transitions
 
-| EventName  | ToFsmState          |
+| EventName  | ToState             |
 | ---------- | ------------------- |
 | Avg Luck   | State 2             |
 | Bad Luck   | 1 Item Guarenteed!  |
@@ -2069,7 +2069,7 @@ SendRandomEvent Details:
 
 ### 27 State 2: Transitions
 
-| EventName | ToFsmState          |
+| EventName | ToState             |
 | --------- | ------------------- |
 | Avg Luck  | 2 Items Guarenteed! |
 | Bad Luck  | 1 Item Guarenteed!  |
