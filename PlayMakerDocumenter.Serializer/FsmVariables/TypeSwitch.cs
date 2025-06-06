@@ -9,7 +9,9 @@ internal static partial class FsmVariableExtensions
     public static IEnumerable<FsmVariableDoc> GetFsmValue(this object fsmVar, string Property)
     {
         if (fsmVar is null) yield break;
-        var actual = fsmVar.TryCast();
+        object actual;
+        try {actual = fsmVar.TryCast();}
+        catch { actual = fsmVar; }
         var type = actual.GetActualType().Name;
         switch (actual)
         {

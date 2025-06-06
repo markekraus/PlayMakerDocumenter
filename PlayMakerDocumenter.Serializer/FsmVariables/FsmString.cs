@@ -11,6 +11,8 @@ internal static partial class FsmVariableExtensions
     public static IEnumerable<FsmVariableDoc> GetValue(this FsmString fsmVar, string Property)
     {
         if (fsmVar is null) yield break;
-        yield return new(Property, fsmVar.GetActualType().Name, fsmVar.Value);
+        yield return fsmVar is null
+            ? new(Property, fsmVar.GetActualType().Name, "null")
+            : new(Property, fsmVar.GetActualType().Name, fsmVar.Value);
     }
 }

@@ -15,7 +15,7 @@ namespace PlayMakerDocumenter
         public static readonly Guid AppNamespace = new(AppNamespaceString);
         public static string GetFullPath(this GameObject go)
         {
-            if (go is null || go.transform is null) return "null";
+            if (go is null) return "null";
             try { return go.transform.GetFullPath(); } catch { return "null"; }
         }
         public static string GetFullPath(this PlayMakerFSM fsm) =>
