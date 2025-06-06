@@ -3,6 +3,7 @@ using System.Linq;
 using MelonLoader;
 using MelonLoader.Utils;
 using UniverseLib;
+using static PlayMakerDocumenter.Logging.Logger;
 
 namespace PlayMakerDocumenter;
 
