@@ -5,7 +5,7 @@ using Il2CppHutongGames.PlayMaker;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 
 namespace PlayMakerDocumenter.Serializer;
-
+// TODO: Dictionary may not work. There are instance one-to-many mappings of event-to-state
 public class TransitionsDoc : SortedDictionary<string, string>
 {
     private static StringComparer comparer = StringComparer.InvariantCultureIgnoreCase;
@@ -14,8 +14,9 @@ public class TransitionsDoc : SortedDictionary<string, string>
     {
         foreach (var transition in transitions)
         {
-            if (transition.ToFsmState is null) continue;
-            Add(transition.EventName, transition.ToState);
+            if (transition.ToFsmState is null || string.IsNullOrWhiteSpace(transition.ToState)) continue;
+            if (!this.TryAdd(transition.EventName, transition.ToState))
+                LogWarn($"Duplicate key EventName: '{transition.EventName}' New ToState: '{transition.ToState}' Existing ToState: '{this[transition.EventName]}'");
         }
     }
 
