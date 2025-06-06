@@ -12,6 +12,7 @@ public record FsmDetailsDoc
     public string FsmName;
     public string FullPath;
     public int StateCount;
+    public int VariableCount;
     public FsmDetailsDoc() { }
     public FsmDetailsDoc(PlayMakerFSM Fsm)
     {
@@ -23,6 +24,7 @@ public record FsmDetailsDoc
         FsmName = Fsm.FsmName;
         FullPath = Fsm.GetFullPath();
         StateCount = Fsm.FsmStates is null ? 0 : Fsm.FsmStates.Count;
+        VariableCount = Fsm.FsmVariables is null ? 0 : Fsm.FsmVariables.Count;
     }
     public static implicit operator FsmDetailsDoc(PlayMakerFSM Fsm) => new(Fsm);
 }

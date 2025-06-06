@@ -23,6 +23,7 @@
 | FullPath        | /__SYSTEM/Luck Calculator            |
 | StateCount      | 28                                   |
 | Uuid            | ad6348da-8c1c-507c-84ce-44eab94355ab |
+| VariableCount   | 17                                   |
 
 ## Variables
 
@@ -99,8 +100,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 0                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 0                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -125,8 +127,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 1                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 0                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -151,8 +154,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 2                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 0                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -177,8 +181,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 3                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 0                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -203,8 +208,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 4                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 0                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -229,8 +235,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 5                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 0                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -291,8 +298,9 @@ General Action Details:
 | ------------ | ---------------------------------------- |
 | ActionIndex  | 0                                        |
 | BlockFinish  | True                                     |
+| DisplayName  | null                                     |
 | Enabled      | True                                     |
-| Name         |                                          |
+| Name         | null                                     |
 | StateIndex   | 2                                        |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.Wait |
 | TypeName     | Wait                                     |
@@ -335,8 +343,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 0                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 3                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -361,8 +370,9 @@ General Action Details:
 | ------------ | -------------------------------------------- |
 | ActionIndex  | 1                                            |
 | BlockFinish  | True                                         |
+| DisplayName  | null                                         |
 | Enabled      | True                                         |
-| Name         |                                              |
+| Name         | null                                         |
 | StateIndex   | 3                                            |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.BoolTest |
 | TypeName     | BoolTest                                     |
@@ -385,8 +395,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 2                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 3                                          |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -407,8 +418,9 @@ General Action Details:
 | ------------ | ------------------------------------------------ |
 | ActionIndex  | 3                                                |
 | BlockFinish  | True                                             |
+| DisplayName  | null                                             |
 | Enabled      | True                                             |
-| Name         |                                                  |
+| Name         | null                                             |
 | StateIndex   | 3                                                |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetBoolValue |
 | TypeName     | SetBoolValue                                     |
@@ -449,8 +461,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 4                                               |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -471,8 +484,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 1                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 4                                                   |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -522,8 +536,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 0                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 5                                                   |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -573,8 +588,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 0                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 6                                                   |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -624,8 +640,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 0                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 7                                                   |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -674,8 +691,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 8                                               |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -696,8 +714,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 1                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 8                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -722,8 +741,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 2                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 8                                               |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -744,8 +764,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 3                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 8                                          |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -785,8 +806,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 9                                               |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -807,8 +829,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 1                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 9                                          |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -849,8 +872,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 10                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -871,8 +895,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 1                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 10                                                  |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -922,8 +947,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 11                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -944,8 +970,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 1                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 11                                             |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -970,8 +997,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 2                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 11                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -992,8 +1020,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 3                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 11                                         |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -1014,8 +1043,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 4                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 11                                                  |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -1064,8 +1094,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 12                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -1105,8 +1136,9 @@ General Action Details:
 | ------------ | ------------------------------------------------ |
 | ActionIndex  | 0                                                |
 | BlockFinish  | True                                             |
+| DisplayName  | null                                             |
 | Enabled      | False                                            |
-| Name         |                                                  |
+| Name         | null                                             |
 | StateIndex   | 13                                               |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetBoolValue |
 | TypeName     | SetBoolValue                                     |
@@ -1127,8 +1159,9 @@ General Action Details:
 | ------------ | --------------------------------------------- |
 | ActionIndex  | 1                                             |
 | BlockFinish  | True                                          |
+| DisplayName  | null                                          |
 | Enabled      | True                                          |
-| Name         |                                               |
+| Name         | null                                          |
 | StateIndex   | 13                                            |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetFsmInt |
 | TypeName     | SetFsmInt                                     |
@@ -1155,8 +1188,9 @@ General Action Details:
 | ------------ | --------------------------------------------- |
 | ActionIndex  | 2                                             |
 | BlockFinish  | True                                          |
+| DisplayName  | null                                          |
 | Enabled      | True                                          |
-| Name         |                                               |
+| Name         | null                                          |
 | StateIndex   | 13                                            |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendEvent |
 | TypeName     | SendEvent                                     |
@@ -1206,8 +1240,9 @@ General Action Details:
 | ------------ | ----------------------------------------------------- |
 | ActionIndex  | 0                                                     |
 | BlockFinish  | True                                                  |
+| DisplayName  | null                                                  |
 | Enabled      | True                                                  |
-| Name         |                                                       |
+| Name         | null                                                  |
 | StateIndex   | 14                                                    |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.ArrayListContains |
 | TypeName     | ArrayListContains                                     |
@@ -1236,8 +1271,9 @@ General Action Details:
 | ------------ | ----------------------------------------------------- |
 | ActionIndex  | 1                                                     |
 | BlockFinish  | True                                                  |
+| DisplayName  | null                                                  |
 | Enabled      | True                                                  |
-| Name         |                                                       |
+| Name         | null                                                  |
 | StateIndex   | 14                                                    |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.ArrayListContains |
 | TypeName     | ArrayListContains                                     |
@@ -1286,8 +1322,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 0                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 15                                         |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -1327,8 +1364,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 0                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 16                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -1368,8 +1406,9 @@ General Action Details:
 | ------------ | ------------------------------------------------ |
 | ActionIndex  | 0                                                |
 | BlockFinish  | True                                             |
+| DisplayName  | null                                             |
 | Enabled      | True                                             |
-| Name         |                                                  |
+| Name         | null                                             |
 | StateIndex   | 17                                               |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetBoolValue |
 | TypeName     | SetBoolValue                                     |
@@ -1390,8 +1429,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 1                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 17                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntOperator |
 | TypeName     | IntOperator                                     |
@@ -1414,8 +1454,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 2                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 17                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -1456,8 +1497,9 @@ General Action Details:
 | ------------ | -------------------------------------------- |
 | ActionIndex  | 0                                            |
 | BlockFinish  | True                                         |
+| DisplayName  | null                                         |
 | Enabled      | True                                         |
-| Name         |                                              |
+| Name         | null                                         |
 | StateIndex   | 18                                           |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.BoolTest |
 | TypeName     | BoolTest                                     |
@@ -1480,8 +1522,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 1                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 18                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -1522,8 +1565,9 @@ General Action Details:
 | ------------ | -------------------------------------------- |
 | ActionIndex  | 0                                            |
 | BlockFinish  | True                                         |
+| DisplayName  | null                                         |
 | Enabled      | True                                         |
-| Name         |                                              |
+| Name         | null                                         |
 | StateIndex   | 19                                           |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.BoolTest |
 | TypeName     | BoolTest                                     |
@@ -1546,8 +1590,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 1                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 19                                         |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -1588,8 +1633,9 @@ General Action Details:
 | ------------ | -------------------------------------------- |
 | ActionIndex  | 0                                            |
 | BlockFinish  | True                                         |
+| DisplayName  | null                                         |
 | Enabled      | True                                         |
-| Name         |                                              |
+| Name         | null                                         |
 | StateIndex   | 20                                           |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.BoolTest |
 | TypeName     | BoolTest                                     |
@@ -1635,8 +1681,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 0                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 21                                             |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -1661,8 +1708,9 @@ General Action Details:
 | ------------ | ----------------------------------------------- |
 | ActionIndex  | 1                                               |
 | BlockFinish  | True                                            |
+| DisplayName  | null                                            |
 | Enabled      | True                                            |
-| Name         |                                                 |
+| Name         | null                                            |
 | StateIndex   | 21                                              |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SetIntValue |
 | TypeName     | SetIntValue                                     |
@@ -1683,8 +1731,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 2                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 21                                                  |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -1738,8 +1787,9 @@ General Action Details:
 | ------------ | ---------------------------------------------------- |
 | ActionIndex  | 0                                                    |
 | BlockFinish  | True                                                 |
+| DisplayName  | null                                                 |
 | Enabled      | True                                                 |
-| Name         |                                                      |
+| Name         | null                                                 |
 | StateIndex   | 22                                                   |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.GetFsmGameObject |
 | TypeName     | GetFsmGameObject                                     |
@@ -1766,8 +1816,9 @@ General Action Details:
 | ------------ | ----------------------------------------------------- |
 | ActionIndex  | 1                                                     |
 | BlockFinish  | True                                                  |
+| DisplayName  | null                                                  |
 | Enabled      | True                                                  |
-| Name         |                                                       |
+| Name         | null                                                  |
 | StateIndex   | 22                                                    |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.ArrayListContains |
 | TypeName     | ArrayListContains                                     |
@@ -1816,8 +1867,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 0                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 23                                         |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -1857,8 +1909,9 @@ General Action Details:
 | ------------ | ------------------------------------------ |
 | ActionIndex  | 0                                          |
 | BlockFinish  | True                                       |
+| DisplayName  | null                                       |
 | Enabled      | True                                       |
-| Name         |                                            |
+| Name         | null                                       |
 | StateIndex   | 24                                         |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntAdd |
 | TypeName     | IntAdd                                     |
@@ -1900,8 +1953,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 0                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 25                                             |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -1926,8 +1980,9 @@ General Action Details:
 | ------------ | ---------------------------------------------- |
 | ActionIndex  | 1                                              |
 | BlockFinish  | True                                           |
+| DisplayName  | null                                           |
 | Enabled      | True                                           |
-| Name         |                                                |
+| Name         | null                                           |
 | StateIndex   | 25                                             |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.IntCompare |
 | TypeName     | IntCompare                                     |
@@ -1973,8 +2028,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 0                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 26                                                  |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |
@@ -2028,8 +2084,9 @@ General Action Details:
 | ------------ | --------------------------------------------------- |
 | ActionIndex  | 0                                                   |
 | BlockFinish  | True                                                |
+| DisplayName  | null                                                |
 | Enabled      | True                                                |
-| Name         |                                                     |
+| Name         | null                                                |
 | StateIndex   | 27                                                  |
 | TypeFullName | Il2CppHutongGames.PlayMaker.Actions.SendRandomEvent |
 | TypeName     | SendRandomEvent                                     |

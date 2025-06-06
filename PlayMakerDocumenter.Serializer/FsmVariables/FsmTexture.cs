@@ -11,6 +11,8 @@ internal static partial class FsmVariableExtensions
     public static IEnumerable<FsmVariableDoc> GetValue(this FsmTexture fsmVar, string Property)
     {
         if (fsmVar is null) yield break;
-        yield return new(Property + ".name", fsmVar.GetActualType().Name, $"{fsmVar.Value.name}");
+        yield return fsmVar.Value is null
+            ? new(Property, fsmVar.GetActualType().Name, "null")
+            : new(Property + ".name", fsmVar.GetActualType().Name, $"{fsmVar.Value.name}");
     }
 }
