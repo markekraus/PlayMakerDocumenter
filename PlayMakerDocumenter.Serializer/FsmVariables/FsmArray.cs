@@ -21,8 +21,15 @@ internal static partial class FsmVariableExtensions
             IEnumerable<FsmVariableDoc> results;
             try
             {
-                var item = fsmVar.Values[i].TryCast();
-                results = item.GetFsmValue($"{Property}[{i}]");
+                try
+                {
+                    var item = fsmVar.Values[i].TryCast();
+                    results = item.GetFsmValue($"{Property}[{i}]");
+                }
+                catch
+                {
+                    results = fsmVar.Values[i].GetFsmValue($"{Property}[{i}]");
+                }
             }
             catch (Exception ex)
             {
