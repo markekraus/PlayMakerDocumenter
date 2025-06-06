@@ -1,5 +1,9 @@
-global using Il2Cpp;
-global using Il2CppHutongGames.PlayMaker;
-global using PlayMakerDocumenter;
-global using UnityEngine;
-global using UniverseLib;
+using Il2Cpp;
+using UnityEngine;
+using UniverseLib;
+using Il2CppHutongGames.PlayMaker;
+using Il2CppHutongGames.PlayMaker.Actions;
+using UniverseLib.Utility;
+using PlayMakerDocumenter;
+using PlayMakerDocumenter.Serializer;
+using Newtonsoft.Json;

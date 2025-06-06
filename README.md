@@ -1,6 +1,6 @@
 # PlayMaker Documenter
 
-A MelonLoader mod for documenting PlayMaker Finite-State Machines (FSMs) in Unity video games with markdown.
+A MelonLoader mod for documenting PlayMaker Finite-State Machines (FSMs) in Unity video games with Markdown.
 
 This mod is currently tested only on Blue Prince.
 
@@ -19,8 +19,10 @@ This mod is currently tested only on Blue Prince.
   - [Publishing](#publishing)
   - [Supported Action Details](#supported-action-details)
   - [Developing New Action Details](#developing-new-action-details)
-  - [MarkdownUtilities](#markdownutilities)
-  - [UniverseLib](#universelib)
+  - [Third Party Libraries](#third-party-libraries)
+    - [MarkdownUtilities](#markdownutilities)
+    - [UniverseLib](#universelib)
+    - [UUIDNext](#uuidnext)
 
 ## Installation
 
@@ -28,6 +30,7 @@ This mod is currently tested only on Blue Prince.
 2. Download an install [UnityExplorer](https://github.com/yukieiji/UnityExplorer)
 3. Download the [latest release](https://github.com/markekraus/PlayMakerDocumenter/releases)
 4. Copy `PlayMakerDocumenter.ML.IL2CPP.dll` to the `Mods` folder in your Blue Prince install folder (i.e. `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\Mods`)
+5. Copy `UUIDNext.dll` to the `UserLibs` folder (i.e. `C:\Program Files (x86)\Steam\steamapps\common\Blue Prince\UserLibs`)
 
 ## Example Output
 
@@ -41,49 +44,7 @@ Maybe one day I'll make a UI for it.
 
 ### MelonLoader Mod Project
 
-You can reference the DLL in your csproj file:
-
-```xml
-    <ItemGroup>
-        <Reference Include="PlayMakerDocumenter">
-            <HintPath>..\path\to\PlayMakerDocumenter.ML.IL2CPP.dll</HintPath>
-            <Private>false</Private>
-        </Reference>
-    </ItemGroup>
-```
-
-You can then use `FsmDocumenter` in your project:
-
-```csharp
-using PlayMakerDocumenter;
-
-namespace MyMod;
-
-public class MyMod : MelonMod
-{
-    public override void OnSceneWasLoaded(int buildIndex, string sceneName)
-    {
-        if (sceneName != "Mount Holly Estate") return;
-
-        string fsmPath = "/__SYSTEM/LOCKED DOORS ENGINE";
-        string filePath = @"D:\GameDev\modding\BluePrince\FsmDocs\LOCKED DOORS ENGINE.md";
-
-        GameObject fsmObj = GameObject.Find(fsmPath);
-        if (fsmObj is null)
-        {
-            LoggerInstance.Msg($"Could not find '{fsmPath}'");
-            return;
-        }
-        PlayMakerFSM fsm = fsmObj.GetComponent<PlayMakerFSM>();
-        if (fsm is null)
-        {
-            LoggerInstance.Msg($"Could not find PLayMakerFSM on '{fsmPath}'");
-            return;
-        }
-        fsm.DocumentFsm(filePath);
-    }
-}
-```
+You can see an example MelonLoader mod project that uses PlayMakerDocumenter at [Examples/MelonExample/](Examples/MelonExample/).
 
 ### UnityExplorer User Script
 
@@ -94,13 +55,14 @@ With Blue Prince from Steam, the full path looks like `C:\Program Files (x86)\St
 
 Then you can use them in the UnityExplorer C# console.
 
-1. Select the MyUsings.cs from the drop down.
+1. Select `MyUsings.cs` from the drop down.
 2. Click Compile at least twice.
-3. Select the DocFsm.cs from the drop down.
+3. Select `DocFsm.cs` from the drop down.
 4. Modify the FSM path and file path
-5. Click Compile twice
+5. Click Compile
+6. Click Compile again if you get a warning.
 
-Yes, you must click compile at least twice for each step.
+Yes, you sometimes must click compile at least twice.
 
 ![MyUsings.cs](img/MyUsings.cs.png) ![DocFsm.cs](img/DocFsm.cs.png)
 
@@ -209,13 +171,15 @@ Then draw the rest of the owl.
 In previous versions, you needed to manually create a mapping between the type and its serializer.
 This is no longer required as the extension methods in the partial class are now automatically detected via reflection.
 
-## MarkdownUtilities
+## Third Party Libraries
+
+### MarkdownUtilities
 
 Because this a pet project, of course it spawned more pet projects.
 This project makes heavy use of [MarkdownUtilities](https://github.com/markekraus/MarkdownUtilities) ( MIT license ) to generate markdown tables.
 MarkdownUtilities is IL repacked into the shipped DLL for this mod and is not a required dependency for shipping mods that use this mod.
 
-## UniverseLib
+### UniverseLib
 
 Il2Cpp games are a pain.
 In Il2Cpp, generic collection types always return collection members as the collection's generic type and _not_ as its actual runtime type.
@@ -223,3 +187,7 @@ This is a solved problem in UnityExplorer, which is using UniverseLib under the 
 Since I am using yukieiji's port of UnityExplorer, I'm also using their port of [UniverseLib](https://github.com/yukieiji/UniverseLib) ( LGPL-2.1 license ).
 I've not made any modification to their code.
 I'm also not currently shipping the library with this mod.
+
+### UUIDNext
+
+In order to created deterministic UUIDs (v5) for FSMs, this project uses the [UUIDNext](https://github.com/mareek/UUIDNext) library (0BDS license).
