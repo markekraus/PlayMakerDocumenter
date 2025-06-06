@@ -102,5 +102,6 @@
       <ProjectReference Include="..\PlayMakerDocumenter.Utility\PlayMakerDocumenter.Utility.csproj" />
       <ProjectReference Include="..\PlayMakerDocumenter.Logging\PlayMakerDocumenter.Logging.csproj" />
       <ProjectReference Include="..\PlayMakerDocumenter.Serializer\PlayMakerDocumenter.Serializer.csproj" />
+      <ProjectReference Include="..\PlayMakerDocumenter.Markdown\PlayMakerDocumenter.Markdown.csproj" />
     </ItemGroup>
 </Project>
