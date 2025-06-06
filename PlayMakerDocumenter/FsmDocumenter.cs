@@ -55,14 +55,9 @@ public static partial class FsmDocumenter
         if (fsm is null) { LogError("fsm was null"); return; }
         if (filePath.IsNullOrWhiteSpace()) { LogError("filePath was null"); return; }
 
-        new StringBuilder()
-            .AppendHeader($"# {fsm.GetFullPath()}")
-            .DocEnvironmentDetails()
-            .DocFsmDetails(fsm)
-            .DocGlobalTransitions(fsm)
-            .DocFsmVariables(fsm)
-            .DocFsmEvents(fsm)
-            .DocFsmStates(fsm)
+        fsm
+            .Serialize()
+            .SerializeMarkdown()
             .WriteToFile(filePath);
         if (enableLogs)
             LogMsg($"FSM Doc: {filePath}");
