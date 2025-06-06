@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Il2Cpp;
 using Newtonsoft.Json;
+using PlayMakerDocumenter.Markdown;
 using PlayMakerDocumenter.Serializer;
 using UnityEngine;
 
@@ -159,5 +160,22 @@ public static partial class FsmDocumenter
     /// </summary>
     /// <param name="fsm">The <see cref="PlayMakerFSM"/> to serialize.</param>
     /// <returns><see cref="FsmDoc"/></returns>
-    public static FsmDoc Serialize(this PlayMakerFSM fsm) => new(fsm);
+    public static FsmDoc Serialize(this PlayMakerFSM fsm) =>
+        new(fsm);
+
+    /// <summary>
+    /// Serializes a <see cref="PlayMakerFSM"/> as Markdown.
+    /// </summary>
+    /// <param name="fsm">The <see cref="PlayMakerFSM"/> to serialize.</param>
+    /// <returns></returns>
+    public static string SerializeMarkdown(this PlayMakerFSM fsm) =>
+        fsm.Serialize().SerializeMarkdown().ToString();
+
+    /// <summary>
+    /// Serializes a <see cref="PlayMakerFSM"/> as JSON.
+    /// </summary>
+    /// <param name="fsm">The <see cref="PlayMakerFSM"/> to serialize.</param>
+    /// <returns></returns>
+    public static string SerializeJson(this PlayMakerFSM fsm, Formatting formatting = Formatting.Indented) =>
+        JsonConvert.SerializeObject(fsm.Serialize(), formatting);
 }

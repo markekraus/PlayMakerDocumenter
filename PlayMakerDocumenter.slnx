@@ -11,6 +11,9 @@
   <Folder Name="/PlayMakerDocumenter.Serializer/">
     <Project Path="PlayMakerDocumenter.Serializer/PlayMakerDocumenter.Serializer.csproj" />
   </Folder>
+  <Folder Name="/PlayMakerDocumenter.Markdown/">
+    <Project Path="PlayMakerDocumenter.Markdown/PlayMakerDocumenter.Markdown.csproj" />
+  </Folder>
   <Folder Name="/PlayMakerDocumenter/">
     <Project Path="PlayMakerDocumenter/PlayMakerDocumenter.csproj" />
   </Folder>
