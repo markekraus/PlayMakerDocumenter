@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Il2Cpp;
 using Newtonsoft.Json;
 using PlayMakerDocumenter.Markdown;
 using PlayMakerDocumenter.Serializer;
 using UnityEngine;
+using static PlayMakerDocumenter.Logging.Logger;
 
 namespace PlayMakerDocumenter;
 
@@ -53,12 +53,12 @@ public static partial class FsmDocumenter
     public static void DocumentFsm(this PlayMakerFSM fsm, string filePath, bool enableLogs = true)
     {
         if (fsm is null) { LogError("fsm was null"); return; }
-        if (filePath.IsNullOrWhiteSpace()) { LogError("filePath was null"); return; }
+        if (string.IsNullOrWhiteSpace(filePath)) { LogError("filePath was null"); return; }
 
-        fsm
+        var sb = fsm
             .Serialize()
-            .SerializeMarkdown()
-            .WriteToFile(filePath);
+            .SerializeMarkdown();
+        File.WriteAllText(filePath, sb.ToString());
         if (enableLogs)
             LogMsg($"FSM Doc: {filePath}");
     }
@@ -75,7 +75,7 @@ public static partial class FsmDocumenter
     /// <param name="DeleteExistingFiles">Whether to delete existing markdown files (*.md) from <paramref name="OutputDirectory"/>. Default is False.</param> 
     public static void DocumentAllFsm(string OutputDirectory, FindObjectsInactive IncludeInactive = FindObjectsInactive.Include, bool DeleteExistingFiles = false)
     {
-        if (OutputDirectory.IsNullOrWhiteSpace()) { LogError("outputDirectory was null"); return; }
+        if (string.IsNullOrWhiteSpace(OutputDirectory)) { LogError("outputDirectory was null"); return; }
 
         DirectoryInfo outputDir;
         try { outputDir = Directory.CreateDirectory(OutputDirectory); }
