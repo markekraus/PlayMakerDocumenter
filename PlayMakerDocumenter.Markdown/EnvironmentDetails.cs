@@ -2,11 +2,11 @@ namespace PlayMakerDocumenter.Markdown;
 
 internal static class EnvironmentDetails
 {
-    private static readonly Lazy<IEnumerable<PropertyInfo>> propertyCache = new(GetProperties);
-    private static IEnumerable<PropertyInfo> properties => propertyCache.Value;
-    private static IEnumerable<PropertyInfo> GetProperties() =>
+    private static readonly Lazy<IEnumerable<FieldInfo>> propertyCache = new(GetProperties);
+    private static IEnumerable<FieldInfo> properties => propertyCache.Value;
+    private static IEnumerable<FieldInfo> GetProperties() =>
         typeof(EnvironmentDoc)
-            .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+            .GetFields(BindingFlags.Public | BindingFlags.Instance)
             .OrderBy(p => p.Name);
     internal static StringBuilder AddEnvironmentDetails(this StringBuilder sb, EnvironmentDoc doc)
     {

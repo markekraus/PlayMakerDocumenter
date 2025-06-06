@@ -5,7 +5,8 @@ public record FsmActionGeneralDetailsDoc
     public int StateIndex;
     public int ActionIndex;
     public string Name;
-    public string Type;
+    public string TypeName;
+    public string TypeFullName;
     public bool BlockFinish;
     public bool Enabled;
     public FsmActionGeneralDetailsDoc() { }
@@ -14,7 +15,8 @@ public record FsmActionGeneralDetailsDoc
         StateIndex = ctx.StateIndex;
         ActionIndex = ctx.ActionIndex;
         Name = ctx.Action.Name;
-        Type = ctx.ActionType.FullName;
+        TypeName = ctx.ActionType.Name;
+        TypeFullName = ctx.ActionType.FullName;
         BlockFinish = ctx.Action.blocksFinish;
         Enabled = ctx.Action.enabled;
     }

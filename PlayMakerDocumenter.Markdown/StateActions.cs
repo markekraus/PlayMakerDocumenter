@@ -8,9 +8,10 @@ internal static class SateActions
         sb.AppendHeader($"### {doc.Details.StateIndex} {doc.Details.Name}: Actions");
         foreach (var action in doc.Actions)
         {
+            var details = action.GeneralDetails;
             sb
-                .AppendHeader($"#### Action: {action.GeneralDetails.StateIndex}-{action.GeneralDetails.ActionIndex} {action.GeneralDetails.Name}")
-                .AddStateActionGeneralDetails(action)
+                .AppendHeader($"#### Action: {details.StateIndex}-{details.ActionIndex} {details.TypeName}")
+                .AddStateActionGeneralDetails(details)
                 .AddStateActionTypeDetails(action);
         }
         return sb;
