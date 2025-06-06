@@ -13,7 +13,10 @@ public class TransitionsDoc : SortedDictionary<string, string>
     private TransitionsDoc(Il2CppReferenceArray<FsmTransition> transitions) : base(comparer)
     {
         foreach (var transition in transitions)
+        {
+            if (transition.ToFsmState is null) continue;
             Add(transition.EventName, transition.ToState);
+        }
     }
 
     public static implicit operator TransitionsDoc(Il2CppReferenceArray<FsmTransition> transitions) =>
