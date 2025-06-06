@@ -14,6 +14,7 @@ This mod is currently tested only on Blue Prince.
     - [MelonLoader Mod Project](#melonloader-mod-project)
     - [UnityExplorer User Script](#unityexplorer-user-script)
   - [Developing Locally](#developing-locally)
+  - [.NET Project Layout](#net-project-layout)
   - [Building](#building)
   - [Publishing](#publishing)
   - [Supported Action Details](#supported-action-details)
@@ -141,6 +142,17 @@ I Cannot vouch for how it may or may not work in full Visual Studio.
 The paths to the relevant MelonLoader and game assemblies should work from a relative path to the game folder of `<GamFolder>\ModCode\PlayMakerDocumenter\`.
 This provides the benefit of working with the game devs' custom FSM Actions not shipped by the PlayMaker devs.
 
+## .NET Project Layout
+
+- [`./`](./) The root of the project contains this README, the license, build scripts, and the .NET Solution file.
+- [`./MarkdownUtilities/`](./MarkdownUtilities/) git submodule for the MarkdownUtilities project.
+- [`./PlayMakerDocumenter/`](./PlayMakerDocumenter/) The Public API and MelonLoader Melon project
+- [`./PlayMakerDocumenter.Logging/`](./PlayMakerDocumenter.Logging/) The logging module.
+- [`./PlayMakerDocumenter.Markdown/`](./PlayMakerDocumenter.Markdown/) The serializer that serializes the Intermediate Serializer to Markdown.
+- [`./PlayMakerDocumenter.Serializer/`](./PlayMakerDocumenter.Serializer/) The Intermediate Serializer that creates a serialization-friendly object representation of an FSM.
+- [`./PlayMakerDocumenter.Utility/`](./PlayMakerDocumenter.Utility/) Utility module with shared code.
+- [`./UniverseLib/`](./UniverseLib/) git submodule for the UniverseLib project.
+
 ## Building
 
 ```powershell
@@ -160,51 +172,42 @@ When [Developing Locally](#developing-locally), you can build and publish this m
 PlayMaker ships with 100's of State Actions.
 Each State Action type has its own unique properties requiring a manual documenter for each (for now).
 As such, there is currently limited support for a decent number of commonly used Action Types.
-The available types are listed in [PlayMakerDocumenter/Actions](PlayMakerDocumenter/Actions).
+The available types are listed in [PlayMakerDocumenter.Serializer/ActionDocs](PlayMakerDocumenter.Serializer/ActionDocs).
 
 ## Developing New Action Details
 
 For this demo, I will use the fictional State Action `SeizeMeansOfProduction`
 
-Create `PlayMakerDocumenter/Actions/Documenter.SeizeMeansOfProduction.cs` with this scaffolding:
+Create `PlayMakerDocumenter.Serializer/ActionDocs/SeizeMeansOfProductionDoc.cs` with this scaffolding:
 
 ```csharp
-using System.Text;
 using Il2CppHutongGames.PlayMaker.Actions;
+using PlayMakerDocumenter.Serializer.ActionProperties;
 
-namespace PlayMakerDocumenter.Actions;
+namespace PlayMakerDocumenter.Serializer.ActionDocs;
 
-public static partial class Documenter
+public record SeizeMeansOfProductionDoc : FsmActionDoc
 {
-    private static StringBuilder DocActionSeizeMeansOfProduction(this StringBuilder sb, SeizeMeansOfProduction action, ActionContext ctx) =>
-        action is null
-        ? sb
-        : sb.AppendHeader($"{nameof(SeizeMeansOfProduction)} Details:")
-            .NewTable()
-            .WithPropertyValueHeaders()
-            .BuildTable();
+    internal SeizeMeansOfProductionDoc(ActionContext Ctx, SeizeMeansOfProduction action) : base(Ctx)
+    {
+        if (action is null || Ctx is null) return;
+        // Example Property:
+        this.AddProperty(nameof(action.Organize), action.Organize);
+        ActionTypeSupported = true;
+    }
+}
+
+internal static partial class ActionContextExtensions
+{
+    public static SeizeMeansOfProductionDoc Document(this ActionContext ctx, SeizeMeansOfProduction Action) =>
+        new(ctx, Action);
 }
 ```
 
-Then update [`PlayMakerDocumenter/Actions/00Documenter.cs`](PlayMakerDocumenter/Actions/00Documenter.cs) to insert the documenter in alpha order:
-
-```csharp
-    private static StringBuilder DocStateActionTypeDetails(this StringBuilder sb, ActionContext ctx) =>
-        ctx is null || ctx.Action is null || ctx.EventToState is null
-        ? sb
-        : ctx.ActionCasted switch
-        {
-            ActivateGameObject => sb.DocActionActivateGameObject(ctx.Action.TryCast<ActivateGameObject>(), ctx),
-            ArrayListGet => sb.DocActionArrayListGet(ctx.Action.TryCast<ArrayListGet>(), ctx),
-            ArrayListSet => sb.DocActionArrayListSet(ctx.Action.TryCast<ArrayListSet>(), ctx),
-            // ...
-            SeizeMeansOfProduction => sb.DocActionSeizeMeansOfProduction(action.TryCast<SeizeMeansOfProduction>(), ctx),
-            // ...
-            _ => sb
-        };
-```
-
 Then draw the rest of the owl.
+
+In previous versions, you needed to manually create a mapping between the type and its serializer.
+This is no longer required as the extension methods in the partial class are now automatically detected via reflection.
 
 ## MarkdownUtilities
 
